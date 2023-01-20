@@ -15,7 +15,7 @@ import React from 'react';
    // import Comicsbypage from './components/Comicsbypage';
     //import Stories from './components/Stories';
     //import Storiesbypage from './components/Storiesbypage';
-    import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+    import {HashRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
 function App() {
   return (
