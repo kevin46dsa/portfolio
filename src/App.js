@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+    import './App.css';
+    import 'bootstrap/dist/css/bootstrap.min.css';
+    import Home from './Components/Home.jsx';
+    import Dark from "./Assets/Darkmodelogo.png"
+    import Light from "./Assets/Lightmodelogo.png"
+    import UnderConstruction from './Components/UnderConstruction/UnderConstruction';
+    import Header from './Components/Header/Navbar.jsx'
+    import Resume from './Components/Resume/Resume';
+    import Bookshelf from './Components/Bookshelf/Bookshelf';
+    //import Character from './components/Character';
+    //import Characterlistbypage from './components/Characterbypage';
+    //import CharacterHistory from './components/Characterhistory';
+    //import Comics from './components/Comics';
+   // import Comicsbypage from './components/Comicsbypage';
+    //import Stories from './components/Stories';
+    //import Storiesbypage from './components/Storiesbypage';
+    import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+        <Router>
+        <div >
+            <header>
+             <Header/>
+            </header>
+            <div >
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<UnderConstruction />}/>
+                <Route path='/bookshelf' element={<Bookshelf />}/>
+                <Route path='/music' element={<UnderConstruction />}/>
+                <Route path='/resume' element={<Resume />}/>
+                <Route path='/projects' element={<UnderConstruction />}/>
+              </Routes>
+            </div>
+            <footer>
 
-export default App;
+            </footer>
+          </div>
+        </Router>
+        
+      );
+    };
+    
+    export default App;
+
