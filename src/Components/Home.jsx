@@ -8,7 +8,8 @@ import Image from 'react-bootstrap/Image'
 import "./Home.css"
 import kevimg from "../Assets/1664229246147.jpeg"
 import QRcode from "../Assets/kevindsa.png"
-
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 import Stack from 'react-bootstrap/Stack';
 
@@ -34,7 +35,18 @@ const Home = () => {
       
       <Button variant="secondary" size="lg" href='/about'>About Me</Button>
       <div className="vr" />
-      <Button variant="secondary" size="lg" href='/resume'>Resume</Button>
+      
+      <OverlayTrigger
+          key='top'
+          placement='top'
+          overlay={
+            <Tooltip id={`tooltip-top`}>
+              This Page may require you to solve reCAPTCHA, for security reasons
+            </Tooltip>
+          }
+        >
+         <Button variant="secondary" size="lg" href='/resume'>Resume</Button>
+        </OverlayTrigger>
       <div className="vr" />
       <Button variant="secondary" size="lg" href='/project'>Projects</Button>
     </Stack>
