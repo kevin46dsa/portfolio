@@ -8,6 +8,7 @@ import React from 'react';
     import Header from './Components/Header/Navbar.jsx'
     import Resume from './Components/Resume/Resume';
     import Bookshelf from './Components/Bookshelf/Bookshelf';
+    import Contact from './Components/Contact/Contact';
     //import Character from './components/Character';
     //import Characterlistbypage from './components/Characterbypage';
     //import CharacterHistory from './components/Characterhistory';
@@ -32,6 +33,9 @@ function App() {
                 <Route path='/music' element={<UnderConstruction />}/>
                 <Route path='/resume' element={<Resume />}/>
                 <Route path='/projects' element={<UnderConstruction />}/>
+                <Route path='/blog' element={<UnderConstruction />}/>
+                <Route path='/photography' element={<UnderConstruction />}/>
+                <Route path='/contact-me' element={<Contact />}/>
               </Routes>
             </div>
             <footer>
