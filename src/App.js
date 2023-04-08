@@ -9,6 +9,7 @@ import React from 'react';
     import Resume from './Components/Resume/Resume';
     import Bookshelf from './Components/Bookshelf/Bookshelf';
     import Contact from './Components/Contact/Contact';
+    import Bookshelf2 from './Components/Bookshelf/Bookshelf2';
     //import Character from './components/Character';
     //import Characterlistbypage from './components/Characterbypage';
     //import CharacterHistory from './components/Characterhistory';
@@ -29,7 +30,7 @@ function App() {
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<UnderConstruction />}/>
-                <Route path='/bookshelf' element={<Bookshelf />}/>
+                <Route path='/bookshelf' element={<Bookshelf2 />}/>
                 <Route path='/music' element={<UnderConstruction />}/>
                 <Route path='/resume' element={<Resume />}/>
                 <Route path='/projects' element={<UnderConstruction />}/>
@@ -39,7 +40,7 @@ function App() {
               </Routes>
             </div>
             <footer>
-
+              
             </footer>
           </div>
         </Router>
