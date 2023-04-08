@@ -22,7 +22,7 @@ const Bookshelf = () => {
         img:Artofwar
     },
     {
-        name:"Book 2",
+        name:"Book 3",
         img:Artofwar
     }
     
