@@ -1,11 +1,11 @@
 import React from 'react';
 import './Bookshelf.css';
 import Artofwar from "../../Assets/artofwar.webp"
-import Card from 'react-bootstrap/Card';
+//import Card from 'react-bootstrap/Card';
 import BookCardDesign from './BookCardDesign';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col  from "react-bootstrap/Col";
+//import Col  from "react-bootstrap/Col";
 const Bookshelf = () => {
   
   let currentlyReading = [

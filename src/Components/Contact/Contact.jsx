@@ -59,7 +59,7 @@ const Contact = () => {
               <div class="col-lg-4 col-md-4 text-center">
                 <div class="card-body d-flex align-items-center c-detail pl-0">
                   <div class="mr-3 align-self-center">
-                    <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png"/>
+                    <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png" alt='address'/>
                   </div>
                   <div class="">
                     <h6 class="font-weight-medium">Address</h6>
@@ -72,7 +72,7 @@ const Contact = () => {
               <div class="col-lg-4 col-md-4 text-center">
                 <div class="card-body d-flex align-items-center c-detail">
                   <div class="mr-3 align-self-center">
-                    <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png"/>
+                    <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png" alt="email"/>
                   </div>
                   <div class="">
                     <h6 class="font-weight-medium">Email</h6>

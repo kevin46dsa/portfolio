@@ -2,14 +2,14 @@ import React from 'react';
     import './App.css';
     import 'bootstrap/dist/css/bootstrap.min.css';
     import Home from './Components/Home.jsx';
-    import Dark from "./Assets/Darkmodelogo.png"
-    import Light from "./Assets/Lightmodelogo.png"
+    //import Dark from "./Assets/Darkmodelogo.png"
+    //import Light from "./Assets/Lightmodelogo.png"
     import UnderConstruction from './Components/UnderConstruction/UnderConstruction';
     import Header from './Components/Header/Navbar.jsx'
     import Resume from './Components/Resume/Resume';
-    import Bookshelf from './Components/Bookshelf/Bookshelf';
     import Contact from './Components/Contact/Contact';
     import Bookshelf2 from './Components/Bookshelf/Bookshelf2';
+    import Photography from './Components/Photography/Photography';
     //import Character from './components/Character';
     //import Characterlistbypage from './components/Characterbypage';
     //import CharacterHistory from './components/Characterhistory';
@@ -17,7 +17,7 @@ import React from 'react';
    // import Comicsbypage from './components/Comicsbypage';
     //import Stories from './components/Stories';
     //import Storiesbypage from './components/Storiesbypage';
-    import {BrowserRouter as Router, Route, Link, Routes} from 'react-router-dom';
+    import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
                 <Route path='/resume' element={<Resume />}/>
                 <Route path='/projects' element={<UnderConstruction />}/>
                 <Route path='/blog' element={<UnderConstruction />}/>
-                <Route path='/photography' element={<UnderConstruction />}/>
+                <Route path='/photography' element={<Photography />}/>
                 <Route path='/contact-me' element={<Contact />}/>
               </Routes>
             </div>
