@@ -60,7 +60,7 @@ if(authtoken !== ""){
             <Row>
                 
                 <Col>
-                    <h1 style={{textAlign:"right"}}>Check Out My Spotify Playlists</h1>
+                    <h1 style={{textAlign:"left"}}>Check Out My Spotify Playlists</h1>
                 </Col>
                 <Col style={{textAlign:"right"}}>
                     <button onClick={redirectToSpotify} style={{ backgroundColor: '#1DB954', color: '#FFFFFF', borderRadius: '4px', padding: '8px 16px', fontWeight: 'bold', cursor: 'pointer' }}>Follow me on Spotify</button>
