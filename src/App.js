@@ -10,6 +10,7 @@ import React from 'react';
     import Contact from './Components/Contact/Contact';
     import Bookshelf2 from './Components/Bookshelf/Bookshelf2';
     import Photography from './Components/Photography/Photography';
+    import Music from './Components/Music/Music';
     //import Character from './components/Character';
     //import Characterlistbypage from './components/Characterbypage';
     //import CharacterHistory from './components/Characterhistory';
@@ -31,7 +32,7 @@ function App() {
                 <Route path='/' element={<Home />} />
                 <Route path='/about' element={<UnderConstruction />}/>
                 <Route path='/bookshelf' element={<Bookshelf2 />}/>
-                <Route path='/music' element={<UnderConstruction />}/>
+                <Route path='/music' element={<Music />}/>
                 <Route path='/resume' element={<Resume />}/>
                 <Route path='/projects' element={<UnderConstruction />}/>
                 <Route path='/blog' element={<UnderConstruction />}/>
