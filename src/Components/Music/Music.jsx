@@ -43,9 +43,15 @@ if(authtoken !== ""){
         console.log(error);
       });
     }
+
+
     const redirectToSpotify = () => {
-        window.location.href = 'https://open.spotify.com/user/ib9bugf6icc5xd4kzc4rku8ot?si=1ad7a7e14a3f4347';
-      };
+        let url = 'https://open.spotify.com/user/ib9bugf6icc5xd4kzc4rku8ot?si=1ad7a7e14a3f4347';
+        window.open(url, '_blank');
+    };
+
+
+
     return (
     <div className='Music-page'>
 

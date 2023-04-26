@@ -15,7 +15,7 @@ import Stack from 'react-bootstrap/Stack';
 
 const Home = () => {
   return (
-  <div>
+  <div style={{height:"100vh"}}>
     <div >
         <br/>
         <br/>
