@@ -48,7 +48,7 @@ const Home = () => {
          <Button variant="secondary" size="lg" href='/resume'>Resume</Button>
         </OverlayTrigger>
       <div className="vr" />
-      <Button variant="secondary" size="lg" href='/project'>Projects</Button>
+      <Button variant="secondary" size="lg" href='/projects'>Projects</Button>
     </Stack>
     <br/>
     <br/>
