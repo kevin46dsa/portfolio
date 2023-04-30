@@ -4,7 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 //import Github from "./Github";
 import Techstack from "./Techstack";
 import Aboutcard from "./AboutCard";
-import laptopImg from "../../Assets/about_1.jpeg";
+import laptopImg from "../../Assets/About_2.jpeg";
 import Toolstack from "./Toolstack";
 
 function About() {
@@ -31,7 +31,7 @@ function About() {
             style={{ paddingTop: "120px", paddingBottom: "50px" }}
             className="about-img"
           >
-            <img src={laptopImg} alt="about" className="img-fluid" style={{ maxHeight: "500px"}}/>
+            <img src={laptopImg} alt="about" className="img-fluid" style={{ maxHeight: "600px"}}/>
           </Col>
         </Row>
         <h1 className="project-heading">
