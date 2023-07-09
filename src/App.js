@@ -12,7 +12,7 @@ import React from 'react';
     import Photography from './Components/Photography/Photography';
     import Music from './Components/Music/Music';
     import About from './Components/About/About';
-    import Projects from './Components/Projects/Projects';
+    import Projects from './Components/Projects/ProjectHome';
     //import Character from './components/Character';
     //import Characterlistbypage from './components/Characterbypage';
     //import CharacterHistory from './components/Characterhistory';
@@ -37,6 +37,7 @@ function App() {
                 <Route path='/music' element={<Music />}/>
                 <Route path='/resume' element={<Resume />}/>
                 <Route path='/projects' element={<Projects />}/>
+                <Route path='/projects/:id' element={<Projects />}/>
                 <Route path='/blog' element={<UnderConstruction />}/>
                 <Route path='/photography' element={<Photography />}/>
                 <Route path='/contact-me' element={<Contact />}/>

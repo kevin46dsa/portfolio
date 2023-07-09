@@ -7,7 +7,7 @@ function AboutCard() {
     
     
     return (
-		<Card className="quote-card-view">
+		<Card >
 			<Card.Body>
 				
 					<h3>Hello Guys My Name Is Kevin</h3>
