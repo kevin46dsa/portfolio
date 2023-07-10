@@ -1,11 +1,12 @@
 import React, { useState,useEffect } from 'react';
 import { octokit } from '../../octokit';
-
+import './Projects.css'
 import Container from 'react-bootstrap/Container';
 import Col from "react-bootstrap/esm/Col";
 import {Carousel,Button,Modal } from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import { projectData } from '../../TempProjectData';
+
 
 
 const Projects = () => {
