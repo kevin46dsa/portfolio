@@ -21,16 +21,22 @@ const Home = () => {
         <br/>
         <Container fluid>
         <Row>
-          <Col sm="12" md="12" lg="7"><Image src={kevimg} style={{height:"500px"}} className="shadow-lg p-3 mb-5 bg-white rounded" /></Col>
-          <Col sm="12" md="12" lg="5" ><div>
-          <h1>Kevin D'sa</h1>
+          <Col sm="12" md="12" lg="7" style={{textAlign: "center"}}>
+            <div >
+            <Image src={kevimg} style={{height:"500px"}} className="shadow-lg p-3 mb-5 bg-white rounded" />
+            </div>
+          </Col>
+          <Col sm="12" md="12" lg="5" >
+          <div>
+          <h1>Hi, I am Kevin D'sa !!</h1>
           <h2>Welcome to my Website</h2>
           <br/>
           </div>
+          
           <div className='qrCode'>
           <Image src={QRcode} style={{height:"375px"}} className="shadow-lg p-3 mb-5 bg-white rounded"/>
           </div>
-          <div>
+          <div >
           <Stack direction="horizontal" gap={3}>
       
       <Button variant="secondary" size="lg" href='/about'>About Me</Button>
