@@ -19,9 +19,9 @@ const Home = () => {
     <div >
         <br/>
         <br/>
-        <Container>
+        <Container fluid>
         <Row>
-          <Col sm="12" md="12" lg="7"><Image src={kevimg} style={{height:"500px"}} className="shadow-lg p-3 mb-5 bg-white rounded"/></Col>
+          <Col sm="12" md="12" lg="7"><Image src={kevimg} style={{height:"500px"}} className="shadow-lg p-3 mb-5 bg-white rounded" /></Col>
           <Col sm="12" md="12" lg="5" ><div>
           <h1>Kevin D'sa</h1>
           <h2>Welcome to my Website</h2>
