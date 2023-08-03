@@ -13,6 +13,7 @@ import React from 'react';
     import Music from './Components/Music/Music';
     import About from './Components/About/About';
     import Projects from './Components/Projects/ProjectHome';
+    //import Footer from './Components/Footer/Footer';
     //import Character from './components/Character';
     //import Characterlistbypage from './components/Characterbypage';
     //import CharacterHistory from './components/Characterhistory';
