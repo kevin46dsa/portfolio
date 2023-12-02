@@ -45,7 +45,7 @@ function About() {
         </h1>
         <Toolstack />
         <div style={{textAlign:"center"}}>
-        <a href="https://www.buymeacoffee.com/kevin46dsa" target="_blank">
+        <a href="https://www.buymeacoffee.com/kevin46dsa" target="_blank" rel="noopener noreferrer">
         <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"/></a>
         </div>
         

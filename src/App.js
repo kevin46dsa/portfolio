@@ -13,6 +13,7 @@ import React from 'react';
     import Music from './Components/Music/Music';
     import About from './Components/About/About';
     import Projects from './Components/Projects/ProjectHome';
+    import PageNotFound from './Components/Pagenotfound/Pagenotfound.jsx';
     //import Footer from './Components/Footer/Footer';
     //import Character from './components/Character';
     //import Characterlistbypage from './components/Characterbypage';
@@ -42,6 +43,8 @@ function App() {
                 <Route path='/blog' element={<UnderConstruction />}/>
                 <Route path='/photography' element={<Photography />}/>
                 <Route path='/contact-me' element={<Contact />}/>
+                <Route path='*' element={<PageNotFound />} />
+
               </Routes>
             </div>
             <footer>
