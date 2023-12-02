@@ -7,10 +7,7 @@
     height: 80vh; /* Set wrap*/
     
   }
-  body{
-    margin: 0;
-  overflow: hidden;
-  }
+  
   
   .pagenotfoundContainer .pagenotfoundImg {
     max-width: 99%;
