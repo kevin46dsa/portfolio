@@ -1,0 +1,10 @@
+https://kevindsa.netlify.app/
+https://kevindsa.netlify.app/about
+https://kevindsa.netlify.app/bookshelf
+https://kevindsa.netlify.app/music
+https://kevindsa.netlify.app/resume
+https://kevindsa.netlify.app/projects
+https://kevindsa.netlify.app/projects/:id
+https://kevindsa.netlify.app/blog
+https://kevindsa.netlify.app/photography
+https://kevindsa.netlify.app/contact-me
