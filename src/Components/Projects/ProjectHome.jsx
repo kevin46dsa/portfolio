@@ -53,8 +53,8 @@ onLoad();
             <div style={{ alignItems:"center"}}>
             <h2>{project.projectName}</h2>
             <p>{project.projectDescription}</p>
-            <Button variant="primary" target="_blank" href={project.githubLink} >Open Github</Button>{'   '}
-            <Button variant="primary" target="_blank" href={project.websitePage}>View Project</Button>{'   '}
+            {project.githubLink === "" ? null:<Button variant="primary" target="_blank" href={project.githubLink} >Open Github</Button> }{'   '}
+            {project.websitePage === "" ? null:<Button variant="primary" target="_blank" href={project.websitePage}>View Project</Button> }{'   '}
             <Button variant="primary" onClick={handleShow}>Read More</Button>
             
             </div>
