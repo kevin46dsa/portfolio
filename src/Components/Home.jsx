@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
+import Typewriter from 'typewriter-effect';
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -29,17 +30,25 @@ const Home = () => {
             </div>
           </Col>
           <Col sm="12" md="12" lg="5" className='d-flex  justify-content-center flex-column align-items-center'>
-          
+
           <div >
           <br/>
-          <h1>Hi, I am Kevin D'sa !!</h1>
-          <h2>Welcome to my Website</h2>
+          <h1 style={{fontWeight:"bold",fontFamily:"monospace"}}>
+          <Typewriter
+            options={{
+            strings: ["Hi, I Am Kevin D'sa !!", 'Welcome To My Website !!!',"Follow Me On Other Platforms", "Scan The QR Code Below !!"],
+            autoStart: true,
+            loop: true,
+            }}
+          />
+          </h1>
           <br/>
           </div>
           
           <div className='qrCode'>
-          <Image src={QRcode} className="img-fluid bg-white rounded" style={{ maxHeight: "350px" }} alt="Responsive Image" />
+          <Image src={QRcode} className="img-fluid shadow p-3 mb-5 bg-white rounded" style={{ maxHeight: "350px" }} alt="Responsive Image" />
           </div>
+          <br/>
           <br/>
           <div >
           <Stack direction="horizontal" gap={3}>
