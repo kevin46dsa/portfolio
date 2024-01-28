@@ -26,7 +26,7 @@ const Projects = () => {
        }).then(res => {
            //const encoded = res.data.content;
            //const decoded = atob(encoded);
-           //setCode(decoded);
+           //setCode(decoded); 
            console.log(res)
       }).catch(err => console.log(err));
    }
@@ -55,8 +55,9 @@ onLoad();
             <p>{project.projectDescription}</p>
             {project.githubLink === "" ? null:<Button variant="primary" target="_blank" href={project.githubLink} >Open Github</Button> }{'   '}
             {project.websitePage === "" ? null:<Button variant="primary" target="_blank" href={project.websitePage}>View Project</Button> }{'   '}
+            {/*
             <Button variant="primary" onClick={handleShow}>Read More</Button>
-            
+            */}
             </div>
             </Col>
            
