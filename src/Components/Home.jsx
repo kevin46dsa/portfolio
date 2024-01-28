@@ -46,7 +46,7 @@ const Home = () => {
           </div>
           
           <div className='qrCode'>
-          <Image src={QRcode} className="img-fluid shadow p-3 mb-5 bg-white rounded" style={{ maxHeight: "350px" }} alt="Responsive Image" />
+          <Image src={QRcode} className="img-fluid shadow p-3 mb-2 bg-white rounded" style={{ maxHeight: "350px" }} alt="Responsive Image" />
           </div>
           <br/>
           <br/>

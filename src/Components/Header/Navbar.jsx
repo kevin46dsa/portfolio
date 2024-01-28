@@ -9,9 +9,9 @@ import Tooltip from 'react-bootstrap/Tooltip';
 const Header = () => {
   return (
   <div>
-   <Navbar collapseOnSelect expand="lg" bg="light" variant="light" fluid>
-      <Container>
-        <Navbar.Brand href="/">Kevin Dsa</Navbar.Brand>
+   <Navbar collapseOnSelect expand="lg" bg="light" variant="light" className='shadow p-3 rounded' fluid>
+      <Container >
+        <Navbar.Brand href="/" style={{fontWeight:"bold", fontStyle:"italic"}}>Kevin D'sa</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
