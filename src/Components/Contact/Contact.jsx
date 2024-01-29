@@ -1,11 +1,25 @@
 import React, {useState} from 'react';
 //import './Contact.css';
 import kevimg from "../../Assets/kevindsa.png"
-import Image from 'react-bootstrap/Image'
+import Typewriter from 'typewriter-effect';
+import Button from 'react-bootstrap/Button';
+
 import {serverTimestamp, collection, addDoc, doc, onSnapshot} from "firebase/firestore"; 
 import {db} from "../../firebase"
 import { Alert } from 'react-bootstrap';
 import { send } from 'emailjs-com';
+import github from "../../Assets/github.png"
+import linkedin from "../../Assets/linkedin.png"
+import soundcloud from "../../Assets/soundcloud.png"
+import spotify from "../../Assets/spotify.png"
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Image from 'react-bootstrap/Image'
+import QRcode from "../../Assets/kevindsa.png"
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+import Stack from 'react-bootstrap/Stack';
 
 
 const Contact = () => {
@@ -117,22 +131,28 @@ const onChange = (e) => {
   }
   
 
-  return (<div>
+  return (
+  <div > 
+    <br/>
+    <br/>
     <div className="text-center">
         <h1 >Want to get it touch ?</h1>
-      </div>
-        <div className="contact3 py-5 mx-5 " >
-  <div className="row no-gutters">
-    <div className="container">
-      <div className="row">
-        <div className="col-lg-6">
-          <div className="card-shadow text-center">
-            <Image src={kevimg} style={{height:"375px"}} />
+    </div>
+        
+<Container fluid>
+        <Row>
+          <Col lg="1"></Col>
+          <Col sm="12" md="12" lg="5" className='d-flex  justify-content-center flex-column align-items-center'>
+          <div className='qrCode'>
+          <Image src={QRcode} className="img-fluid shadow p-3 mb-2 bg-white rounded" style={{ maxHeight: "450px" }} alt="Responsive Image" />
           </div>
-        </div>
-        <div className="col-lg-4">
-          <div className="contact-box ml-3">
-            <h1 className="font-weight-light mt-2">Quick Contact</h1>
+          </Col>
+
+          <Col sm="12" md="12" lg="5" className='d-flex  justify-content-center flex-column align-items-center'>
+          <div >
+          <br/>
+
+          <h1 className="font-weight-light mt-2">Quick Contact</h1>
             {showAlert && 
               <Alert variant="success">
                 Thank you for contacting me, I will get back to you soon !
@@ -198,52 +218,69 @@ const onChange = (e) => {
                 </div>
               </div>
             </form>
+
+
+          <br/>
           </div>
+          
+          
+          <br/>
+          <br/>
+          <div >
+         
+    <br/>
+    <br/>
         </div>
-        <div className="col-lg-2"></div>
-        <div className="col-lg-12">
-          <div className="card mt-4 border-0 mb-4">
-            <div className="row">
-            <div className="col-lg-2 col-md-2 text-center">
-              </div>
-              <div className="col-lg-4 col-md-4 text-center">
-                <div className="card-body d-flex align-items-center c-detail pl-0">
-                  <div className="mr-3 align-self-center">
-                    <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon1.png" alt='address'/>
-                  </div>
-                  <div className="">
-                    <h6 className="font-weight-medium">Address</h6>
-                    <p className="">Stevens Institute of Technology
-                      <br/> Hoboken</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="col-lg-4 col-md-4 text-center">
-                <div className="card-body d-flex align-items-center c-detail">
-                  <div className="mr-3 align-self-center">
-                    <img src="https://www.wrappixel.com/demos/ui-kit/wrapkit/assets/images/contact/icon3.png" alt="email"/>
-                  </div>
-                  <div className="">
-                    <h6 className="font-weight-medium">Email</h6>
-                    <p className="">
-                      kdsa1@stevens.edu
-                      <br/> kevin0108dsa@gmail.com
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-2 col-md-2 text-center">
-              </div>
-              
-            </div>
-          </div>
-        </div>
-      </div>
+      </Col>
+      <Col lg="1"></Col>
+      </Row>
+    </Container>
+    <br/>
+
+
+    <Container>
+      <Row>
+        <Col className='d-flex justify-content-center'>
+        
+      
+       
+      <div class="social-icons">
+    <a href="https://github.com/kevin46dsa" className="btn btn-lg btn-outline-secondary">
+      <img src={github} style={{maxHeight:"35px"}}/> GitHub
+    </a>
+    {"      "}
+    <div className="vr" />
+    {"      "}
+    <a href="https://www.linkedin.com/in/kevindsa2017" className="btn btn-lg btn-outline-secondary">
+      <img src={linkedin} style={{maxHeight:"35px"}}/> LinkedIn
+    </a>
+    {"      "}
+    <div className="vr" />
+    {"      "}
+    <a href="https://www.buymeacoffee.com/kevin46dsa" target="_blank" rel="noopener noreferrer">
+    <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"/></a>
+    {"      "}
+    <div className="vr" />
+    {"      "}
+    <a href="https://soundcloud.com/noisynos" className="btn btn-lg btn-outline-secondary">
+      <img src={soundcloud} style={{maxHeight:"35px"}}/> Soundcloud
+    </a>
+    {"      "}
+    <div className="vr" />
+    {"      "}
+    <a href="https://open.spotify.com/user/ib9bugf6icc5xd4kzc4rku8ot?si=da47842f1b87442b" className="btn btn-lg btn-outline-secondary">
+      <img src={spotify} style={{maxHeight:"35px"}}/> Spotify
+    </a>
+
+  
     </div>
-  </div>
-</div>
-  </div>
+  
+      </Col>
+      </Row>
+    </Container>
+    
+    </div>        
+
   );
 };
 
