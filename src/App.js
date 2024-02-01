@@ -4,7 +4,7 @@ import React from 'react';
     import Home from './Components/Home.jsx';
     //import Dark from "./Assets/Darkmodelogo.png"
     //import Light from "./Assets/Lightmodelogo.png"
-    import UnderConstruction from './Components/UnderConstruction/UnderConstruction';
+    //import UnderConstruction from './Components/UnderConstruction/UnderConstruction';
     import Header from './Components/Header/Navbar.jsx'
     import Resume from './Components/Resume/Resume';
     import Contact from './Components/Contact/Contact';
@@ -14,6 +14,7 @@ import React from 'react';
     import About from './Components/About/About';
     import Projects from './Components/Projects/ProjectHome';
     import PageNotFound from './Components/Pagenotfound/Pagenotfound.jsx';
+    import Blog from './Components/Blog/Blog.jsx';
     //import Footer from './Components/Footer/Footer';
     //import Character from './components/Character';
     //import Characterlistbypage from './components/Characterbypage';
@@ -40,7 +41,7 @@ function App() {
                 <Route path='/resume' element={<Resume />}/>
                 <Route path='/projects' element={<Projects />}/>
                 <Route path='/projects/:id' element={<Projects />}/>
-                <Route path='/blog' element={<UnderConstruction />}/>
+                <Route path='/blog' element={<Blog />}/>
                 <Route path='/photography' element={<Photography />}/>
                 <Route path='/contact-me' element={<Contact />}/>
                 <Route path='*' element={<PageNotFound />} />

@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
 //import './Contact.css';
-import kevimg from "../../Assets/kevindsa.png"
-import Typewriter from 'typewriter-effect';
-import Button from 'react-bootstrap/Button';
+
 
 import {serverTimestamp, collection, addDoc, doc, onSnapshot} from "firebase/firestore"; 
 import {db} from "../../firebase"
@@ -17,9 +15,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 import QRcode from "../../Assets/kevindsa.png"
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Tooltip from 'react-bootstrap/Tooltip';
-import Stack from 'react-bootstrap/Stack';
+
 
 
 const Contact = () => {
@@ -246,13 +242,13 @@ const onChange = (e) => {
        
       <div class="social-icons">
     <a href="https://github.com/kevin46dsa" className="btn btn-lg btn-outline-secondary">
-      <img src={github} style={{maxHeight:"35px"}}/> GitHub
+      <img src={github} style={{maxHeight:"35px"}} alt='Github'/> GitHub
     </a>
     {"      "}
     <div className="vr" />
     {"      "}
     <a href="https://www.linkedin.com/in/kevindsa2017" className="btn btn-lg btn-outline-secondary">
-      <img src={linkedin} style={{maxHeight:"35px"}}/> LinkedIn
+      <img src={linkedin} style={{maxHeight:"35px"}} alt='LinkedIN'/> LinkedIn
     </a>
     {"      "}
     <div className="vr" />
@@ -263,13 +259,13 @@ const onChange = (e) => {
     <div className="vr" />
     {"      "}
     <a href="https://soundcloud.com/noisynos" className="btn btn-lg btn-outline-secondary">
-      <img src={soundcloud} style={{maxHeight:"35px"}}/> Soundcloud
+      <img src={soundcloud} style={{maxHeight:"35px"}} alt='SoundCloud'/> Soundcloud
     </a>
     {"      "}
     <div className="vr" />
     {"      "}
     <a href="https://open.spotify.com/user/ib9bugf6icc5xd4kzc4rku8ot?si=da47842f1b87442b" className="btn btn-lg btn-outline-secondary">
-      <img src={spotify} style={{maxHeight:"35px"}}/> Spotify
+      <img src={spotify} style={{maxHeight:"35px"}} alt='Spotify'/> Spotify
     </a>
 
   
