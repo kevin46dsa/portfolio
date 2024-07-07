@@ -6,6 +6,8 @@ import Button from 'react-bootstrap/Button';
 import reactWebcam from "../../Assets/react-webcam.jpg"
 import crewai from "../../Assets/crewai.png"
 import defaultImage from "../../Assets/defaultblogimg.jpeg"
+import exceltemplate from "../../Assets/excel-template.png"
+
 
 const Blog = () => {
     const [posts, setPosts] = useState([]);
@@ -28,7 +30,8 @@ const Blog = () => {
       for(let i in posts){
           if(posts[i].title === "React-Webcam Starts webcam but stops automatically")posts[i] = {...posts[i], 'thumbnail':reactWebcam}
           if(posts[i].title === "Create an AI workforce with CrewAI")posts[i] = {...posts[i], 'thumbnail':crewai}
-        }
+          if(posts[i].title === "Monthly Budget Notepad/Tracker") posts[i] = {...posts[i], 'thumbnail':exceltemplate}
+      }
       return posts
     }
 
@@ -38,7 +41,7 @@ const Blog = () => {
         .then((res) => {
           addImageToPost(res.data.items) // adds the images to the posts since the thumbnail wasnt showing up
           setPosts(res.data.items);
-          
+          console.log(res.data.items)
         })
         .catch((error) => {
           console.error("Error fetching blog posts:", error);
@@ -55,8 +58,8 @@ const Blog = () => {
             <br/>
             <br/>
             <Container fluid>
-            {posts.map((post) => (
-            <div>  
+            {posts.map((post,index) => (
+            <div key={index}>  
             <Row key={post.guid}>
             <Col lg="2"></Col>   
             <Col style={{backgroundColor: '#F5F5F5', padding:"40px", margin:"20px" , boxShadow:"0px 2px 4px rgba(0, 0, 0, 0.2)"}}>
