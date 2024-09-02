@@ -1,20 +1,15 @@
 import React, {useState} from 'react';
-//import './Contact.css';
-
 
 import {serverTimestamp, collection, addDoc, doc, onSnapshot} from "firebase/firestore"; 
 import {db} from "../../firebase"
 import { Alert } from 'react-bootstrap';
 import { send } from 'emailjs-com';
-import github from "../../Assets/github.png"
-import linkedin from "../../Assets/linkedin.png"
-import soundcloud from "../../Assets/soundcloud.png"
-import spotify from "../../Assets/spotify.png"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image'
 import QRcode from "../../Assets/kevindsa.png"
+import ContactSocialIcons from './ContactSocialIcons';
 
 
 
@@ -237,40 +232,7 @@ const onChange = (e) => {
     <Container>
       <Row>
         <Col className='d-flex justify-content-center'>
-        
-      
-       
-      <div class="social-icons">
-    <a href="https://github.com/kevin46dsa" className="btn btn-lg btn-outline-secondary">
-      <img src={github} style={{maxHeight:"35px"}} alt='Github'/> GitHub
-    </a>
-    {"      "}
-    <div className="vr" />
-    {"      "}
-    <a href="https://www.linkedin.com/in/kevindsa2017" className="btn btn-lg btn-outline-secondary">
-      <img src={linkedin} style={{maxHeight:"35px"}} alt='LinkedIN'/> LinkedIn
-    </a>
-    {"      "}
-    <div className="vr" />
-    {"      "}
-    <a href="https://www.buymeacoffee.com/kevin46dsa" target="_blank" rel="noopener noreferrer">
-    <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"/></a>
-    {"      "}
-    <div className="vr" />
-    {"      "}
-    <a href="https://soundcloud.com/noisynos" className="btn btn-lg btn-outline-secondary">
-      <img src={soundcloud} style={{maxHeight:"35px"}} alt='SoundCloud'/> Soundcloud
-    </a>
-    {"      "}
-    <div className="vr" />
-    {"      "}
-    <a href="https://open.spotify.com/user/ib9bugf6icc5xd4kzc4rku8ot?si=da47842f1b87442b" className="btn btn-lg btn-outline-secondary">
-      <img src={spotify} style={{maxHeight:"35px"}} alt='Spotify'/> Spotify
-    </a>
-
-  
-    </div>
-  
+   <ContactSocialIcons/>
       </Col>
       </Row>
     </Container>
