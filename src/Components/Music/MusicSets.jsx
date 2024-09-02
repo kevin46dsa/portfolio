@@ -3,10 +3,14 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from "react-bootstrap/esm/Col";
 import SocialLink from "../SocialLinks/SocialLinks";
+import Slider from "./MusicSetComponents/Slider";
+import PageNotFound from "../Pagenotfound/Pagenotfound";
 
 
 export default function MusicSets() {
+const underConstruction = true
 
+if(underConstruction) return <PageNotFound />
 
     return (
     <div className='Music-page'>
@@ -46,8 +50,7 @@ export default function MusicSets() {
             </Row>
             <br/>
             <Row>
-                <Col>
-                 </Col>
+                <Slider/>
             </Row>
             <br/>
             <Row>
