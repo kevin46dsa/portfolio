@@ -57,7 +57,7 @@ let selectedVariantData = useMemo(() => {
             return data.default
 
     }
-}, [variant])
+}, [variant, data.buymecoffee, data.default, data.github, data.instagram, data.linkedin, data.mixcloud, data.soundcloud, data.spotify, data.twitch, data.youtube])
 
 
 

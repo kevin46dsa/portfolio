@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback } from "react";
 import axios from "axios";
 import { Container, Row ,Col } from "react-bootstrap";
 import { Card } from "react-bootstrap";
@@ -35,21 +35,27 @@ const Blog = () => {
       return posts
     }
 
-    const getPostData = () => {
+
+    
+    const getPostData = useCallback(() => {
       axios
         .get("https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@kevin0108dsa")
         .then((res) => {
-          addImageToPost(res.data.items) // adds the images to the posts since the thumbnail wasnt showing up
+          addImageToPost(res.data.items);
           setPosts(res.data.items);
-          console.log(res.data.items)
+          console.log(res.data.items);
         })
         .catch((error) => {
           console.error("Error fetching blog posts:", error);
         });
-    };
+    }, []); // empty dependency array since we don't want this function to be recreated on re-renders
+
     useEffect(() => {
-      getPostData();
-    }, []);
+      if(posts.length === 0){
+        getPostData();
+      }
+
+    }, [posts, getPostData]);
 
     //<p dangerouslySetInnerHTML={{ __html: post.content }} />  description comming in from the api call is unformatted html text this like makes it readable to the browser and makes it formatted
 
