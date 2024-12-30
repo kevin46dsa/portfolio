@@ -53,5 +53,11 @@
       "last 1 safari version"
     ]
   },
-  "zlib": false
+  "zlib": false,
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "typescript": "^5.7.2"
+  }
 }
