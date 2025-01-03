@@ -1,9 +1,8 @@
-import React from "react";
 import "./Pagenotfound.css";
 import pageNotFoundAnimation from "../../Assets/404animation.gif";
 import { Button } from "react-bootstrap";
 
-const PageNotFound = () => {
+export const PageNotFound = () => {
   return (
     <div className="pagenotfoundContainer">
       <h1 className="pagenotfoundH1">404: Page Not Found</h1>
@@ -19,5 +18,3 @@ const PageNotFound = () => {
     </div>
   );
 };
-
-export default PageNotFound;

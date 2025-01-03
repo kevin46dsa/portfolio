@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { ReactPhotoCollage } from "react-photo-collage";
 import Container from "react-bootstrap/Container";
 import { photographyData } from "../../Data";

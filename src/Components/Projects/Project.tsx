@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { Card, Carousel } from "react-bootstrap";
 import { projectData } from "../../Data/Default/TempProjectData";
 
