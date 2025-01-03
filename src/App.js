@@ -6,7 +6,7 @@ import Header from "./Components/Header/Navbar.jsx";
 import Resume from "./Components/Resume/Resume";
 import Contact from "./Components/Contact/Contact";
 import Bookshelf2 from "./Components/Bookshelf/Bookshelf2";
-import Photography from "./Components/Photography/Photography";
+import { Photography } from "./Components";
 import Music from "./Components/Music/Music";
 import About from "./Components/About/About";
 import { Projects } from "./Page";
