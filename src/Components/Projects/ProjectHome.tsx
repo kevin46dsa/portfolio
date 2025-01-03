@@ -33,11 +33,6 @@ export const ProjectsHomeComponent = () => {
 
   return (
     <div style={{ textAlign: "center" }}>
-      <br />
-
-      <h1>My Projects</h1>
-      <br />
-
       <Container fluid="xxl">
         {projectData.map((project, index) => (
           <div

@@ -6,9 +6,14 @@ import {
 export const Projects = () => {
   return (
     <>
-      <ProjectsHomeComponent />
-      <br />
-      <ProjectsNewHomeComponent />
+      <div style={{ textAlign: "center" }}>
+        <br />
+        <h1>My Projects</h1>
+        <br />
+        <ProjectsHomeComponent />
+        <br />
+        <ProjectsNewHomeComponent />
+      </div>
     </>
   );
 };
