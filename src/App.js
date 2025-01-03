@@ -9,7 +9,7 @@ import Bookshelf2 from "./Components/Bookshelf/Bookshelf2";
 import Photography from "./Components/Photography/Photography";
 import Music from "./Components/Music/Music";
 import About from "./Components/About/About";
-import Projects from "./Components/Projects/ProjectHome";
+import { Projects } from "./Page";
 import PageNotFound from "./Components/Pagenotfound/Pagenotfound.jsx";
 import Blog from "./Components/Blog/Blog.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
