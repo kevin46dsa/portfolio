@@ -2,11 +2,10 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./Components/Home.tsx";
 import Header from "./Components/Header/Navbar.jsx";
-import Resume from "./Components/Resume/Resume";
 import Bookshelf2 from "./Components/Bookshelf/Bookshelf2";
 import { Photography, PageNotFound } from "./Components";
 import Music from "./Components/Music/Music";
-import { Projects, ContactPage, AboutPage } from "./Page";
+import { Projects, ContactPage, AboutPage, ResumePage } from "./Page";
 import Blog from "./Components/Blog/Blog.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -23,7 +22,7 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/bookshelf" element={<Bookshelf2 />} />
             <Route path="/music" element={<Music />} />
-            <Route path="/resume" element={<Resume />} />
+            <Route path="/resume" element={<ResumePage />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<Projects />} />
             <Route path="/blog" element={<Blog />} />

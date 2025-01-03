@@ -1,5 +1,5 @@
 // Document taken from Google Drive kevin0108dsa@gmail.com > Resume for Portfolio Website
-const Resume = () => {
+export const Resume = () => {
   return (
     <div style={{ height: "100vh" }}>
       <iframe
@@ -11,5 +11,3 @@ const Resume = () => {
     </div>
   );
 };
-
-export default Resume;
