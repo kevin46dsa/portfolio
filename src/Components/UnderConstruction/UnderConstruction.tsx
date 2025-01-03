@@ -1,4 +1,4 @@
-const UnderConstruction = () => {
+export const UnderConstruction = () => {
   return (
     <div>
       <h1>
@@ -10,5 +10,3 @@ const UnderConstruction = () => {
     </div>
   );
 };
-
-export default UnderConstruction;

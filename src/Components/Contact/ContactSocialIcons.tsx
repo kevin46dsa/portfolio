@@ -1,7 +1,6 @@
-import React from "react";
 import SocialLink from "../SocialLinks/SocialLinks";
 
-const ContactSocialIcons = () => {
+export const ContactSocialIcons = () => {
   return (
     <div className="social-icons">
       <SocialLink variant="Github" />
@@ -26,5 +25,3 @@ const ContactSocialIcons = () => {
     </div>
   );
 };
-
-export default ContactSocialIcons;
