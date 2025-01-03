@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/esm/Col";
 import { Carousel, Button, Modal } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
-import { projectData } from "../../TempProjectData";
+import { projectData } from "../../Data/Default/TempProjectData";
 
 export const ProjectsHomeComponent = () => {
   const [show, setShow] = useState(false);

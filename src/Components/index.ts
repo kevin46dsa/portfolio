@@ -1,1 +1,1 @@
-export { ProjectsHomeComponent } from "./Projects/ProjectHome";
+export * from "./Projects";

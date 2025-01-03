@@ -1,5 +1,14 @@
-import { ProjectsHomeComponent } from "../../Components";
+import {
+  ProjectsHomeComponent,
+  ProjectsNewHomeComponent,
+} from "../../Components";
 
 export const Projects = () => {
-  return <ProjectsHomeComponent />;
+  return (
+    <>
+      <ProjectsHomeComponent />
+      <br />
+      <ProjectsNewHomeComponent />
+    </>
+  );
 };
