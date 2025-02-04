@@ -4,7 +4,7 @@ const Resume = () => {
     <div style={{ height: "100vh" }}>
       <iframe
         title="Resume"
-        src="https://drive.google.com/file/d/1bAlAsGp04gEccT6UKey9IXV5cHOBaJxZ/preview"
+        src="https://drive.google.com/file/d/1zMC7D7fsusGwuJbZogELCkfdjx0gK9Ta/preview"
         width="100%"
         height="95%"
       ></iframe>
