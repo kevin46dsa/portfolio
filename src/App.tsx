@@ -1,14 +1,20 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { Home, Header, Footer, Sitemap, PageNotFound } from "./Components";
-import Resume from "./Components/Resume/Resume";
-import Contact from "./Components/Contact/Contact";
-import Bookshelf2 from "./Components/Bookshelf/Bookshelf2";
-import Photography from "./Components/Photography/Photography";
-import Music from "./Components/Music/Music";
-import About from "./Components/About/About";
-import Projects from "./Components/Projects/ProjectHome";
+import {
+  Home,
+  Header,
+  Footer,
+  Sitemap,
+  PageNotFound,
+  Photography,
+  Resume,
+} from "./Components";
+import Contact from "./Components/Contact/Contact.jsx";
+import Bookshelf2 from "./Components/Bookshelf/Bookshelf2.jsx";
+import Music from "./Components/Music/Music.jsx";
+import About from "./Components/About/About.jsx";
+import Projects from "./Components/Projects/ProjectHome.jsx";
 import Blog from "./Components/Blog/Blog.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 

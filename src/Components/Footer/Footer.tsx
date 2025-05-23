@@ -34,6 +34,7 @@ export const Footer = () => {
             </div>
             <h5>About Me</h5>
             <p>Full-Stack Developer crafting intuitive web experiences.</p>
+            <a href="/sitemap">Sitemap</a>
           </Col>
 
           {/* Quick Links */}
@@ -51,7 +52,7 @@ export const Footer = () => {
 
         <Row>
           <Col className="text-center pt-3 border-top">
-            <small>© {year}. All rights reserved to NosEnterprise.</small>
+            <small>© {year} All rights reserved to NosEnterprise. </small>
           </Col>
         </Row>
       </Container>

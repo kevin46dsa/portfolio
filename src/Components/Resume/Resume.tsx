@@ -1,5 +1,10 @@
-// Document taken from Google Drive kevin0108dsa@gmail.com > Resume for Portfolio Website
-const Resume = () => {
+/**
+ * Resume component
+ * Document taken from Google Drive kevin0108dsa@gmail.com > Resume for Portfolio Website
+ *
+ * @returns Resume component
+ */
+export const Resume = () => {
   return (
     <div>
       <iframe
@@ -14,5 +19,3 @@ const Resume = () => {
     </div>
   );
 };
-
-export default Resume;
