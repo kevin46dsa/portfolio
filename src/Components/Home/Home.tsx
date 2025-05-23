@@ -5,15 +5,14 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import "./Home.css";
-import kevimg from "../Assets/profilephoto.png";
-import QRcode from "../Assets/kevindsa.png";
+import kevimg from "../../Assets/profilephoto.png";
+import QRcode from "../../Assets/kevindsa.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 import Stack from "react-bootstrap/Stack";
-//<Image src={kevimg} style={{height:"500px"}}  />
 
-const Home = () => {
+export const Home = () => {
   return (
     <div style={{ height: "100vh" }}>
       <div>
@@ -45,20 +44,26 @@ const Home = () => {
             >
               <div>
                 <br />
-                <h1 style={{ fontWeight: "bold", fontFamily: "monospace" }}>
+                <div
+                  style={{
+                    fontSize: "50px",
+                    fontWeight: "bold",
+                  }}
+                >
                   <Typewriter
                     options={{
                       strings: [
-                        "Hi, I Am Kevin D'sa !!",
-                        "Welcome To My Website !!!",
-                        "Follow Me On Other Platforms",
-                        "Scan The QR Code Below !!",
+                        "Hi, I am Kevin D'sa !!",
+                        "FullStack Developer",
+                        "Software Engineer",
+                        "Web Developer",
+                        "Follow Me on LinkedIn",
                       ],
                       autoStart: true,
                       loop: true,
                     }}
                   />
-                </h1>
+                </div>
                 <br />
               </div>
 
@@ -109,5 +114,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;
