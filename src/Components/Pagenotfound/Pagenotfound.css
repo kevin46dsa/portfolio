@@ -1,44 +1,40 @@
+.pagenotfoundContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; /* Push content to the bottom */
+  height: 80vh; /* Set wrap*/
+  padding-top: "10px";
+}
 
-  .pagenotfoundContainer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center; /* Push content to the bottom */
-    height: 80vh; /* Set wrap*/
-    
-  }
-  
-  
-  .pagenotfoundContainer .pagenotfoundImg {
-    max-width: 99%;
-    max-height: auto;
- }​
-  .info{
-    text-align: center;
-  }
+.pagenotfoundContainer .pagenotfoundImg {
+  max-width: 99%;
+  max-height: auto;
+}
+​ .info {
+  text-align: center;
+}
 
-  .pagenotfoundContainer .pagenotfoundBtn {
-    position: absolute;
-    bottom: 20%; /*your button position*/
-    right: 55; /*your button position*/
-    background-color: #555;
-    color: white;
-    font-size: 16px;
-    padding: 12px 24px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-family: 'Baloo Thambi 2';
-  }
-  
-  
-  .pagenotfoundContainer .pagenotfoundH1 {
-    position: absolute;
-    top: 15%; /*your button position*/
-    right: 55; /*your button position*/
-    text-align: center;
-    font-weight: bold;
-    font-size: 50px;
-    font-family: 'Baloo Thambi 2', cursive;
-    color: black; /* Adjust the color as needed */
-  }
-  
+.pagenotfoundContainer .pagenotfoundBtn {
+  position: absolute;
+  bottom: 20%; /*your button position*/
+  right: 55; /*your button position*/
+  background-color: #555;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-family: "Baloo Thambi 2";
+}
+
+.pagenotfoundContainer .pagenotfoundH1 {
+  position: absolute;
+  top: 15%; /*your button position*/
+  right: 55; /*your button position*/
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  font-family: "Baloo Thambi 2", cursive;
+  color: black; /* Adjust the color as needed */
+}
