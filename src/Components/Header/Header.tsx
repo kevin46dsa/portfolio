@@ -15,7 +15,6 @@ export const Header = () => {
         bg="light"
         variant="light"
         className="shadow p-3 rounded"
-        // fluid="true"
       >
         <Container>
           <Navbar.Brand
