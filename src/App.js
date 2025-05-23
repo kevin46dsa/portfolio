@@ -1,8 +1,7 @@
 import React from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Home } from "./Components/Home";
-import { Header } from "./Components/Header";
+
+import { Home, Header, Footer, Sitemap } from "./Components";
 import Resume from "./Components/Resume/Resume";
 import Contact from "./Components/Contact/Contact";
 import Bookshelf2 from "./Components/Bookshelf/Bookshelf2";
@@ -21,7 +20,7 @@ function App() {
         <header>
           <Header />
         </header>
-        <div>
+        <div style={{ minHeight: "100vh" }}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -33,10 +32,13 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/photography" element={<Photography />} />
             <Route path="/contact-me" element={<Contact />} />
+            <Route path="/sitemap" element={<Sitemap />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
-        <footer></footer>
+        <footer>
+          <Footer />
+        </footer>
       </div>
     </Router>
   );
