@@ -1,12 +1,15 @@
 // Document taken from Google Drive kevin0108dsa@gmail.com > Resume for Portfolio Website
 const Resume = () => {
   return (
-    <div style={{ height: "100vh" }}>
+    <div>
       <iframe
         title="Resume"
         src="https://drive.google.com/file/d/1zMC7D7fsusGwuJbZogELCkfdjx0gK9Ta/preview"
-        width="100%"
-        height="95%"
+        style={{
+          width: "100%",
+          height: "100vh",
+          border: "none",
+        }}
       ></iframe>
     </div>
   );
