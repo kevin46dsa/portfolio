@@ -1,0 +1,31 @@
+.headerLogo {
+  font-weight: bold;
+  font-style: italic;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0) scaleY(1);
+    animation-timing-function: ease-in;
+  }
+  10% {
+    transform: translateY(-8px) scaleY(1.1);
+    animation-timing-function: ease-out;
+  }
+  30% {
+    transform: translateY(0) scaleY(0.9);
+    animation-timing-function: ease-in;
+  }
+  50% {
+    transform: translateY(-4px) scaleY(1.05);
+    animation-timing-function: ease-out;
+  }
+  70% {
+    transform: translateY(0) scaleY(0.95);
+    animation-timing-function: ease-in;
+  }
+}

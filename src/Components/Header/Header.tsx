@@ -5,6 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import "./Header.css";
 
 export const Header = () => {
   return (
@@ -17,10 +18,7 @@ export const Header = () => {
         className="shadow p-3 rounded"
       >
         <Container>
-          <Navbar.Brand
-            href="/"
-            style={{ fontWeight: "bold", fontStyle: "italic" }}
-          >
+          <Navbar.Brand href="/" className="headerLogo">
             Kevin D'sa
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

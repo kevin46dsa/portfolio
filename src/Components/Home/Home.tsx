@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import "./Home.css";
 import kevimg from "../../Assets/profilephoto.png";
+import DeveloperVector from "../../Assets/DeveloperVector.svg";
 import QRcode from "../../Assets/kevindsa.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
@@ -28,11 +29,10 @@ export const Home = () => {
               className="d-flex  justify-content-center flex-column align-items-center"
             >
               <div>
-                <Image
-                  src={kevimg}
-                  className="img-fluid"
-                  style={{ maxHeight: "525px" }}
-                  alt="Responsive Image"
+                <img
+                  src={DeveloperVector}
+                  alt="Site Logo"
+                  className="HomepageVector "
                 />
               </div>
             </Col>

@@ -2,3 +2,41 @@
   margin-left: 15%;
   margin-right: 15%;
 }
+
+.HomepageVector {
+  height: clamp(300px, 30vw, 550px);
+  /* 1) fade in over 4s, hold final state (forwards)
+     2) once that’s done, start the pulse after a 4s delay, repeat forever
+  */
+  animation:
+    fadeIn 3s ease-in-out forwards,
+    pulse 5s ease-in-out 3s infinite alternate;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  /* very subtle grow/shrink + slight opacity shift */
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
