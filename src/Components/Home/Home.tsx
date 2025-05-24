@@ -44,12 +44,7 @@ export const Home = () => {
             >
               <div>
                 <br />
-                <div
-                  style={{
-                    fontSize: "50px",
-                    fontWeight: "bold",
-                  }}
-                >
+                <div className="Typewriter">
                   <Typewriter
                     options={{
                       strings: [
