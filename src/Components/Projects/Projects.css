@@ -1,9 +1,35 @@
 div.scroll {
-    
-    width: 600px;
-    height: 300px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align: center;
-    padding: 20px;
+  width: 600px;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.project-main {
+  padding-left: 10vw;
+  padding-right: 10vw;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+}
+
+.project-header {
+  text-align: center;
+  font-weight: bold;
+}
+
+.project-carusel-image {
+  width: 100%;
+  height: 300px; /* Fixed height to unify image size */
+  object-fit: cover; /* Crop excess and fill space */
+  object-position: center; /* Center image focus */
+  border-radius: 8px; /* Optional: soften corners */
+}
+
+@media (max-width: 768px) {
+  .project-carusel-image {
+    width: 100%;
+    height: auto;
   }
+}
