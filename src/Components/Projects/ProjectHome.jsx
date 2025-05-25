@@ -16,14 +16,7 @@ const Projects = () => {
 
       <Container fluid="xxl">
         {projectData.map((project, index) => (
-          <div
-            style={{
-              backgroundColor: "#F5F5F5",
-              padding: "40px",
-              margin: "40px",
-              boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.2)",
-            }}
-          >
+          <div className="project-card-container">
             <Row key={index}>
               <Col style={{ padding: "40px" }}>
                 <div style={{ alignItems: "center" }}>
