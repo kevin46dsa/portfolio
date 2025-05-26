@@ -13,21 +13,36 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 import Stack from "react-bootstrap/Stack";
 
+/*
+ <Col sm="12" md="12" lg="5" className="columnContainer">
+              <div className="qrCode">
+                <Image src={QRcode} className="QRCode" alt="Responsive Image" />
+              </div>
+            </Col>
+            */
+
 export const Home = () => {
   return (
     <div>
       <div>
-        <br />
-        <br />
-        <Container fluid>
-          <Row>
-            <Col lg="1"></Col>
-            <Col
-              sm="12"
-              md="12"
-              lg="5"
-              className="d-flex  justify-content-center flex-column align-items-center"
-            >
+        <Container>
+          <Row className="rowContainer">
+            <Col sm="12" md="12" lg="5" className="columnContainer">
+              <div className="Typewriter">
+                <Typewriter
+                  options={{
+                    strings: [
+                      "Hi, I am Kevin D'sa !!",
+                      "FullStack Developer",
+                      "Software Engineer",
+                      "Web Developer",
+                      "Follow Me on LinkedIn",
+                    ],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+              </div>
               <div>
                 <img
                   src={DeveloperVector}
@@ -35,44 +50,7 @@ export const Home = () => {
                   className="HomepageVector "
                 />
               </div>
-            </Col>
-            <Col
-              sm="12"
-              md="12"
-              lg="5"
-              className="d-flex  justify-content-center flex-column align-items-center"
-            >
-              <div>
-                <br />
-                <div className="Typewriter">
-                  <Typewriter
-                    options={{
-                      strings: [
-                        "Hi, I am Kevin D'sa !!",
-                        "FullStack Developer",
-                        "Software Engineer",
-                        "Web Developer",
-                        "Follow Me on LinkedIn",
-                      ],
-                      autoStart: true,
-                      loop: true,
-                    }}
-                  />
-                </div>
-                <br />
-              </div>
-
-              <div className="qrCode">
-                <Image
-                  src={QRcode}
-                  className="img-fluid shadow p-3 mb-2 bg-white rounded"
-                  style={{ maxHeight: "350px" }}
-                  alt="Responsive Image"
-                />
-              </div>
-              <br />
-              <br />
-              <div>
+              <div className="buttonContainer">
                 <Stack direction="horizontal" gap={3}>
                   <Button variant="secondary" size="lg" href="/about">
                     About Me
@@ -98,11 +76,15 @@ export const Home = () => {
                     Projects
                   </Button>
                 </Stack>
-                <br />
-                <br />
               </div>
             </Col>
-            <Col lg="1"></Col>
+          </Row>
+          <Row>
+            <Col sm="12" md="12" lg="5" className="invisibleColumn">
+              <div className="qrCode">
+                <Image src={QRcode} className="QRCode" alt="Responsive Image" />
+              </div>
+            </Col>
           </Row>
         </Container>
       </div>
