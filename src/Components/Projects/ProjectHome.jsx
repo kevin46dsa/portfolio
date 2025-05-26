@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/esm/Col";
 import { Carousel, Button, Modal } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
-import { projectData } from "../../TempProjectData";
+import { projectData } from "../../Constants/TempProjectData";
 
 const Projects = () => {
   const [visibleCards, setVisibleCards] = useState([]);
