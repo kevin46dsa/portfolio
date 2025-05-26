@@ -28,6 +28,25 @@ const techStack = [
   { name: "PyTorch", icon: <SiPytorch size={40} /> },
 ];
 
+/**
+ *
+ * 1. type script
+ * 2. elasticsearch
+ * 3. docker
+ * 4.POSTGRESQL
+ * 5. AWS
+ * 6. GraphQL
+ * 7. DYNAMO DB
+ * 8. REDIS
+ * 9. VITE
+ * 10. EXPRESS JS
+ * 11. aws lambda
+ * 12. AWS S3
+ * 13. AWS EC2
+ * 14. AWS RDS
+ * 15. AWS CloudFront
+ */
+
 export function Techstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
