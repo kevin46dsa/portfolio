@@ -1,20 +1,67 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
 import { Techstack } from "./Techstack";
+import { Toolstack } from "./Toolstack";
 import Aboutcard from "./AboutCard";
 import laptopImg from "../../Assets/About_2.jpeg";
 import LinkedInProfile from "../../Assets/profilephoto.png";
-import { Toolstack } from "./Toolstack";
+import { useEffect, useRef, useState } from "react";
 
 function About() {
+  const firstTextRef = useRef(null);
+  const firstImgRef = useRef(null);
+  const secondTextRef = useRef(null);
+  const secondImgRef = useRef(null);
+
+  const [visible, setVisible] = useState({
+    firstText: false,
+    firstImg: false,
+    secondText: false,
+    secondImg: false,
+  });
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const target = entry.target.getAttribute("data-id");
+          if (entry.isIntersecting && target) {
+            setVisible((prev) => ({ ...prev, [target]: true }));
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    [firstTextRef, firstImgRef, secondTextRef, secondImgRef].forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
+
+    return () => {
+      [firstTextRef, firstImgRef, secondTextRef, secondImgRef].forEach(
+        (ref) => {
+          if (ref.current) observer.unobserve(ref.current);
+        }
+      );
+    };
+  }, []);
+
   return (
     <div className="about-main-container">
       <div className="about-first-section">
-        <div className="about-first-text">
+        <div
+          className={`about-first-text fade-up ${visible.firstText ? "animate" : ""}`}
+          ref={firstTextRef}
+          data-id="firstText"
+        >
           <Aboutcard />
         </div>
 
-        <img src={LinkedInProfile} alt="about" className="about-first-image" />
+        <img
+          src={LinkedInProfile}
+          alt="about"
+          className={`about-first-image fade-right ${visible.firstImg ? "animate" : ""}`}
+          ref={firstImgRef}
+          data-id="firstImg"
+        />
       </div>
       <div className="about-quote-section">
         <blockquote className="blockquote ">
@@ -25,16 +72,23 @@ function About() {
         </blockquote>
       </div>
       <div className="about-second-section">
-        <img src={laptopImg} alt="about" className="about-second-image" />
-        <div className="about-second-text">
+        <img
+          src={laptopImg}
+          alt="about"
+          className={`about-second-image fade-right ${visible.secondImg ? "animate" : ""}`}
+          ref={secondImgRef}
+          data-id="secondImg"
+        />
+        <div
+          className={`about-second-text fade-up ${visible.secondText ? "animate" : ""}`}
+          ref={secondTextRef}
+          data-id="secondText"
+        >
           <p>
-            Outside of my work, I indulge in a variety of hobbies and interests,
-            including photography, basketball, and exploring the great outdoors.
-            I find inspiration in the beauty of nature and the thrill of
-            adventure. When I'm not tinkering with code or shooting hoops, I'm
-            often found exploring the world of cars, delving into their inner
-            workings and design features. My diverse range of interests and
-            insatiable curiosity make me a unique and multifaceted individual.
+            Outside of work, I enjoy photography, basketball, and spending time
+            in nature. I'm also passionate about cars — from their design to the
+            engineering beneath the hood. These interests fuel my creativity,
+            curiosity, and love for exploration beyond the screen.
           </p>
         </div>
       </div>

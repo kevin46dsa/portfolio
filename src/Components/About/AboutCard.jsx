@@ -4,15 +4,18 @@ import Card from "react-bootstrap/Card";
 function AboutCard() {
   return (
     <>
-      <h3>Hello Guys My Name Is Kevin</h3>
+      <h3>Hello My Name Is Kevin</h3>
       <p>
-        I am a full stack developer currently pursuing a Master's Degree in
-        Computer Science at Stevens Institute of Technology,
+        I’m a <strong>FullStack Developer</strong> with over 4+ years of
+        experience building scalable, user-focused web applications. I also
+        recently earned my Master’s degree in Computer Science from Stevens
+        Institute of Technology.
       </p>
       <p>
-        I am constantly seeking new and exciting ways to channel my creativity
-        and technical skills. I am driven by a passion for innovation and the
-        desire to create meaningful experiences for users.
+        I’m passionate about turning ideas into intuitive, high-performing
+        software. Whether I’m architecting backend systems, or collaborating in
+        agile teams, I strive to create solutions that are both elegant and
+        impactful.
       </p>
     </>
   );
