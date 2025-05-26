@@ -9,160 +9,41 @@ import {
   DiPython,
   DiGit,
 } from "react-icons/di";
-import {
-  SiPytorch,
-  SiFirebase,
-  SiNextdotjs,
-} from "react-icons/si";
-import './MyCard.css';
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import { SiPytorch, SiFirebase, SiNextdotjs } from "react-icons/si";
+import "./MyCard.css";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-function Techstack() {
+// Define the tech stack as an array of objects
+const techStack = [
+  { name: "C++", icon: <CgCPlusPlus size={40} /> },
+  { name: "JavaScript", icon: <DiJavascript1 size={40} /> },
+  { name: "Node JS", icon: <DiNodejs size={40} /> },
+  { name: "React JS", icon: <DiReact size={40} /> },
+  { name: "MongoDB", icon: <DiMongodb size={40} /> },
+  { name: "NextJS", icon: <SiNextdotjs size={40} /> },
+  { name: "Git", icon: <DiGit size={40} /> },
+  { name: "Firebase", icon: <SiFirebase size={40} /> },
+  { name: "Python", icon: <DiPython size={40} /> },
+  { name: "PyTorch", icon: <SiPytorch size={40} /> },
+];
+
+export function Techstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      <Col xs={4} md={2} >
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              C++
-            </Tooltip>
-          }
-        >
-         <Card className="my-card"><CgCPlusPlus size={40}/></Card>
-        </OverlayTrigger>
-        
-      </Col>
-      <Col xs={4} md={2} >
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              JavaScript
-            </Tooltip>
-          }
-        >
-          <Card className="my-card"><DiJavascript1 size={40}/></Card>
-        </OverlayTrigger>
-       
-      </Col>
-      <Col xs={4} md={2} >
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              Node JS
-            </Tooltip>
-          }
-        >
-          <Card className="my-card"><DiNodejs size={40}/></Card>
-        </OverlayTrigger>
-        
-      </Col>
-      <Col xs={4} md={2} >
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              React JS
-            </Tooltip>
-          }
-        >
-         <Card className="my-card"><DiReact size={40}/></Card>
-        </OverlayTrigger>
-        
-      </Col>
-      <Col xs={4} md={2} >
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              MongoDB
-            </Tooltip>
-          }
-        >
-           <Card className="my-card"><DiMongodb size={40}/></Card>
-        </OverlayTrigger>
-       
-      </Col>
-      <Col xs={4} md={2} >
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              NextJS
-            </Tooltip>
-          }
-        >
-          <Card className="my-card"><SiNextdotjs size={40}/></Card>
-        </OverlayTrigger>
-        
-      </Col>
-      <Col xs={4} md={2} >
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              Git
-            </Tooltip>
-          }
-        >
-          <Card className="my-card"><DiGit size={40}/></Card>
-        </OverlayTrigger>
-        
-      </Col>
-      <Col xs={4} md={2}>
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              FireBase
-            </Tooltip>
-          }
-        >
-           <Card className="my-card"><SiFirebase size={40}/></Card>
-        </OverlayTrigger>
-       
-      </Col>
-      <Col xs={4} md={2}>
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              Python
-            </Tooltip>
-          }
-        >
-          <Card className="my-card"><DiPython size={40}/></Card>
-        </OverlayTrigger>
-        
-      </Col>
-      <Col xs={4} md={2} >
-      <OverlayTrigger
-          key='top'
-          placement='top'
-          overlay={
-            <Tooltip id={`tooltip-top`}>
-              PyTorch
-            </Tooltip>
-          }
-        >
-           <Card className="my-card"><SiPytorch size={40}/></Card>
-        </OverlayTrigger>
-       
-      </Col>
+      {techStack.map((tech, index) => (
+        <Col xs={4} md={2} key={index}>
+          <OverlayTrigger
+            placement="top"
+            overlay={<Tooltip id={`tooltip-${index}`}>{tech.name}</Tooltip>}
+          >
+            <Card className="my-card">
+              <div>{tech.icon}</div>
+              <div className="my-card-text">{tech.name}</div>
+            </Card>
+          </OverlayTrigger>
+        </Col>
+      ))}
     </Row>
   );
 }
-
-export default Techstack;

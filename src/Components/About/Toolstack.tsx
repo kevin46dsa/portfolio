@@ -13,7 +13,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 const tools = [
   { name: "Linux", icon: <SiLinux size={40} /> },
-  { name: "Visual Studio Code", icon: <SiVisualstudiocode size={40} /> },
+  { name: "VS Code", icon: <SiVisualstudiocode size={40} /> },
   { name: "Postman", icon: <SiPostman size={40} /> },
   { name: "Vercel", icon: <SiVercel size={40} /> },
   { name: "Heroku", icon: <SiHeroku size={40} /> },
