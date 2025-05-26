@@ -3,23 +3,11 @@ import Typewriter from "typewriter-effect";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Image from "react-bootstrap/Image";
 import "./Home.css";
-import kevimg from "../../Assets/profilephoto.png";
 import DeveloperVector from "../../Assets/DeveloperVector.svg";
-import QRcode from "../../Assets/kevindsa.png";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-
 import Stack from "react-bootstrap/Stack";
-
-/*
- <Col sm="12" md="12" lg="5" className="columnContainer">
-              <div className="qrCode">
-                <Image src={QRcode} className="QRCode" alt="Responsive Image" />
-              </div>
-            </Col>
-            */
 
 export const Home = () => {
   return (
@@ -76,13 +64,6 @@ export const Home = () => {
                     Projects
                   </Button>
                 </Stack>
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col sm="12" md="12" lg="5" className="invisibleColumn">
-              <div className="qrCode">
-                <Image src={QRcode} className="QRCode" alt="Responsive Image" />
               </div>
             </Col>
           </Row>

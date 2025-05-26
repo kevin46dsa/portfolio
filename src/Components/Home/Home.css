@@ -6,7 +6,6 @@
 .buttonContainer {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
   padding-top: 2rem;
   animation: 2s slideUp;
 }
@@ -27,13 +26,6 @@
   margin: 20px;
   padding-bottom: 20px;
   gap: 20px;
-}
-
-.invisibleColumn {
-  display: none;
-  justify-content: center;
-  padding-top: 20px;
-  padding-bottom: 40px;
 }
 
 .QRCode {
@@ -104,16 +96,15 @@
 }
 
 .Typewriter {
-  font-size: 50px;
+  font-size: 35px;
   font-weight: bold;
   justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 @media (max-width: 750px) {
   .Typewriter {
-    font-size: 33px;
-  }
-  .invisibleColumn {
-    display: flex;
+    font-size: 25px;
   }
 }
