@@ -1,7 +1,4 @@
-import React from "react";
-import Card from "react-bootstrap/Card";
-
-function AboutCard() {
+export const AboutCard = () => {
   return (
     <>
       <h3>Hello My Name Is Kevin</h3>
@@ -19,6 +16,4 @@ function AboutCard() {
       </p>
     </>
   );
-}
-
-export default AboutCard;
+};

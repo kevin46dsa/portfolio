@@ -1,6 +1,6 @@
 import { Techstack } from "./Techstack";
 import { Toolstack } from "./Toolstack";
-import Aboutcard from "./AboutCard";
+import { AboutCard } from "./AboutCard";
 import laptopImg from "../../Assets/About_2.jpeg";
 import LinkedInProfile from "../../Assets/profilephoto.png";
 import { useEffect, useRef, useState } from "react";
@@ -52,7 +52,7 @@ function About() {
           ref={firstTextRef}
           data-id="firstText"
         >
-          <Aboutcard />
+          <AboutCard />
         </div>
 
         <img
