@@ -5,9 +5,47 @@ import Col from "react-bootstrap/esm/Col";
 import SocialLink from "../SocialLinks/SocialLinks";
 import Slider from "./MusicSetComponents/Slider";
 import { PageNotFound } from "../Pagenotfound";
-
+import HorizontalScroller from "../HorizontalScroller/HorizaontalScroller";
 export default function MusicSets() {
-  const underConstruction = true;
+  const underConstruction = false;
+  const videos = [
+    {
+      videoId: "p2PfSt1OjQQ",
+      title: "EquiNos Ep 1 - Ben Bohmer, Cubicolor......",
+    },
+    {
+      videoId: "dm_knHz_Fxg",
+      title: "EquiNos Ep 2 - Nox Vahn, Gallago, Lane 8, Jimpster......",
+    },
+    {
+      videoId: "7myYo-G8gnU",
+      title: "EquiNos Ep 3 - Ben Bohmer, Nox Vahn, Tone Depth......",
+    },
+    {
+      videoId: "6hkZCRllXoQ",
+      title: "EquiNos Ep 4 - Ben Bohmer, Tinlicker, lane 8.....",
+    },
+    {
+      videoId: "2BSXk4N2Mc4",
+      title:
+        "EquiNos EP 5 - Jody Wisternoff, Luca Musto, Franky Wah.... || Deep House Set",
+    },
+    {
+      videoId: "6Y8Tl2Az_wQ",
+      title:
+        "EquiNos EP 6 - CamelPhat, Sultan + Shepherd, Pig & Dan || Deep House Set",
+    },
+    {
+      videoId: "l7vbh0SPYUk",
+      title:
+        "EquiNos x Woulö EP 7 - Above and Beyond, Luttrel, Yotto.... || Guest Mix by Woulö|| Deep House Set",
+    },
+    {
+      videoId: "rKLQEDJoFbI",
+      title:
+        "EquiNos EP 8 - Eelke Kleijn, Marsh, Fingerprint & Spencer Brown.... || Deep House ||",
+    },
+  ];
 
   if (underConstruction) return <PageNotFound />;
 
@@ -51,8 +89,25 @@ export default function MusicSets() {
           <Slider />
         </Row>
         <br />
+        {/*}
         <Row>
-          <Col></Col>
+          <Col>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/bMa2UrmFG_M?si=4TuuuLL8EIdppsBH"
+              title="YouTube video player"
+              // frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </Col>
+        </Row>
+        */}
+        <br />
+        <Row>
+          <HorizontalScroller videos={videos} sectionTitle="EquiNos Episodes" />
         </Row>
       </Container>
     </div>
