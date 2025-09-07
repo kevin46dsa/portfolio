@@ -1,0 +1,132 @@
+/* Scoped variables on the component root */
+.svs {
+  /* 65/35 split by default; override via inline style: --svs-cols: "70% 30%" */
+  --svs-cols: 2fr 1fr;
+  --svs-gap: 18px;
+
+  --svs-bg: #0b0b0f;
+  --svs-card: #15151b;
+  --svs-text: #e8e8f0;
+  --svs-muted: #9aa0a6;
+  --svs-accent: #6366f1;
+
+  --svs-radius: 16px;
+  --svs-pad: 14px;
+
+  display: grid;
+  grid-template-columns: var(--svs-cols);
+  gap: var(--svs-gap);
+  align-items: stretch;
+
+  color: var(--svs-text);
+  width: 100%;
+}
+
+/* Flip order based on side */
+.svs.is-left .svs-videoPane {
+  order: 1;
+}
+.svs.is-left .svs-textPane {
+  order: 2;
+}
+
+.svs.is-right .svs-videoPane {
+  order: 2;
+}
+.svs.is-right .svs-textPane {
+  order: 1;
+}
+
+/* Panes */
+.svs-pane {
+  position: relative;
+  border-radius: var(--svs-radius);
+  overflow: hidden;
+}
+
+/* VIDEO PANE */
+.svs-videoPane {
+  /* Let the video slightly “float” above the neighbor and cast a directional shadow */
+  background: #0f0f14;
+  z-index: 1; /* sits over the seam so the shadow falls onto text pane */
+}
+
+/* Shadow direction depends on which side the video sits */
+.svs.is-left .svs-videoPane {
+  box-shadow: 26px 0 40px -18px rgba(0, 0, 0, 0.45);
+}
+.svs.is-right .svs-videoPane {
+  box-shadow: -26px 0 40px -18px rgba(0, 0, 0, 0.45);
+}
+
+/* keep 16:9 by default */
+.svs-videoRatio {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.svs-videoRatio iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* TEXT PANE */
+.svs-textPane {
+  background: var(--svs-card);
+  padding: calc(var(--svs-pad) + 2px) calc(var(--svs-pad) + 4px);
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  border-radius: var(--svs-radius);
+}
+
+.svs-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--svs-text);
+}
+
+.svs-desc {
+  color: var(--svs-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.svs-cta {
+  margin-top: 6px;
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--svs-accent);
+  text-decoration: none;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  transition:
+    transform 0.12s ease,
+    background 0.12s ease,
+    border-color 0.12s ease;
+}
+.svs-cta:hover {
+  transform: translateY(-1px);
+  background: rgba(99, 102, 241, 0.18);
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+  .svs {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  /* When stacked, a soft drop shadow below the video looks nicer */
+  .svs.is-left .svs-videoPane,
+  .svs.is-right .svs-videoPane {
+    box-shadow: 0 16px 38px -16px rgba(0, 0, 0, 0.45);
+  }
+}

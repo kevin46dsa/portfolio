@@ -3,9 +3,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/esm/Col";
 import SocialLink from "../SocialLinks/SocialLinks";
-import Slider from "./MusicSetComponents/Slider";
+// import Slider from "./MusicSetComponents/Slider";
 import { PageNotFound } from "../Pagenotfound";
 import HorizontalScroller from "../HorizontalScroller/HorizaontalScroller";
+import SplitVideoSection from "../SplitVideoSection/SplitVideoSection";
 export default function MusicSets() {
   const underConstruction = false;
   const videos = [
@@ -86,28 +87,28 @@ export default function MusicSets() {
         </Row>
         <br />
         <Row>
-          <Slider />
+          <SplitVideoSection
+            videoId="bMa2UrmFG_M"
+            title="Pre Game Set || Noisynos || Diplo, Mochak...."
+            description="Welcome to NoisyNos! 🎶 Dive into an epic musical journey with our latest playlist, filled with House tracks that will get you in the perfect mood. Whether you're chilling, working, or partying, this playlist has something for everyone!"
+          />
         </Row>
-        <br />
-        {/*}
-        <Row>
-          <Col>
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/bMa2UrmFG_M?si=4TuuuLL8EIdppsBH"
-              title="YouTube video player"
-              // frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-          </Col>
-        </Row>
-        */}
         <br />
         <Row>
           <HorizontalScroller videos={videos} sectionTitle="EquiNos Episodes" />
+        </Row>
+        <br />
+        <Row>
+          <SplitVideoSection
+            videoId="F2dL_MXy35o"
+            title="sunday morning improvised || oliver heldens, fisher, durante ..."
+            description="#relaxingbeats #chillvibes #cookingmusic
+#spotifyplaylist2024  #musicmixing  #relaxingbeats  #chillvibes  #cookingmusic #subscribe #showerplaylist
+
+Get into the groove with this energizing mix of tech-house and house beats! This playlist delivers the perfect balance of uplifting rhythms and smooth transitions, ideal for setting the vibe while you work, workout, or get ready to head out. Whether you’re looking to boost your energy or enjoy a steady flow of feel-good music, this mix has you covered.
+"
+            //videoSide="right"
+          />
         </Row>
       </Container>
     </div>
