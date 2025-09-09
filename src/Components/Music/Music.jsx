@@ -11,16 +11,12 @@ export default function Music() {
   return (
     <div>
       <Tabs
-        style={{
-          paddingTop: "50px",
-          paddingLeft: "20vh",
-          paddingRight: "20vh",
-        }}
         id="controlled-tab-example"
+        color="secondary"
         activeKey={key}
-        onSelect={(k) => setKey(k)}
-        className="mb-3"
+        onSelect={(k) => setKey(k || "NoisyNos")}
         justify
+        variant="pills"
       >
         <Tab eventKey="NoisyNos" title="NoisyNos">
           <MusicSets />
