@@ -1,7 +1,7 @@
 export const AboutCard = () => {
   return (
     <>
-      <h3>Hello My Name Is Kevin</h3>
+      <h2>Hello My Name Is Kevin</h2>
       <p>
         I’m a <strong>FullStack Developer</strong> with over 4+ years of
         experience building scalable, user-focused web applications. I also

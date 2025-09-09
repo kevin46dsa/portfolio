@@ -1,5 +1,10 @@
-import { Techstack } from "./Techstack";
-import { Toolstack } from "./Toolstack";
+import {
+  AWSServices,
+  ProgrammingLanguages,
+  Frontend,
+  Backend,
+  DatabaseAndCloud,
+} from "./Skills";
 import { AboutCard } from "./AboutCard";
 import laptopImg from "../../Assets/About_2.jpeg";
 import LinkedInProfile from "../../Assets/profilephoto.png";
@@ -92,18 +97,15 @@ function About() {
           </p>
         </div>
       </div>
-
       <div className="about-techstack-section">
-        <h1 className="project-heading">
-          Professional <strong className="purple">Skillset </strong>
-        </h1>
-        <Techstack />
-      </div>
-      <div className="about-techstack-section">
-        <h1 className="project-heading">
-          <strong>Tools</strong> I use
-        </h1>
-        <Toolstack />
+        <h2 className="project-heading">
+          <strong>Skills</strong>
+        </h2>
+        <AWSServices />
+        <DatabaseAndCloud />
+        <Backend />
+        <Frontend />
+        <ProgrammingLanguages />
       </div>
       <div className="about-buymeacoffee-section">
         <a
