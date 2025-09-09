@@ -1,81 +1,35 @@
-import React from 'react';
-import './Bookshelf.css';
-import Artofwar from "../../Assets/artofwar.webp"
-//import Card from 'react-bootstrap/Card';
-import BookCardDesign from './BookCardDesign';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-//import Col  from "react-bootstrap/Col";
-const Bookshelf = () => {
-  
-  let currentlyReading = [
-    {
-        name:"Art of War",
-        img:Artofwar
-    },
-    {
-        name:"Book 2",
-        img:Artofwar
-    },
-    {
-        name:"Art of War",
-        img:Artofwar
-    },
-    {
-        name:"Book 3",
-        img:Artofwar
-    }
-    
-  ]
+import React from "react";
+import GoodreadsBookshelf from "react-goodreads-shelf";
+import Container from "react-bootstrap/Container";
+import "./Bookshelf.css";
 
-  let finishedReading = [
-    {
-        name:"Art of War",
-        img:Artofwar
-    },
-    {
-        name:"Book 2",
-        img:Artofwar
-    },
-    {
-        name:"Art of War",
-        img:Artofwar
-    },
-    {
-        name:"Book 2",
-        img:Artofwar
-    },
-    
-  ]
-  
+export default function Bookshelf() {
+  return (
+    <div className="bookshelf-page">
+      <Container>
+        <h1 className="bookshelf-title">Welcome to my Bookshelf</h1>
 
+        <section className="shelf">
+          <h2 className="shelf-title">Finished</h2>
+          <div className="shelf-grid">
+            <GoodreadsBookshelf shelf="read" userId="164565714" />
+          </div>
+        </section>
 
+        <section className="shelf">
+          <h2 className="shelf-title">To Read</h2>
+          <div className="shelf-grid">
+            <GoodreadsBookshelf shelf="to-read" userId="164565714" />
+          </div>
+        </section>
 
-
-
-  if(finishedReading && currentlyReading){
-    return(
-        <div className='bookshelf-page'>
-            <h1> Books I Am Currently Reading</h1>
-            <Container>
-                <Row xs={1} sm={1} md={2} lg={3} xl={3} xxl={4}>
-                <BookCardDesign data={currentlyReading}/>
-                </Row>
-            </Container>
-            <br/>
-            <h1> Books I Have Finished Reading </h1>
-            <Container>
-                <Row xs={1} sm={1} md={2} lg={3} xl={3} xxl={4}>
-                <BookCardDesign data={finishedReading}/>
-                </Row>
-            </Container>
-        
-        
-        </div>
-    )
-  }
-  
-  
-};
-
-export default Bookshelf;
+        <section className="shelf">
+          <h2 className="shelf-title">Currently Reading</h2>
+          <div className="shelf-grid">
+            <GoodreadsBookshelf shelf="currently-reading" userId="164565714" />
+          </div>
+        </section>
+      </Container>
+    </div>
+  );
+}

@@ -11,7 +11,7 @@ import {
   Resume,
 } from "./Components";
 import Contact from "./Components/Contact/Contact.jsx";
-import Bookshelf2 from "./Components/Bookshelf/Bookshelf2.jsx";
+import Bookshelf from "./Components/Bookshelf/Bookshelf.jsx";
 import Music from "./Components/Music/Music.jsx";
 import About from "./Components/About/About.jsx";
 import Projects from "./Components/Projects/ProjectHome.jsx";
@@ -29,7 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/bookshelf" element={<Bookshelf2 />} />
+            <Route path="/bookshelf" element={<Bookshelf />} />
             <Route path="/music" element={<Music />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/projects" element={<Projects />} />
