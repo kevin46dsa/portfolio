@@ -9,6 +9,7 @@ import { AboutCard } from "./AboutCard";
 import laptopImg from "../../Assets/About_2.jpeg";
 import LinkedInProfile from "../../Assets/profilephoto.png";
 import { useEffect, useRef, useState } from "react";
+import { Experience } from "./Experience";
 
 function About() {
   const firstTextRef = useRef(null);
@@ -97,6 +98,9 @@ function About() {
           </p>
         </div>
       </div>
+      <div className="about-experience-section">
+        <Experience />
+      </div>
       <div className="about-techstack-section">
         <h2 className="project-heading">
           <strong>Skills</strong>
@@ -107,6 +111,7 @@ function About() {
         <Frontend />
         <ProgrammingLanguages />
       </div>
+
       <div className="about-buymeacoffee-section">
         <a
           href="https://www.buymeacoffee.com/kevin46dsa"
