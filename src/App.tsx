@@ -15,7 +15,7 @@ import Bookshelf from "./Components/Bookshelf/Bookshelf.jsx";
 import Music from "./Components/Music/Music.jsx";
 import About from "./Components/About/About.jsx";
 import Projects from "./Components/Projects/ProjectHome.jsx";
-import Blog from "./Components/Blog/Blog.jsx";
+import { Blog } from "./Components/Blog/Blog.tsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
