@@ -7,7 +7,7 @@ export default function Bookshelf() {
   return (
     <div className="bookshelf-page">
       <Container>
-        <h1 className="bookshelf-title">Welcome to my Bookshelf</h1>
+        <h1 className="bookshelf-title">My Bookshelf</h1>
 
         <section className="shelf">
           <h2 className="shelf-title">Finished</h2>
