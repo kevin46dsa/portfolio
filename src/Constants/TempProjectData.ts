@@ -1,5 +1,17 @@
 export const projectData = [
   {
+    projectName: "#OffTheFrame",
+    projectDescription:
+      "OffTheFrame is a curated art-print marketplace where you can discover original pieces and limited-edition prints, explore collections, and purchase or download artwork designed to fit modern spaces. It’s built to feel fast, clean, and trustworthy—making it easy to browse, preview, and collect art you actually want to live with.",
+    slides: [
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/homepage.png",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/productpage.png",
+    ],
+    color: "#FDF5E6",
+    githubLink: "https://github.com/kevin46dsa/OffTheFrame",
+    websitePage: "https://offtheframe.nosenterprise.org/",
+  },
+  {
     projectName: "SoulMate",
     projectDescription:
       "This a Project primaryly focus on solar project management system that we prepared for CS-555-Agile Development Project using React, Firebase  Team: Easy Scurm Team Members: Rongda Kang,Kevin Dsa, Yuzhi Wang(Scrum Master),Luoyi Fu, Mingze Sun.",

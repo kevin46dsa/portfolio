@@ -9,7 +9,7 @@ export const Resume = () => {
     <div>
       <iframe
         title="Resume"
-        src="https://drive.google.com/file/d/1pHcZX_MQUauznZhuNOVUn-hPzI0YkWMI/preview"
+        src="https://drive.google.com/file/d/1Lc2i86ZlS9n5hFavDF3qmXHNJg8BCrZs/preview"
         style={{
           width: "100%",
           height: "100vh",
