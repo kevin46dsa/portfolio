@@ -62,9 +62,12 @@ Plan reference: Vite migration + scrollytelling landing redesign.
 - [x] Verified via screenshots at 1280px and 390px (mobile): Hero, Projects (parallax cards + accent CTAs), Experience, About all render correctly; confirmed zero horizontal overflow at 375px
 - **Pre-existing content issue found, not caused by this work**: the SoulMate project's screenshot images (hosted on a Firebase Storage bucket) return HTTP 402 (Payment Required) — a Firebase billing/quota issue on the original project, unrelated to the migration. Same broken image would show on the current live CRA site today. Flagged for Kevin to fix by re-hosting those 2 images (e.g. same S3 bucket the other projects already use) — not something addressable in code.
 
-## Phase 4 — Deploy
-- [ ] `deploy.yml` copied into `portfolio/.github/workflows/`, trigger branch fixed to `master`
-- [ ] **Manual step flagged to Kevin**: add AWS secrets in GitHub repo settings (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_REGION, S3_BUCKET_NAME, CLOUDFRONT_DISTRIBUTION_ID)
+## Phase 4 — Deploy — DONE (mostly already existed)
+- **Correction to plan**: the plan assumed `.github/workflows/deploy.yml` needed to be copied over from `portfoliov2/` and its trigger branch fixed from `main` to `master`. In fact, a real, working deploy workflow already existed on `master` (3 real commits: "added GitHub Actions workflow...", "refactored...", "fix: correct path for S3 deployment...") — it was already correctly triggering on `master` and already using `npm ci --legacy-peer-deps`. So AWS S3+CloudFront deploy was already live/wired up before this session, not something to newly set up.
+- [x] **The one real break from the Vite migration**: the workflow ran `aws s3 sync build/ ...` (CRA's output dir). Vite outputs to `dist/` (set in `vite.config.ts`). Fixed the sync path to `dist/`.
+- [x] Verified `npm ci --legacy-peer-deps` (the exact command CI runs) succeeds against the new lockfile, and `npm run build` produces the `dist/` directory the workflow now expects (including `_redirects`, `manifest.json`, etc. correctly copied through from `public/`).
+- [x] AWS secrets (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `S3_BUCKET_NAME`, `CLOUDFRONT_DISTRIBUTION_ID`) were presumably already configured in GitHub repo settings for the existing workflow to have worked before — no action needed unless Kevin sees deploy failures.
+- **Flagged for Kevin (infra-level, can't verify without AWS console access)**: this is a client-side-routed SPA (react-router). The existing Netlify setup handled deep-link/refresh routing via `public/_redirects`. Confirm the S3+CloudFront setup has an equivalent fallback (typically: CloudFront custom error response mapping 403/404 → `/index.html` with a 200 status) — otherwise directly visiting or refreshing on `/about`, `/projects`, etc. would fail at the S3/CloudFront layer before React Router ever sees the request.
 
 ## Final verification
 - [ ] Responsive check (375/390/768/1024/1440px)
