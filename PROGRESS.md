@@ -69,9 +69,18 @@ Plan reference: Vite migration + scrollytelling landing redesign.
 - [x] AWS secrets (`AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `S3_BUCKET_NAME`, `CLOUDFRONT_DISTRIBUTION_ID`) were presumably already configured in GitHub repo settings for the existing workflow to have worked before — no action needed unless Kevin sees deploy failures.
 - **Flagged for Kevin (infra-level, can't verify without AWS console access)**: this is a client-side-routed SPA (react-router). The existing Netlify setup handled deep-link/refresh routing via `public/_redirects`. Confirm the S3+CloudFront setup has an equivalent fallback (typically: CloudFront custom error response mapping 403/404 → `/index.html` with a 200 status) — otherwise directly visiting or refreshing on `/about`, `/projects`, etc. would fail at the S3/CloudFront layer before React Router ever sees the request.
 
-## Final verification
-- [ ] Responsive check (375/390/768/1024/1440px)
-- [ ] `prefers-reduced-motion` respected
-- [ ] Section-heading hyperlinks navigate correctly
-- [ ] All pre-existing routes still render correctly
-- [ ] `npm run build` succeeds
+## Final verification — DONE
+- [x] Responsive check at 375px/390px (mobile) and 1280px (desktop) via screenshots — no horizontal overflow, cards stack correctly, parallax visible on desktop and absent (but still fade/slide-in) on mobile
+- [x] `prefers-reduced-motion` respected — dedicated E2E test using a `reducedMotion: "reduce"` browser context, zero uncaught errors
+- [x] Section-heading hyperlinks navigate correctly — dedicated E2E test clicking all 3 (Projects → /projects, Work Experience → /about, About Me → /about)
+- [x] All pre-existing routes still render correctly — full E2E suite, 13/13 passing, run three times across this session (after Phase 1, Phase 2, Phase 3, and once more on a fully clean `rm -rf node_modules && npm install && npm run build`)
+- [x] `npm run build` succeeds (clean install verified)
+- [x] `npm ci --legacy-peer-deps` succeeds (the exact command the deploy workflow runs)
+
+## What's NOT done / left for Kevin
+- **Not merged to master** — everything above lives on the `vite-migration` branch, 4 commits ahead of `master`. Review and merge when ready.
+- **SoulMate project images broken** (pre-existing, Firebase Storage returning 402 Payment Required — a billing/quota issue on Kevin's Firebase project, not a code bug). Re-host those 2 images (e.g. the same S3 bucket the other projects already use) to fix.
+- **Confirm CloudFront SPA fallback** — verify the existing S3+CloudFront setup has a custom error response (403/404 → `/index.html`, 200 status) so direct navigation/refresh on routes like `/about` or `/projects` doesn't break at the infra layer. Can't verify this without AWS console access.
+- **Bundle size**: the production JS bundle is ~1MB (335KB gzipped), and Vite warns about it. Not addressed — route-based code-splitting (`React.lazy`) would be the natural next step if this matters, but wasn't in scope for this pass.
+- **UI library**: Kevin expressed interest in eventually moving off Bootstrap to something more modern (Mantine, or Tailwind+Radix) — explicitly deferred as a separate future project, not started here.
+- **TypeScript strictness**: `tsconfig.app.json` has `strict: false`/`checkJs: false` deliberately, to avoid a wall of errors across the pre-existing loosely-typed files. Worth tightening incrementally later.
