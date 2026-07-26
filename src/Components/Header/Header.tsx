@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -8,8 +8,31 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import "./Header.css";
 
+const CLOSE_DELAY_MS = 500;
+
 export const Header = () => {
   const navigate = useNavigate();
+  const [showHobbies, setShowHobbies] = useState(false);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearCloseTimeout = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const handleMouseEnter = () => {
+    clearCloseTimeout();
+    setShowHobbies(true);
+  };
+
+  const handleMouseLeave = () => {
+    clearCloseTimeout();
+    closeTimeoutRef.current = setTimeout(() => setShowHobbies(false), CLOSE_DELAY_MS);
+  };
+
+  useEffect(() => clearCloseTimeout, []);
 
   return (
     <div>
@@ -51,7 +74,14 @@ export const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <NavDropdown title="Hobbies" id="collasible-nav-dropdown">
+              <NavDropdown
+                title="Hobbies"
+                id="collasible-nav-dropdown"
+                show={showHobbies}
+                onToggle={(nextShow) => setShowHobbies(nextShow)}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+              >
                 <NavDropdown.Item onClick={() => navigate("/music")}>
                   Music
                 </NavDropdown.Item>

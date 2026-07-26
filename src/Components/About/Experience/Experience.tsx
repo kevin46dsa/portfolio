@@ -1,5 +1,6 @@
 // @ts-ignore
 import { Chrono } from "react-chrono";
+import "react-chrono/dist/style.css";
 
 export const experienceData = [
   {
