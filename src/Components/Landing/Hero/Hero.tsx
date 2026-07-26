@@ -4,6 +4,8 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Stack from "react-bootstrap/Stack";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import { GiCheckeredFlag, GiSteeringWheel } from "react-icons/gi";
+import { FaBasketball } from "react-icons/fa6";
 import "./Hero.css";
 
 const EASE_OUT_SOFT = [0.16, 1, 0.3, 1] as const;
@@ -25,20 +27,47 @@ export const Hero = () => {
 
   return (
     <div className="hero-section">
-      <div className="hero-blobs" aria-hidden="true">
-        <span className="hero-blob hero-blob-1" />
-        <span className="hero-blob hero-blob-2" />
-        <span className="hero-blob hero-blob-3" />
-        <span className="hero-blob hero-blob-4" />
+      <div className="hero-glyphs" aria-hidden="true">
+        <GiCheckeredFlag className="hero-glyph hero-glyph-1" />
+        <FaBasketball className="hero-glyph hero-glyph-2" />
+        <GiSteeringWheel className="hero-glyph hero-glyph-3" />
       </div>
 
+      <motion.svg
+        className="hero-line"
+        viewBox="0 0 400 400"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <defs>
+          <linearGradient id="hero-line-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="var(--hero-accent)" />
+            <stop offset="100%" stopColor="var(--hero-accent-2)" />
+          </linearGradient>
+        </defs>
+        <motion.path
+          d="M20,380 C120,320 180,120 380,20"
+          stroke="url(#hero-line-gradient)"
+          strokeWidth={3}
+          strokeLinecap="round"
+          fill="none"
+          initial={reduceMotion ? false : { pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 0.6 }}
+          transition={reduceMotion ? { duration: 0 } : { duration: 1.6, ease: EASE_OUT_SOFT, delay: 0.3 }}
+        />
+      </motion.svg>
+
       <motion.div className="hero-content" initial="hidden" animate="visible" variants={container}>
-        <motion.div className="Typewriter" variants={item}>
+        <motion.h1 className="hero-heading" variants={item}>
+          Hi, I&apos;m <span className="hero-heading-accent">Kevin</span>
+          <br />
+          Full-Stack Developer
+        </motion.h1>
+
+        <motion.div className="Typewriter hero-subtitle" variants={item}>
           <Typewriter
             options={{
               strings: [
-                "Hi, I am Kevin D'sa !!",
-                "FullStack Developer",
                 "Software Engineer",
                 "Web Developer",
                 "Follow Me on LinkedIn",
