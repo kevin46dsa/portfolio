@@ -25,6 +25,13 @@
   flex-shrink: 0;
 }
 
+/* A "small" tile sitting beside a "large" one in the same bento row has far less
+   text (clamped description), so its image gets a taller ratio -- this closes
+   most of the natural height gap between the two instead of leaving empty space. */
+.project-card-small .project-card-image-frame {
+  aspect-ratio: 4 / 3;
+}
+
 .project-card-image {
   position: absolute;
   inset: 0;
@@ -118,6 +125,13 @@
 
 .project-card-large .project-card-description {
   font-size: var(--fs-body);
+  /* Untruncated, but capped -- a couple of the real project descriptions run
+     long, and an unbounded large tile would blow past its paired small tile's
+     height by more than the taller image (above) can make up for. */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .project-card-links {
