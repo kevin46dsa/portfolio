@@ -31,26 +31,41 @@
 }
 
 @media (min-width: 1024px) {
-  /* Bento grid: a 6-column track, with each large (featured) tile paired with
-     one small tile side by side in the same row -- large spans 4 of 6 columns
-     (visibly ~2x the width, and proportionally taller via the shared 16:10
-     image ratio), small spans the remaining 2. Render order alternates
-     large/small so this lines up with zero leftover grid cells. */
+  /* Bento grid, using named areas rather than implicit auto-placement: each of
+     the 3 featured projects gets its own row as a prominent 4-of-6-column hero
+     tile (alternating which side the negative space falls on for rhythm --
+     an intentional editorial touch, not a bug), and the remaining 3 share a
+     plain uniform row underneath. Auto-placement alone can't guarantee the
+     hero rows' leftover space stays empty -- it happily back-fills it with
+     whichever later item fits, which is exactly the bug this ran into. Named
+     areas give each cell an explicit, guaranteed assignment instead. */
   .project-grid {
+    display: grid;
     grid-template-columns: repeat(6, 1fr);
+    grid-template-areas:
+      "f1 f1 f1 f1 .  .  "
+      ".  .  f2 f2 f2 f2 "
+      "f3 f3 f3 f3 .  .  "
+      "s1 s1 s2 s2 s3 s3 ";
     gap: var(--space-5);
-    /* Large/small pairs in the same row naturally have different content
-       heights (untruncated vs. clamped description) -- align to the top
-       instead of stretching the shorter card to match, which would leave an
-       oversized, mostly-empty white card. */
-    align-items: start;
   }
 
-  .project-grid-item {
-    grid-column: span 2;
+  .project-grid-item:nth-child(1) {
+    grid-area: f1;
   }
-
-  .project-grid-item:nth-child(odd) {
-    grid-column: span 4;
+  .project-grid-item:nth-child(2) {
+    grid-area: f2;
+  }
+  .project-grid-item:nth-child(3) {
+    grid-area: f3;
+  }
+  .project-grid-item:nth-child(4) {
+    grid-area: s1;
+  }
+  .project-grid-item:nth-child(5) {
+    grid-area: s2;
+  }
+  .project-grid-item:nth-child(6) {
+    grid-area: s3;
   }
 }
