@@ -8,7 +8,6 @@ import spotify from "../../Assets/spotify.png";
 import linkedin from "../../Assets/linkedin.png";
 import github from "../../Assets/github.png";
 import defaultlink from "../../Assets/defaultlink.png";
-import "./SocialLinks.css";
 
 type SocialLinkProps = {
   variant:
