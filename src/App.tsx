@@ -10,7 +10,6 @@ import {
   Photography,
   Resume,
 } from "./Components";
-import Contact from "./Components/Contact/Contact.jsx";
 import Bookshelf from "./Components/Bookshelf/Bookshelf.jsx";
 import Music from "./Components/Music/Music.jsx";
 import About from "./Components/About/About.jsx";
@@ -36,7 +35,7 @@ function App() {
             <Route path="/projects/:id" element={<Projects />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/photography" element={<Photography />} />
-            <Route path="/contact-me" element={<Contact />} />
+            <Route path="/contact-me" element={<PageNotFound />} />
             <Route path="/sitemap" element={<Sitemap />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>

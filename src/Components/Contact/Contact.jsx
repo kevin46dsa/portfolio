@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 
-import {
-  serverTimestamp,
-  collection,
-  addDoc,
-  doc,
-  onSnapshot,
-} from "firebase/firestore";
-import { db } from "../../services/firebase";
 import { Alert } from "react-bootstrap";
-import { send } from "emailjs-com";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -27,23 +18,6 @@ const Contact = () => {
   });
   const { name, email, phone, message } = formData;
 
-  let turnEmailON = false;
-  let emailCred = undefined;
-
-  async function checkmailLimit() {
-    const emailRef = doc(db, "emailCred", "9ht5yqwnj0wQi3wYmecQ");
-
-    onSnapshot(emailRef, (docSnap) => {
-      if (docSnap.exists()) {
-        let data = docSnap.data();
-        emailCred = { ...data };
-
-        // add logic to compare date with existing in database
-        return false;
-      }
-    });
-  }
-
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -51,29 +25,10 @@ const Contact = () => {
     }));
   };
 
-  async function onSubmit(e) {
+  function onSubmit(e) {
     e.preventDefault();
-    let withinEmailLimit = await checkmailLimit();
-    const contactRef = collection(db, "contacts");
-    //const emailRef = doc(db,"emailCred","9ht5yqwnj0wQi3wYmecQ");
 
-    const formDataCopy = { ...formData };
-    formDataCopy.timestamp = serverTimestamp();
-    const toMe = {
-      from_name: formDataCopy.name,
-      message: formDataCopy.message,
-      from_email: formDataCopy.email,
-    };
-    const toFiller = {
-      from_name: formDataCopy.name,
-      message: formDataCopy.message,
-      from_email: formDataCopy.email,
-    };
-
-    // add logic to update log in emailCred
-
-    await addDoc(contactRef, formDataCopy);
-
+    // TODO: wire up a submission backend (contact form is currently unreachable at /contact-me)
     setShowAlert(true);
     setFormData({
       name: "",
@@ -83,38 +38,7 @@ const Contact = () => {
     });
     setTimeout(() => {
       setShowAlert(false);
-      if (turnEmailON && withinEmailLimit) {
-        //Send mail to sender
-        send(
-          emailCred.service_ID,
-          emailCred.template1_ID,
-          toFiller,
-          emailCred.Private_Key
-        )
-          .then((response) => {
-            console.log("SUCCESS!", response.status, response.text);
-          })
-          .catch((err) => {
-            console.log("FAILED...", err);
-          });
-      }
     }, 5000);
-
-    if (turnEmailON && withinEmailLimit) {
-      //Send mail notification to me
-      send(
-        emailCred.service_ID,
-        emailCred.template2_ID,
-        toMe,
-        emailCred.Private_Key
-      )
-        .then((response) => {
-          console.log("SUCCESS!", response.status, response.text);
-        })
-        .catch((err) => {
-          console.log("FAILED...", err);
-        });
-    }
   }
 
   return (

@@ -24,12 +24,14 @@ const Projects = () => {
       { threshold: 0.3 } // trigger when 30% of card is visible
     );
 
-    cardRefs.current.forEach((ref) => {
+    const currentRefs = cardRefs.current;
+
+    currentRefs.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
-      cardRefs.current.forEach((ref) => {
+      currentRefs.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };

@@ -1,16 +1,6 @@
 import React from "react";
-import {
-  Container,
-  Row,
-  Col,
-  Nav,
-  Form,
-  InputGroup,
-  Button,
-  Image,
-} from "react-bootstrap";
+import { Container, Row, Col, Nav, Image } from "react-bootstrap";
 import kevimg from "../../Assets/GithubProfile.png";
-import { FaLinkedin, FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
 // import "./Footer.css";
 
 export const Footer = () => {
