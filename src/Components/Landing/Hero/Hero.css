@@ -1,0 +1,67 @@
+.hero-section {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.rowContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.columnContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+.HomepageVector {
+  height: clamp(300px, 30vw, 550px);
+  /* Entrance opacity/position is handled by the Hero's framer-motion stagger;
+     this keeps only the continuous idle personality after it settles. */
+  animation: pulse 5s ease-in-out 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  /* very subtle grow/shrink + slight opacity shift */
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.Typewriter {
+  font-size: 35px;
+  font-weight: bold;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+@media (max-width: 750px) {
+  .Typewriter {
+    font-size: 25px;
+  }
+}

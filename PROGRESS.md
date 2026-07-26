@@ -48,15 +48,19 @@ Plan reference: Vite migration + scrollytelling landing redesign.
   - Bookshelf/Photography CSS: confirmed no actual blue/Bootstrap-primary colors present to swap (already neutral grays) — left untouched per "no unnecessary churn."
 - [x] Verified: `npx playwright test` (10/10, after confirming one failure was a transient Vite dep-optimization hiccup from `framer-motion`'s first import, not a real bug), `npm run build`, visual screenshot check of `/projects` and `/about`.
 
-## Phase 3 — Scrollytelling landing narrative
-- [ ] Project `id` slugs added to TempProjectData.ts
-- [ ] `experienceData` exported from Experience.tsx
-- [ ] `aboutSummary` lifted from AboutCard.tsx
-- [ ] `Hero` component
-- [ ] `ProjectsPreview` component (parallax, staggered, mobile-safe)
-- [ ] `ExperiencePreview` component
-- [ ] `AboutPreview` component
-- [ ] `Home.tsx` rewritten as orchestrator
+## Phase 3 — Scrollytelling landing narrative — DONE
+- [x] Project `id` slugs added to all 6 entries in TempProjectData.ts (additive, non-breaking to the full `/projects` page)
+- [x] `experienceData` exported from Experience.tsx; its react-chrono theme colors updated from black to the accent hex (`#6366f1`, kept in sync by convention/comment since react-chrono's theme prop takes literal strings, not CSS vars)
+- [x] `aboutSummary` (`{heading, teaser}`) lifted from AboutCard.tsx — the component's own rendered output on `/about` is unchanged, just the first paragraph's plain text was factored out for reuse
+- [x] `Hero` (`src/Components/Landing/Hero/`) — Home.tsx's original content moved here; CTA buttons switched from `variant="secondary"` to `variant="primary"` (picks up the accent retheme from Phase 2 automatically); `min-height: 100vh` + `100svh` fallback for the iOS address-bar jump; entrance choreography via a framer-motion stagger container (heading → illustration → CTA buttons animate in sequence on mount, not simultaneously) — separate mechanism from `Reveal` since it fires on mount, not on scroll-into-view
+- [x] `ProjectsPreview` — filters `TempProjectData` by 3 featured ids (`off-the-frame`, `3d-tshirt-customizer`, `soulmate`, in that order), each card is its own `ProjectCard` subcomponent with an independent `useScroll`/`useTransform` (image drifts more than caption for a depth effect, plus a subtle scale "settle" on scroll), parallax range zeroed below 768px and under `prefers-reduced-motion` via a shared `useIsMobile` hook, `RevealGroup`/`RevealItem` stagger entrance, mobile-first grid (1 col → 2 col @768px → 3 col @1024px)
+- [x] `ExperiencePreview` — 2 most recent `experienceData` entries as condensed cards (no react-chrono instance), stagger entrance, stacks on mobile / row on desktop
+- [x] `AboutPreview` — profile photo + `aboutSummary` teaser, two-column on desktop, stacked/centered on mobile
+- [x] Added a shared `SectionDivider` component (thin accent line that grows in per-section via `whileInView`) — used identically by all 3 preview sections, giving the scroll narrative distinct visual "beats" per the professional-animation requirement
+- [x] `Home.tsx` rewritten as the orchestrator (`<Hero/><ProjectsPreview/><ExperiencePreview/><AboutPreview/>`) — `App.tsx`'s routing table needed no changes
+- [x] Extended the E2E suite (`e2e/smoke.spec.ts`) with a `landing page scroll narrative` describe block: all 4 sections present, all 3 section-heading hyperlinks navigate to the correct full page (`/projects`, `/about` ×2), and a dedicated `prefers-reduced-motion` context test — 13/13 passing
+- [x] Verified via screenshots at 1280px and 390px (mobile): Hero, Projects (parallax cards + accent CTAs), Experience, About all render correctly; confirmed zero horizontal overflow at 375px
+- **Pre-existing content issue found, not caused by this work**: the SoulMate project's screenshot images (hosted on a Firebase Storage bucket) return HTTP 402 (Payment Required) — a Firebase billing/quota issue on the original project, unrelated to the migration. Same broken image would show on the current live CRA site today. Flagged for Kevin to fix by re-hosting those 2 images (e.g. same S3 bucket the other projects already use) — not something addressable in code.
 
 ## Phase 4 — Deploy
 - [ ] `deploy.yml` copied into `portfolio/.github/workflows/`, trigger branch fixed to `master`

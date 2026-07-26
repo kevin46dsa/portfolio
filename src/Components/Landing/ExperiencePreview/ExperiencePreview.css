@@ -1,0 +1,50 @@
+.experience-preview-section {
+  padding: var(--space-7) var(--space-4);
+}
+
+.experience-preview-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.experience-preview-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.experience-preview-card {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.experience-preview-dates {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+
+.experience-preview-card h3 {
+  margin: 0 0 var(--space-1);
+  font-size: var(--fs-h3);
+}
+
+.experience-preview-card p {
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .experience-preview-list {
+    flex-direction: row;
+  }
+
+  .experience-preview-card {
+    flex: 1;
+  }
+}

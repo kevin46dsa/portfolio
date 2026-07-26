@@ -1,0 +1,8 @@
+.section-divider {
+  width: 64px;
+  height: 3px;
+  background: var(--color-accent);
+  border-radius: var(--radius-pill);
+  transform-origin: left center;
+  margin-bottom: var(--space-4);
+}

@@ -49,3 +49,48 @@ test("unmatched route falls back to the 404 page", async ({ page }) => {
   await page.waitForLoadState("networkidle");
   await expect(page.locator("body")).not.toBeEmpty();
 });
+
+test.describe("landing page scroll narrative", () => {
+  test("shows all four sections in order", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+
+    const landing = page.locator(".landing-page");
+    await expect(page.locator(".hero-section")).toBeVisible();
+    await expect(landing.getByRole("heading", { name: "Projects" })).toBeVisible();
+    await expect(landing.getByRole("heading", { name: "Work Experience" })).toBeVisible();
+    await expect(landing.getByRole("heading", { name: "About Me" })).toBeVisible();
+  });
+
+  test("section title hyperlinks navigate to their full pages", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    const landing = page.locator(".landing-page");
+
+    await landing.getByRole("heading", { name: "Projects" }).getByRole("link").click();
+    await expect(page).toHaveURL(/\/projects$/);
+
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    await landing.getByRole("heading", { name: "Work Experience" }).getByRole("link").click();
+    await expect(page).toHaveURL(/\/about$/);
+
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    await landing.getByRole("heading", { name: "About Me" }).getByRole("link").click();
+    await expect(page).toHaveURL(/\/about$/);
+  });
+
+  test("respects prefers-reduced-motion with no console errors", async ({ browser }) => {
+    const context = await browser.newContext({ reducedMotion: "reduce" });
+    const page = await context.newPage();
+    const { crashes } = collectErrors(page);
+
+    await page.goto("/");
+    await page.waitForLoadState("networkidle");
+    await expect(page.locator(".hero-section")).toBeVisible();
+    expect(crashes).toEqual([]);
+
+    await context.close();
+  });
+});
