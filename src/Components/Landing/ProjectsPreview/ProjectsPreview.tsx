@@ -1,16 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { projectData } from "../../../Constants/TempProjectData";
+import { useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { projectData, FEATURED_PROJECT_IDS } from "../../../Constants/TempProjectData";
 import { SectionHeading } from "../../SectionHeading";
 import { SectionDivider } from "../../SectionDivider";
 import { RevealGroup, RevealItem } from "../../Reveal";
+import { ProjectCard } from "../../ProjectCard";
 import "./ProjectsPreview.css";
 
-const FEATURED_IDS = ["off-the-frame", "3d-tshirt-customizer", "soulmate"];
-
-const featuredProjects = FEATURED_IDS.map((id) => projectData.find((project) => project.id === id)).filter(
-  (project): project is (typeof projectData)[number] => Boolean(project)
-);
+const featuredProjects = FEATURED_PROJECT_IDS.map((id) =>
+  projectData.find((project) => project.id === id)
+).filter((project): project is (typeof projectData)[number] => Boolean(project));
 
 function useIsMobile(breakpoint = 767) {
   const [isMobile, setIsMobile] = useState(
@@ -30,7 +29,7 @@ function useIsMobile(breakpoint = 767) {
 
 type Project = (typeof projectData)[number];
 
-const ProjectCard = ({ project }: { project: Project }) => {
+const ParallaxProjectCard = ({ project, size }: { project: Project; size: "large" | "small" }) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
   const reduceMotion = useReducedMotion();
@@ -46,33 +45,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
   const captionY = useTransform(scrollYProgress, [0, 1], disableParallax ? [0, 0] : [-15, 15]);
 
   return (
-    <RevealItem className="project-preview-card" direction="up">
-      <div ref={cardRef} className="project-preview-card-inner">
-        <div className="project-preview-image-frame">
-          <motion.img
-            src={project.slides[0]}
-            alt={project.projectName}
-            className="project-preview-image"
-            style={{ y: imageY, scale: imageScale }}
-          />
-        </div>
-        <motion.div className="project-preview-caption" style={{ y: captionY }}>
-          <h3>{project.projectName}</h3>
-          <p>{project.projectDescription}</p>
-          <div className="project-preview-links">
-            {project.githubLink && (
-              <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-            )}
-            {project.websitePage && (
-              <a href={project.websitePage} target="_blank" rel="noopener noreferrer">
-                Live site
-              </a>
-            )}
-          </div>
-        </motion.div>
-      </div>
+    <RevealItem className="projects-preview-card" direction="up">
+      <ProjectCard
+        project={project}
+        size={size}
+        frameRef={cardRef}
+        imageMotionStyle={{ y: imageY, scale: imageScale }}
+        captionMotionStyle={{ y: captionY }}
+      />
     </RevealItem>
   );
 };
@@ -83,8 +63,8 @@ export const ProjectsPreview = () => (
       <SectionDivider />
       <SectionHeading eyebrow="Featured Work" title="Projects" to="/projects" />
       <RevealGroup className="projects-preview-grid">
-        {featuredProjects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+        {featuredProjects.map((project, index) => (
+          <ParallaxProjectCard key={project.id} project={project} size={index === 0 ? "large" : "small"} />
         ))}
       </RevealGroup>
     </div>

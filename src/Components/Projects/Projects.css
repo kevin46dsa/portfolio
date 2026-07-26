@@ -1,53 +1,56 @@
-div.scroll {
-  width: 600px;
-  height: 300px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align: center;
-  padding: 20px;
-}
-
 .project-main {
-  padding-left: 10vw;
-  padding-right: 10vw;
-  padding-top: 10vh;
-  padding-bottom: 10vh;
-}
-
-.project-card-container {
-  background-color: var(--color-bg-subtle);
-  padding: 40px;
-  margin: 40px;
-  box-shadow: var(--shadow-sm);
-  border-radius: var(--radius-sm);
+  padding: var(--space-6) var(--space-4);
 }
 
 .project-header {
   text-align: center;
   font-weight: bold;
+  margin-bottom: var(--space-5);
 }
 
-.project-carusel-image {
+/* Mobile-first: a simple single-column stack. Bento tile-size variance is a
+   desktop-only flourish (see min-width: 1024px below) -- on mobile every card
+   gets the same full-width treatment, regardless of "large"/"small". */
+.project-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.project-grid-item {
   width: 100%;
-  height: 300px; /* Fixed height to unify image size */
-  object-fit: cover; /* Crop excess and fill space */
-  object-position: center; /* Center image focus */
-  border-radius: 8px; /* Optional: soften corners */
 }
 
-@media (max-width: 768px) {
-  .project-carusel-image {
-    width: 100%;
-    height: auto;
+@media (min-width: 768px) {
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
   }
-  .project-main {
-    padding-left: 0vw;
-    padding-right: 0vw;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+}
+
+@media (min-width: 1024px) {
+  /* Bento grid: a 6-column track, with each large (featured) tile paired with
+     one small tile side by side in the same row -- large spans 4 of 6 columns
+     (visibly ~2x the width, and proportionally taller via the shared 16:10
+     image ratio), small spans the remaining 2. Render order alternates
+     large/small so this lines up with zero leftover grid cells. */
+  .project-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-5);
+    /* Large/small pairs in the same row naturally have different content
+       heights (untruncated vs. clamped description) -- align to the top
+       instead of stretching the shorter card to match, which would leave an
+       oversized, mostly-empty white card. */
+    align-items: start;
   }
-  .project-card-container {
-    padding: 20px;
-    margin: 20px;
+
+  .project-grid-item {
+    grid-column: span 2;
+  }
+
+  .project-grid-item:nth-child(odd) {
+    grid-column: span 4;
   }
 }
