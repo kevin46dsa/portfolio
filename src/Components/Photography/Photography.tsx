@@ -41,7 +41,7 @@ export const Photography: React.FC = () => {
         tag: "California",
         emoji: "🏞️",
         photos: Album1 as Photo[],
-        maxDisplayed: 4,
+        maxDisplayed: 3,
       },
       {
         key: "a2",
@@ -59,7 +59,7 @@ export const Photography: React.FC = () => {
         tag: "California",
         emoji: "🌊",
         photos: Album3 as Photo[],
-        maxDisplayed: 3,
+        maxDisplayed: 5,
       },
       {
         key: "a4",
@@ -68,7 +68,7 @@ export const Photography: React.FC = () => {
         tag: "Outdoors",
         emoji: "🌳",
         photos: Album4 as Photo[],
-        maxDisplayed: 3,
+        maxDisplayed: 5,
       },
     ],
     []

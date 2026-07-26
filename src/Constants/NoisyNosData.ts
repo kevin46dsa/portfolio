@@ -41,7 +41,7 @@ export const EquiNosVideos = [
 ];
 
 export const NoisyNosBanner =
-  "https://firebasestorage.googleapis.com/v0/b/portfolio-235df.appspot.com/o/Screenshot%202024-09-02%20at%202.59.55%E2%80%AFPM.png?alt=media&token=34ade7df-7cc7-4fdb-971b-dc1e80220698";
+  "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/photography/noistnosbanner.png";
 
 export const NoisyNosVideoHighlight1 = {
   videoId: "bMa2UrmFG_M",

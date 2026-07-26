@@ -30,8 +30,8 @@ export const projectData = [
     thumbnail:
       "https://i.ibb.co/wLv47Wm/Rent-Pipe-logos-white-adobe-express.png",
     slides: [
-      "https://firebasestorage.googleapis.com/v0/b/portfolio-235df.appspot.com/o/Screenshot%202023-07-09%20at%206.25.54%20PM.png?alt=media&token=113a4996-bd1a-47cc-b9c7-c75160814d05",
-      "https://firebasestorage.googleapis.com/v0/b/portfolio-235df.appspot.com/o/Screenshot%202023-07-09%20at%206.26.35%20PM.png?alt=media&token=2e7a7903-cd2c-4184-bc7f-ac50507e3805",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/Screenshot%202023-07-09%20at%206.25.54%20PM.png",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/Screenshot%202023-07-09%20at%206.26.35%20PM.png",
     ],
     color: "#F0F8FF",
     githubLink: "https://github.com/kevin46dsa/RentPipe",
