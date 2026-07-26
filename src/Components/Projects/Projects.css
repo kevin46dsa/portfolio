@@ -15,20 +15,11 @@ div.scroll {
 }
 
 .project-card-container {
-  background-color: #f5f5f5;
+  background-color: var(--color-bg-subtle);
   padding: 40px;
   margin: 40px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 8px; /* Optional: soften corners */
-  opacity: 0;
-  transform: translateY(50px) translateX(30px);
-  transition: all 0.6s ease-in;
-  will-change: opacity, transform;
-}
-
-.project-card-container.animate {
-  opacity: 1;
-  transform: translateY(0) translateX(0);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-sm);
 }
 
 .project-header {
@@ -42,26 +33,6 @@ div.scroll {
   object-fit: cover; /* Crop excess and fill space */
   object-position: center; /* Center image focus */
   border-radius: 8px; /* Optional: soften corners */
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn2 {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
 
 @media (max-width: 768px) {

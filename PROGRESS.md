@@ -35,12 +35,18 @@ Plan reference: Vite migration + scrollytelling landing redesign.
 - Note: `tsconfig.app.json` sets `strict: false`/`checkJs: false` deliberately, to avoid a wall of type errors across loosely-typed pre-existing `.jsx`/`.tsx` files during a parity-focused migration. Tightening this incrementally is a reasonable future follow-up, not done here.
 - Note: production bundle has one >500kB JS chunk (909KB main bundle) — Vite warns about this. Not addressed here (no route-based code-splitting) — flagged as a future optimization, out of scope for this pass.
 
-## Phase 2 — Design tokens + shared primitives
-- [ ] `src/styles/tokens.css` created + imported globally
-- [ ] `Reveal` component (framer-motion, stagger support, reduced-motion aware)
-- [ ] `SectionHeading` component (clickable title + arrow)
-- [ ] `ProjectHome.jsx` / `About.jsx` rewired to use `Reveal` (old IntersectionObserver hooks removed)
-- [ ] Retheme pass: Header, Footer, Bookshelf, Photography, Pagenotfound, HorizontalScroller, SplitVideoSection → accent token
+## Phase 2 — Design tokens + shared primitives — DONE
+- [x] `src/styles/tokens.css` created + imported globally via `src/index.css`
+- [x] `Reveal` / `RevealGroup` / `RevealItem` components (`src/Components/Reveal/`) — framer-motion `whileInView`, stagger support for the upcoming Landing sections, `useReducedMotion()` aware, custom ease-out curve via `--ease-out-soft` token
+- [x] `SectionHeading` component (`src/Components/SectionHeading/`) — clickable title + animated hover arrow, styled with tokens
+- [x] `ProjectHome.jsx` / `About.jsx` rewired to use `Reveal` — old duplicated `IntersectionObserver` hooks removed from both; dead `.fade-up`/`.fade-right`/`.animate`/`fadeIn`/`fadeIn2` CSS removed from `MyCard.css`/`Projects.css`
+- [x] Retheme pass:
+  - Header/Footer: nav link hover/active states → `var(--color-accent)` (Footer.css created, its import was previously commented out)
+  - Pagenotfound: CTA button color → accent
+  - HorizontalScroller/SplitVideoSection: local `--hs-accent`/`--svs-accent` now alias `var(--color-accent)` instead of duplicating the hex literal
+  - **Bootstrap `.btn-primary` retheme** (bigger win than spot-fixing individual files): added `src/styles/bootstrap-overrides.css`, imported in `App.tsx` right after `bootstrap.min.css` (import order matters — must load after Bootstrap to win the cascade). Overrides `.btn-primary`'s own `--bs-btn-bg`/`--bs-btn-border-color`/hover/active/disabled variables directly, since Bootstrap 5.3's compiled CSS bakes literal hex values on `.btn-primary` itself rather than referencing a root `--bs-primary` var — retheming the root var alone would not have worked. This retheme's every `variant="primary"` button site-wide (Home, Projects, etc.) in one place instead of touching each file.
+  - Bookshelf/Photography CSS: confirmed no actual blue/Bootstrap-primary colors present to swap (already neutral grays) — left untouched per "no unnecessary churn."
+- [x] Verified: `npx playwright test` (10/10, after confirming one failure was a transient Vite dep-optimization hiccup from `framer-motion`'s first import, not a real bug), `npm run build`, visual screenshot check of `/projects` and `/about`.
 
 ## Phase 3 — Scrollytelling landing narrative
 - [ ] Project `id` slugs added to TempProjectData.ts

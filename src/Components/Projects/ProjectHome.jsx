@@ -1,41 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
 import "./Projects.css";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/esm/Col";
 import { Carousel, Button } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import { projectData } from "../../Constants/TempProjectData";
+import { Reveal } from "../Reveal";
 
 const Projects = () => {
-  const [visibleCards, setVisibleCards] = useState([]);
-
-  const cardRefs = useRef([]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const index = Number(entry.target.dataset.index);
-          if (entry.isIntersecting && !visibleCards.includes(index)) {
-            setVisibleCards((prev) => [...prev, index]);
-          }
-        });
-      },
-      { threshold: 0.3 } // trigger when 30% of card is visible
-    );
-
-    const currentRefs = cardRefs.current;
-
-    currentRefs.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    return () => {
-      currentRefs.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [visibleCards]);
   return (
     <div className="project-main">
       <div className="project-header">
@@ -44,15 +15,8 @@ const Projects = () => {
 
       <Container fluid="xxl">
         {projectData.map((project, index) => (
-          <div
-            className={`project-card-container ${
-              visibleCards.includes(index) ? "animate" : ""
-            }`}
-            key={index}
-            data-index={index}
-            ref={(el) => (cardRefs.current[index] = el)}
-          >
-            <Row key={index} className="align-items-center">
+          <Reveal key={index} className="project-card-container">
+            <Row className="align-items-center">
               {/* Carousel Column - shown first on mobile */}
               <Col
                 xs={12}
@@ -106,7 +70,7 @@ const Projects = () => {
                 </div>
               </Col>
             </Row>
-          </div>
+          </Reveal>
         ))}
       </Container>
     </div>

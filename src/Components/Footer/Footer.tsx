@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Nav, Image } from "react-bootstrap";
 import kevimg from "../../Assets/GithubProfile.png";
-// import "./Footer.css";
+import "./Footer.css";
 
 export const Footer = () => {
   const year = new Date().getFullYear();
