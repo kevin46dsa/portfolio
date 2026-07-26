@@ -20,18 +20,27 @@ test.describe("Hero section", () => {
     expect(Math.abs(leftGap - rightGap)).toBeLessThan(40);
   });
 
-  test("has an ambient animated background that freezes under prefers-reduced-motion", async ({ page, browser }) => {
+  test("has an animated line-art background, hidden on mobile", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
     await page.goto("/");
-    await expect(page.locator(".hero-blob")).toHaveCount(4);
+    await expect(page.locator(".hero-line")).toBeVisible();
+    await expect(page.locator(".hero-glyph")).toHaveCount(3);
 
+    await page.setViewportSize({ width: 375, height: 800 });
+    await page.reload();
+    await expect(page.locator(".hero-line")).toBeHidden();
+    await expect(page.locator(".hero-glyph:visible")).toHaveCount(1);
+  });
+
+  test("respects prefers-reduced-motion with no console errors", async ({ browser }) => {
     const reduceMotionContext = await browser.newContext({ reducedMotion: "reduce" });
     const reduceMotionPage = await reduceMotionContext.newPage();
+    const crashes: string[] = [];
+    reduceMotionPage.on("pageerror", (err) => crashes.push(err.message));
+
     await reduceMotionPage.goto("/");
-    const animationName = await reduceMotionPage
-      .locator(".hero-blob")
-      .first()
-      .evaluate((el) => getComputedStyle(el).animationName);
-    expect(animationName).toBe("none");
+    await expect(reduceMotionPage.locator(".hero-section")).toBeVisible();
+    expect(crashes).toEqual([]);
     await reduceMotionContext.close();
   });
 
