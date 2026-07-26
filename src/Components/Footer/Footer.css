@@ -1,0 +1,11 @@
+.site-footer a,
+.site-footer .nav-link {
+  color: var(--color-text-muted);
+}
+
+.site-footer a:hover,
+.site-footer a:focus,
+.site-footer .nav-link:hover,
+.site-footer .nav-link:focus {
+  color: var(--color-accent);
+}

@@ -5,7 +5,7 @@
   --hs-card: #15151b;
   --hs-text: #e8e8f0;
   --hs-muted: #9aa0a6;
-  --hs-accent: #6366f1;
+  --hs-accent: var(--color-accent);
   --hs-heading: #000000; /* pick your exact darkness */
 
   --hs-radius: 16px;

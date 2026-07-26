@@ -19,7 +19,7 @@
   position: absolute;
   bottom: 20%; /*your button position*/
   right: 55; /*your button position*/
-  background-color: #555;
+  background-color: var(--color-accent);
   color: white;
   font-size: 16px;
   padding: 12px 24px;

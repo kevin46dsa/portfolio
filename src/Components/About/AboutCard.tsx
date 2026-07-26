@@ -1,7 +1,13 @@
+export const aboutSummary = {
+  heading: "Hello My Name Is Kevin",
+  teaser:
+    "I’m a FullStack Developer with over 4+ years of experience building scalable, user-focused web applications. I also recently earned my Master’s degree in Computer Science from Stevens Institute of Technology.",
+};
+
 export const AboutCard = () => {
   return (
     <>
-      <h2>Hello My Name Is Kevin</h2>
+      <h2>{aboutSummary.heading}</h2>
       <p>
         I’m a <strong>FullStack Developer</strong> with over 4+ years of
         experience building scalable, user-focused web applications. I also

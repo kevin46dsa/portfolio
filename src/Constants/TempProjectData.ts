@@ -1,5 +1,6 @@
 export const projectData = [
   {
+    id: "off-the-frame",
     projectName: "#OffTheFrame",
     projectDescription:
       "OffTheFrame is a curated art-print marketplace where you can discover original pieces and limited-edition prints, explore collections, and purchase or download artwork designed to fit modern spaces. It’s built to feel fast, clean, and trustworthy—making it easy to browse, preview, and collect art you actually want to live with.",
@@ -12,6 +13,7 @@ export const projectData = [
     websitePage: "https://offtheframe.nosenterprise.org/",
   },
   {
+    id: "soulmate",
     projectName: "SoulMate",
     projectDescription:
       "This a Project primaryly focus on solar project management system that we prepared for CS-555-Agile Development Project using React, Firebase  Team: Easy Scurm Team Members: Rongda Kang,Kevin Dsa, Yuzhi Wang(Scrum Master),Luoyi Fu, Mingze Sun.",
@@ -24,6 +26,7 @@ export const projectData = [
     websitePage: "https://soulmatecs555.netlify.app/",
   },
   {
+    id: "rentpipe",
     projectName: "RentPipe",
     projectDescription:
       "Modern UI/UX website using React.js & ReactBoostrap Final Project for Course CS 545 Human Computer Interaction at Stevens Institute of technology",
@@ -38,6 +41,7 @@ export const projectData = [
     websitePage: "https://rentpipe.netlify.app/",
   },
   {
+    id: "3d-tshirt-customizer",
     projectName: "3D T-Shirt Website using React + Three.JS",
     projectDescription:
       "Reactive 3D T-Shirt Customizer Web Application leveraging the power of Three.JS Framer Motion and 3D TShirt Model. Inspired by youtube channel Javascript Mastery",
@@ -50,6 +54,7 @@ export const projectData = [
     websitePage: "https://3dtshirtcustomizerjsm.netlify.app/",
   },
   {
+    id: "budget-expense-tracker",
     projectName: "Budget Expense Tracker",
     projectDescription:
       "MERN Fullstack website, Final Project for Course CS 546 Web Programming at Stevens Institute of technology",
@@ -64,6 +69,7 @@ export const projectData = [
     websitePage: "https://betclient.herokuapp.com/",
   },
   {
+    id: "nba-career-longevity-prediction",
     projectName: "NBA Career Longevity Prediction",
     projectDescription:
       "This repository contains the code for the NBA Career Longevity Prediction project developed for the CS 513 course. The project aims to predict the career longevity of NBA players based on various features and factors.",

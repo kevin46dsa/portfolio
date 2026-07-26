@@ -1,0 +1,15 @@
+/* Retheme react-bootstrap's "primary" variant to the site's unified accent color.
+   Bootstrap's compiled CSS bakes these as literal values on .btn-primary itself
+   (not references to the root --bs-primary var), so they're overridden directly here. */
+
+.btn-primary {
+  --bs-btn-bg: var(--color-accent);
+  --bs-btn-border-color: var(--color-accent);
+  --bs-btn-hover-bg: var(--color-accent-hover);
+  --bs-btn-hover-border-color: var(--color-accent-hover);
+  --bs-btn-focus-shadow-rgb: 99, 102, 241;
+  --bs-btn-active-bg: var(--color-accent-hover);
+  --bs-btn-active-border-color: var(--color-accent-hover);
+  --bs-btn-disabled-bg: var(--color-accent);
+  --bs-btn-disabled-border-color: var(--color-accent);
+}

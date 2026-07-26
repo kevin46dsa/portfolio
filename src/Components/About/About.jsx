@@ -8,66 +8,20 @@ import {
 import { AboutCard } from "./AboutCard";
 import laptopImg from "../../Assets/About_2.jpeg";
 import LinkedInProfile from "../../Assets/profilephoto.png";
-import { useEffect, useRef, useState } from "react";
 import { Experience } from "./Experience";
+import { Reveal } from "../Reveal";
 
 function About() {
-  const firstTextRef = useRef(null);
-  const firstImgRef = useRef(null);
-  const secondTextRef = useRef(null);
-  const secondImgRef = useRef(null);
-
-  const [visible, setVisible] = useState({
-    firstText: false,
-    firstImg: false,
-    secondText: false,
-    secondImg: false,
-  });
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          const target = entry.target.getAttribute("data-id");
-          if (entry.isIntersecting && target) {
-            setVisible((prev) => ({ ...prev, [target]: true }));
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    [firstTextRef, firstImgRef, secondTextRef, secondImgRef].forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
-    });
-
-    return () => {
-      [firstTextRef, firstImgRef, secondTextRef, secondImgRef].forEach(
-        (ref) => {
-          if (ref.current) observer.unobserve(ref.current);
-        }
-      );
-    };
-  }, []);
-
   return (
     <div className="about-main-container">
       <div className="about-first-section">
-        <div
-          className={`about-first-text fade-up ${visible.firstText ? "animate" : ""}`}
-          ref={firstTextRef}
-          data-id="firstText"
-        >
+        <Reveal direction="up" className="about-first-text">
           <AboutCard />
-        </div>
+        </Reveal>
 
-        <img
-          src={LinkedInProfile}
-          alt="about"
-          className={`about-first-image fade-right ${visible.firstImg ? "animate" : ""}`}
-          ref={firstImgRef}
-          data-id="firstImg"
-        />
+        <Reveal direction="right">
+          <img src={LinkedInProfile} alt="about" className="about-first-image" />
+        </Reveal>
       </div>
       <div className="about-quote-section">
         <blockquote className="blockquote ">
@@ -78,25 +32,17 @@ function About() {
         </blockquote>
       </div>
       <div className="about-second-section">
-        <img
-          src={laptopImg}
-          alt="about"
-          className={`about-second-image fade-right ${visible.secondImg ? "animate" : ""}`}
-          ref={secondImgRef}
-          data-id="secondImg"
-        />
-        <div
-          className={`about-second-text fade-up ${visible.secondText ? "animate" : ""}`}
-          ref={secondTextRef}
-          data-id="secondText"
-        >
+        <Reveal direction="right">
+          <img src={laptopImg} alt="about" className="about-second-image" />
+        </Reveal>
+        <Reveal direction="up" className="about-second-text">
           <p>
             Outside of work, I enjoy photography, basketball, and spending time
             in nature. I'm also passionate about cars — from their design to the
             engineering beneath the hood. These interests fuel my creativity,
             curiosity, and love for exploration beyond the screen.
           </p>
-        </div>
+        </Reveal>
       </div>
       <div className="about-experience-section">
         <Experience />

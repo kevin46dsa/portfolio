@@ -8,7 +8,7 @@
   --svs-card: #15151b;
   --svs-text: #e8e8f0;
   --svs-muted: #9aa0a6;
-  --svs-accent: #6366f1;
+  --svs-accent: var(--color-accent);
 
   --svs-radius: 16px;
   --svs-pad: 14px;

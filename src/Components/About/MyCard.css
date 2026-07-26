@@ -14,7 +14,7 @@
 
 .my-card-text {
   font-size: 1rem;
-  color: #333;
+  color: var(--color-text-muted);
   text-align: center;
   padding: 10px;
 }
@@ -45,7 +45,7 @@
 .about-first-text {
   font-style: italic;
   font-size: 1.1rem;
-  color: #555;
+  color: var(--color-text-muted);
   padding: 20px;
   max-width: 400px; /* Limit the width of the text */
 }
@@ -67,7 +67,7 @@
 .about-second-text {
   font-style: italic;
   font-size: 1.1rem;
-  color: #555;
+  color: var(--color-text-muted);
   padding: 20px;
   max-width: 400px; /* Limit the width of the text */
 }
@@ -120,28 +120,4 @@
     max-height: 300px; /* Adjust height for smaller screens */
     padding: 0px;
   }
-}
-
-/* Fade + Slide from Bottom */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-  will-change: opacity, transform;
-}
-.fade-up.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Fade + Slide from Right */
-.fade-right {
-  opacity: 0;
-  transform: translateX(30px);
-  transition: all 0.8s ease-out;
-  will-change: opacity, transform;
-}
-.fade-right.animate {
-  opacity: 1;
-  transform: translateX(0);
 }
