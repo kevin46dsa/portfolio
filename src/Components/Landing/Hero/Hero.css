@@ -182,3 +182,57 @@
     font-size: 18px;
   }
 }
+
+/* Scroll-down cue -- pinned to the bottom edge of the hero, independent of
+   heading length, so it always sits at the same spot regardless of content
+   height/viewport. Plain <button> (not an anchor) since it scrolls by one
+   viewport height rather than to a specific element id. */
+.hero-scroll-cue {
+  position: absolute;
+  bottom: var(--space-5);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  padding: var(--space-2);
+  color: var(--hero-text-muted);
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .hero-scroll-cue:hover {
+    color: var(--hero-text);
+  }
+}
+
+.hero-scroll-cue-line {
+  width: 1px;
+  height: 28px;
+  background: currentColor;
+}
+
+.hero-scroll-cue-icon {
+  font-size: 0.9rem;
+  animation: hero-scroll-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-cue-icon {
+    animation: none;
+  }
+}

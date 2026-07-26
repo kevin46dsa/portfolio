@@ -5,7 +5,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 import Stack from "react-bootstrap/Stack";
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { GiCheckeredFlag, GiSteeringWheel } from "react-icons/gi";
-import { FaBasketball } from "react-icons/fa6";
+import { FaBasketball, FaChevronDown } from "react-icons/fa6";
 import "./Hero.css";
 
 const EASE_OUT_SOFT = [0.16, 1, 0.3, 1] as const;
@@ -23,6 +23,10 @@ export const Hero = () => {
   const item: Variants = {
     hidden: { opacity: 0, y: reduceMotion ? 0 : 24 },
     visible: { opacity: 1, y: 0, transition: { duration: reduceMotion ? 0 : 0.7, ease: EASE_OUT_SOFT } },
+  };
+
+  const scrollToNextSection = () => {
+    window.scrollTo({ top: window.innerHeight, behavior: reduceMotion ? "auto" : "smooth" });
   };
 
   return (
@@ -104,6 +108,16 @@ export const Hero = () => {
           </Stack>
         </motion.div>
       </motion.div>
+
+      <button
+        type="button"
+        className="hero-scroll-cue"
+        onClick={scrollToNextSection}
+        aria-label="Scroll down to see more"
+      >
+        <span className="hero-scroll-cue-line" aria-hidden="true" />
+        <FaChevronDown className="hero-scroll-cue-icon" aria-hidden="true" />
+      </button>
     </div>
   );
 };

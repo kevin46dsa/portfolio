@@ -39,8 +39,9 @@ export const Header = () => {
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg="light"
-        variant="light"
+        bg="dark"
+        variant="dark"
+        data-bs-theme="dark"
         className="shadow p-3 rounded"
       >
         <Container>

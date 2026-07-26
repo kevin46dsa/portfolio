@@ -1,16 +1,20 @@
 :root {
-  /* Color — accent unified from what HorizontalScroller/SplitVideoSection already used locally */
-  --color-accent: #6366f1;
-  --color-accent-hover: #4f46e5;
-  --color-accent-soft: rgba(99, 102, 241, 0.12);
-  --color-accent-border: rgba(99, 102, 241, 0.35);
+  /* Color — racing red, matching the Hero's --hero-accent, so the accent
+     reads consistently whether it's on the dark hero band or the light
+     sections below it. */
+  --color-accent: #e0263c;
+  --color-accent-hover: #b81f30;
+  --color-accent-soft: rgba(224, 38, 60, 0.12);
+  --color-accent-border: rgba(224, 38, 60, 0.35);
 
+  /* Warmed slightly off cool blue-gray so the light sections below the hero
+     don't clash with its near-black/red palette. */
   --color-bg: #ffffff;
-  --color-bg-subtle: #f7f7fb;
+  --color-bg-subtle: #f8f5f4;
   --color-surface: #ffffff;
   --color-text: #111114;
   --color-text-muted: #5b5f66;
-  --color-border: #e5e7eb;
+  --color-border: #e8e2e1;
 
   /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
