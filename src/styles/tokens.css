@@ -1,4 +1,9 @@
 :root {
+  /* Shared exact near-black, used by both the Hero band and the site-wide
+     navbar so the two are guaranteed to match rather than relying on two
+     copies of the same hex staying in sync by convention. */
+  --color-ink: #0b0b0d;
+
   /* Color — racing red, matching the Hero's --hero-accent, so the accent
      reads consistently whether it's on the dark hero band or the light
      sections below it. */

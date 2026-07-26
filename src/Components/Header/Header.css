@@ -1,3 +1,12 @@
+/* Custom background instead of Bootstrap's bg="dark"/.bg-dark utility (which
+   is its own gray-black, not the hero's exact near-black) -- and no "rounded"
+   utility, which was clipping the navbar's corners against the white page
+   body behind it and showing as 4 small white spots at the corners. */
+.site-navbar {
+  background: var(--color-ink);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
 .headerLogo {
   font-weight: bold;
   font-style: italic;

@@ -34,20 +34,15 @@ test.describe("header navigation", () => {
     await hobby("Blog", /\/blog$/);
   });
 
-  test("Hobbies dropdown opens on hover and auto-closes ~500ms after the mouse leaves", async ({ page }) => {
+  test("Hobbies dropdown opens on click and closes on Escape", async ({ page }) => {
     await page.goto("/");
     const hobbies = page.locator("header").getByRole("button", { name: "Hobbies" });
 
-    await hobbies.hover();
+    await hobbies.click();
     await expect(page.locator(".dropdown-menu.show")).toHaveCount(1);
 
-    await page.mouse.move(10, 10);
-    // Still open well before the 500ms close delay elapses.
-    await page.waitForTimeout(200);
-    await expect(page.locator(".dropdown-menu.show")).toHaveCount(1);
-
-    // Closed comfortably after the delay.
-    await expect(page.locator(".dropdown-menu.show")).toHaveCount(0, { timeout: 2000 });
+    await page.keyboard.press("Escape");
+    await expect(page.locator(".dropdown-menu.show")).toHaveCount(0);
   });
 
   test("logo click returns to the landing page from a nested route", async ({ page }) => {

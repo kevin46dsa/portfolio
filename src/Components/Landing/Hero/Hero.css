@@ -5,7 +5,7 @@
      site-wide retheme. Racing red is the single bold primary accent; the
      violet-blue is used sparingly, only as the far end of the line-art
      gradient, to avoid the palette turning busy/rainbow. */
-  --hero-bg: #0b0b0d;
+  --hero-bg: var(--color-ink);
   --hero-surface: #17171b;
   --hero-text: #f5f5f7;
   --hero-text-muted: #9a9aa2;

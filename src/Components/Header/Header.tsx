@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
@@ -8,41 +7,17 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import "./Header.css";
 
-const CLOSE_DELAY_MS = 500;
-
 export const Header = () => {
   const navigate = useNavigate();
-  const [showHobbies, setShowHobbies] = useState(false);
-  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const clearCloseTimeout = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-  };
-
-  const handleMouseEnter = () => {
-    clearCloseTimeout();
-    setShowHobbies(true);
-  };
-
-  const handleMouseLeave = () => {
-    clearCloseTimeout();
-    closeTimeoutRef.current = setTimeout(() => setShowHobbies(false), CLOSE_DELAY_MS);
-  };
-
-  useEffect(() => clearCloseTimeout, []);
 
   return (
     <div>
       <Navbar
         collapseOnSelect
         expand="lg"
-        bg="dark"
         variant="dark"
         data-bs-theme="dark"
-        className="shadow p-3 rounded"
+        className="site-navbar p-3"
       >
         <Container>
           <Navbar.Brand
@@ -75,14 +50,12 @@ export const Header = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              <NavDropdown
-                title="Hobbies"
-                id="collasible-nav-dropdown"
-                show={showHobbies}
-                onToggle={(nextShow) => setShowHobbies(nextShow)}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
+              {/* Uncontrolled: react-bootstrap's own click-to-open/click-outside
+                  (or Escape) -to-close behavior, rather than a hand-rolled hover
+                  + setTimeout mechanism. That custom version was unreliable and
+                  hover doesn't apply on touch anyway, so plain click behavior is
+                  both more robust and better for mobile. */}
+              <NavDropdown title="Hobbies" id="collasible-nav-dropdown">
                 <NavDropdown.Item onClick={() => navigate("/music")}>
                   Music
                 </NavDropdown.Item>
