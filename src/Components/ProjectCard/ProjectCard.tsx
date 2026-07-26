@@ -76,14 +76,19 @@ export const ProjectCard = ({
         <p className="project-card-description">{project.projectDescription}</p>
 
         <div className="project-card-links">
+          {project.websitePage && (
+            <a
+              href={project.websitePage}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-card-link project-card-link-primary"
+            >
+              <FaArrowUpRightFromSquare aria-hidden="true" /> Live site
+            </a>
+          )}
           {project.githubLink && (
             <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="project-card-link">
               <FaGithub aria-hidden="true" /> GitHub
-            </a>
-          )}
-          {project.websitePage && (
-            <a href={project.websitePage} target="_blank" rel="noopener noreferrer" className="project-card-link">
-              <FaArrowUpRightFromSquare aria-hidden="true" /> Live site
             </a>
           )}
         </div>

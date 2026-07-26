@@ -1,63 +1,161 @@
 .hero-section {
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
   min-height: 100svh;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+/* Ambient abstract background -- continuous, subtle drift so the landing page
+   reads as "alive" rather than a static screen. Purely CSS (transform/opacity
+   only, GPU-accelerated) so it's cheap even on mobile. Frozen entirely under
+   prefers-reduced-motion, consistent with the rest of the site's motion. */
+.hero-blobs {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.hero-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+  will-change: transform;
+}
+
+.hero-blob-1 {
+  top: -10%;
+  left: -8%;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, var(--color-accent), transparent 70%);
+  animation: hero-drift-1 22s ease-in-out infinite alternate;
+}
+
+.hero-blob-2 {
+  top: 55%;
+  right: -10%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--color-accent-hover), transparent 70%);
+  animation: hero-drift-2 18s ease-in-out infinite alternate;
+}
+
+.hero-blob-3 {
+  bottom: -12%;
+  left: 15%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, var(--color-accent), transparent 70%);
+  opacity: 0.18;
+  animation: hero-drift-3 26s ease-in-out infinite alternate;
+}
+
+.hero-blob-4 {
+  top: 10%;
+  right: 18%;
+  width: 260px;
+  height: 260px;
+  background: radial-gradient(circle, var(--color-accent-hover), transparent 70%);
+  opacity: 0.15;
+  animation: hero-drift-4 15s ease-in-out infinite alternate;
+}
+
+@keyframes hero-drift-1 {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(6%, 8%) scale(1.15);
+  }
+}
+
+@keyframes hero-drift-2 {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(-8%, -6%) scale(1.1);
+  }
+}
+
+@keyframes hero-drift-3 {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(5%, -5%) scale(1.2);
+  }
+}
+
+@keyframes hero-drift-4 {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(-6%, 6%) scale(0.9);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob {
+    animation: none;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  text-align: center;
+  padding: var(--space-4);
 }
 
 .buttonContainer {
   display: flex;
   justify-content: center;
-  padding-top: 2rem;
-}
-
-.rowContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
   width: 100%;
 }
 
-.columnContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* react-bootstrap's Stack (direction="horizontal") renders a plain .hstack
+   div with no wrapping -- on narrow screens 3 pill buttons squeezed into one
+   row forces their text to wrap ("About Me" breaking to 2 lines) and pushes
+   the last button flush against the viewport edge. Let them wrap instead. */
+.buttonContainer .hstack {
+  flex-wrap: wrap;
   justify-content: center;
-  margin: 20px;
-  padding-bottom: 20px;
-  gap: 20px;
 }
 
-.HomepageVector {
-  height: clamp(300px, 30vw, 550px);
-  /* Entrance opacity/position is handled by the Hero's framer-motion stagger;
-     this keeps only the continuous idle personality after it settles. */
-  animation: pulse 5s ease-in-out 1.5s infinite alternate;
+.hero-cta {
+  /* Overrides Bootstrap's own --bs-btn-border-radius custom property, same
+     approach as src/styles/bootstrap-overrides.css, rather than !important. */
+  --bs-btn-border-radius: var(--radius-pill);
+  padding-left: var(--space-5);
+  padding-right: var(--space-5);
+  transition: transform 0.25s var(--ease-out-soft), box-shadow 0.25s var(--ease-out-soft);
 }
 
-@keyframes pulse {
-  /* very subtle grow/shrink + slight opacity shift */
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.9;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
+@media (hover: hover) {
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
   }
 }
 
 .Typewriter {
   font-size: 35px;
   font-weight: bold;
-  justify-content: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  min-height: 1.4em;
 }
 
 @media (max-width: 750px) {

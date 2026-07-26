@@ -149,3 +149,26 @@
 .project-card-link:focus-visible {
   text-decoration: underline;
 }
+
+.project-card-link-primary {
+  color: #ffffff;
+  background: var(--color-accent);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s var(--ease-out-soft), transform 0.2s var(--ease-out-soft);
+}
+
+/* Must come after the base .project-card-link:hover rule above (equal
+   specificity) so this wins the cascade and the pill stays underline-free. */
+.project-card-link-primary:hover,
+.project-card-link-primary:focus-visible {
+  background: var(--color-accent-hover);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@media (hover: hover) {
+  .project-card-link-primary:hover {
+    transform: translateY(-1px);
+  }
+}
