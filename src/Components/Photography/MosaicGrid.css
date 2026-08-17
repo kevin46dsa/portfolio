@@ -70,13 +70,62 @@
     grid-auto-rows: 110px;
   }
 
+  /* Featured swaps from a grid to a swipeable horizontal filmstrip on phone --
+     one big hero tile squeezed above a flat stack of small squares read as
+     "boring", same visual language as the plain album grids below it. This
+     keeps Featured feeling distinct: large cards, native touch swipe (no JS
+     needed for the gesture itself), the next card peeking at the edge to
+     signal there's more. */
   .mosaic-grid-featured {
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: 130px;
+    display: flex;
+    grid-template-columns: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-3);
+    padding-block-end: var(--space-1);
+    scrollbar-width: none;
+  }
+
+  .mosaic-grid-featured::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mosaic-grid-featured .mosaic-tile {
+    flex: 0 0 80%;
+    scroll-snap-align: start;
+    aspect-ratio: 4 / 5;
+    height: auto;
   }
 
   .mosaic-grid-featured .mosaic-tile:first-child {
-    grid-column: span 2;
-    grid-row: span 2;
+    grid-column: unset;
+    grid-row: unset;
+  }
+}
+
+.mosaic-dots {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .mosaic-dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
+  }
+
+  .mosaic-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: var(--color-border);
+    transition: background-color 0.25s var(--ease-out-soft), width 0.25s var(--ease-out-soft);
+  }
+
+  .mosaic-dot.is-active {
+    width: 18px;
+    background: var(--color-accent);
   }
 }
