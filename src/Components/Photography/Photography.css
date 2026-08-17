@@ -74,12 +74,14 @@
   padding: 12px 12px 0;
 }
 
-/* Tighten the collage height slightly on small screens */
-@media (max-width: 768px) {
-  .album-collage .react-photo-collage {
-    /* the library sets inline sizes; we reduce visual density via container spacing */
-    padding: 0;
-  }
+.photography-featured {
+  margin-bottom: 8px;
+}
+
+.photography-featured-title {
+  font-size: clamp(20px, 3vw, 26px);
+  font-weight: 700;
+  margin: 0 0 12px;
 }
 
 /* Footer */

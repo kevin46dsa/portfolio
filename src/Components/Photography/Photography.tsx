@@ -1,15 +1,20 @@
-import React, { useMemo } from "react";
-import { ReactPhotoCollage } from "react-photo-collage";
+import { useMemo, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
-import { Album1, Album2, Album3 } from "../../Constants";
+import {
+  Album1,
+  Album2,
+  Album3,
+  Album4,
+  FeaturedPhotos,
+  type Photo,
+} from "../../Constants/PhotographyData";
+import { MosaicGrid } from "./MosaicGrid";
+import { Lightbox } from "./Lightbox";
 import "./Photography.css";
-import { Album4 } from "../../Constants/PhotographyData";
-
-type Photo = { source: string; alt?: string };
 
 type Album = {
   key: string;
@@ -21,17 +26,15 @@ type Album = {
   maxDisplayed: number;
 };
 
-function buildSettings(photos: Photo[], maxDisplayed: number) {
-  return {
-    width: "100%",
-    height: ["240px", "240px"], // smaller, classier
-    layout: [1, maxDisplayed], // first row 1 hero, second row grid
-    photos,
-    showNumOfRemainingPhotos: true,
-  };
-}
+type LightboxState = {
+  photos: Photo[];
+  index: number;
+  altPrefix: string;
+};
 
 export const Photography: React.FC = () => {
+  const [lightbox, setLightbox] = useState<LightboxState | null>(null);
+
   const albums: Album[] = useMemo(
     () => [
       {
@@ -85,57 +88,76 @@ export const Photography: React.FC = () => {
       </section>
 
       <Container>
-        {/* two cards per row on md+, one per row on mobile */}
-        <Row className="g-4">
-          {albums.map((album) => {
-            const settings = buildSettings(album.photos, album.maxDisplayed);
-            return (
-              <Col key={album.key} xs={12} md={6}>
-                <Card className="album-card">
-                  <Card.Body className="album-header">
-                    <div className="album-heading">
-                      <h2 className="album-title">
-                        {album.title}{" "}
-                        {album.emoji && (
-                          <span aria-hidden="true">{album.emoji}</span>
-                        )}
-                      </h2>
-                      {album.subtitle && (
-                        <p className="album-subtitle">{album.subtitle}</p>
-                      )}
-                    </div>
-                    {album.tag && (
-                      <Badge bg="light" text="dark" className="album-badge">
-                        {album.tag}
-                      </Badge>
-                    )}
-                  </Card.Body>
-
-                  <div className="album-collage">
-                    <ReactPhotoCollage {...settings} />
-                  </div>
-
-                  <Card.Footer className="album-footer">
-                    <span className="album-meta">
-                      {album.photos.length} photos
-                    </span>
-                  </Card.Footer>
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
+        <section className="photography-featured">
+          <h2 className="photography-featured-title">Featured</h2>
+          <div data-testid="featured-mosaic">
+            <MosaicGrid
+              photos={FeaturedPhotos}
+              altPrefix="Featured"
+              size="featured"
+              onTileClick={(index) =>
+                setLightbox({ photos: FeaturedPhotos, index, altPrefix: "Featured" })
+              }
+            />
+          </div>
+        </section>
 
         <hr className="album-divider" />
 
-        {/* room for future albums — you can add more with smaller maxDisplayed */}
-        {/* Example for later:
+        {/* two cards per row on md+, one per row on mobile */}
         <Row className="g-4">
-          <Col xs={12} md={6}> ...another album card... </Col>
-          <Col xs={12} md={6}> ...another album card... </Col>
+          {albums.map((album) => (
+            <Col key={album.key} xs={12} md={6}>
+              <Card className="album-card">
+                <Card.Body className="album-header">
+                  <div className="album-heading">
+                    <h2 className="album-title">
+                      {album.title}{" "}
+                      {album.emoji && (
+                        <span aria-hidden="true">{album.emoji}</span>
+                      )}
+                    </h2>
+                    {album.subtitle && (
+                      <p className="album-subtitle">{album.subtitle}</p>
+                    )}
+                  </div>
+                  {album.tag && (
+                    <Badge bg="light" text="dark" className="album-badge">
+                      {album.tag}
+                    </Badge>
+                  )}
+                </Card.Body>
+
+                <div className="album-collage">
+                  <MosaicGrid
+                    photos={album.photos}
+                    maxTiles={album.maxDisplayed}
+                    altPrefix={album.title}
+                    onTileClick={(index) =>
+                      setLightbox({ photos: album.photos, index, altPrefix: album.title })
+                    }
+                  />
+                </div>
+
+                <Card.Footer className="album-footer">
+                  <span className="album-meta">
+                    {album.photos.length} photos
+                  </span>
+                </Card.Footer>
+              </Card>
+            </Col>
+          ))}
         </Row>
-        */}
       </Container>
+
+      {lightbox && (
+        <Lightbox
+          photos={lightbox.photos}
+          initialIndex={lightbox.index}
+          altPrefix={lightbox.altPrefix}
+          onClose={() => setLightbox(null)}
+        />
+      )}
     </div>
   );
 };

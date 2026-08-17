@@ -22,18 +22,8 @@
     "react-github-calendar": "^5.0.8",
     "react-goodreads-shelf": "^4.0.0",
     "react-icons": "^4.8.0",
-    "react-photo-collage": "^1.0.9",
     "react-router-dom": "^6.30.4",
-    "styled-components": "^6.4.4",
     "typewriter-effect": "^2.22.0"
-  },
-  "overrides": {
-    "react-photo-collage": {
-      "react": "$react",
-      "react-dom": "$react-dom",
-      "@types/react": "$@types/react",
-      "@types/react-dom": "$@types/react-dom"
-    }
   },
   "browserslist": {
     "production": [
