@@ -1,5 +1,20 @@
 const S3_BASE = "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com";
 
+export type Photo = { source: string; alt?: string };
+
+// Placeholder selection for the featured mosaic at the top of the Photography
+// page -- pulled from the existing albums below so the section is fully
+// functional today. Kevin will swap this array for his own curated picks;
+// no other code needs to change when he does.
+export const FeaturedPhotos: Photo[] = [
+  { source: `${S3_BASE}/photography/lonecyprus.JPG` },
+  { source: `${S3_BASE}/photography/timesquare1.jpeg` },
+  { source: `${S3_BASE}/photography/Pier39.JPG` },
+  { source: `${S3_BASE}/photography/goldengate.JPG` },
+  { source: `${S3_BASE}/photography/oceansunset.JPG` },
+  { source: `${S3_BASE}/photography/sky.JPG` },
+];
+
 // Album1: 17-Mile Drive, California
 export const Album1 = [
   { source: `${S3_BASE}/photography/17miledrive.jpg` },

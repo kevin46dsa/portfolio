@@ -1,0 +1,82 @@
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 90px;
+  gap: var(--space-1);
+}
+
+.mosaic-grid-featured {
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: 110px;
+  gap: var(--space-2);
+}
+
+.mosaic-tile {
+  position: relative;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  background-color: var(--color-bg-subtle);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: transform 0.3s var(--ease-out-soft), box-shadow 0.3s var(--ease-out-soft);
+}
+
+/* The first tile stands out as a hero -- the "mosaic" read comes from one big
+   anchor tile plus smaller ones around it, not a uniform grid. */
+.mosaic-tile:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.mosaic-grid-featured .mosaic-tile:first-child {
+  grid-column: span 3;
+  grid-row: span 2;
+}
+
+@media (hover: hover) {
+  .mosaic-tile:hover {
+    transform: scale(1.03);
+    box-shadow: var(--shadow-md);
+    z-index: 1;
+  }
+}
+
+.mosaic-tile:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  z-index: 1;
+}
+
+.mosaic-tile-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+@media (max-width: 767px) {
+  .mosaic-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 110px;
+  }
+
+  .mosaic-grid-featured {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 130px;
+  }
+
+  .mosaic-grid-featured .mosaic-tile:first-child {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
