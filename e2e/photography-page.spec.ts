@@ -144,4 +144,32 @@ test.describe("Photography page", () => {
     expect(errors).toEqual([]);
     await context.close();
   });
+
+  test("mobile viewport: featured section is a swipeable filmstrip with dots", async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
+    const page = await context.newPage();
+
+    await page.goto("/photography");
+    await page.waitForLoadState("networkidle");
+
+    const featuredGrid = page.getByTestId("featured-mosaic").locator(".mosaic-grid-featured");
+    const isScrollable = await featuredGrid.evaluate((el) => el.scrollWidth > el.clientWidth + 1);
+    expect(isScrollable).toBe(true);
+
+    const dots = page.getByTestId("featured-mosaic").getByTestId("mosaic-dots").locator(".mosaic-dot");
+    expect(await dots.count()).toBeGreaterThan(1);
+    await expect(dots.first()).toHaveClass(/is-active/);
+
+    // Swiping (simulated as a scroll) moves the active dot.
+    await featuredGrid.evaluate((el) => el.scrollTo({ left: el.clientWidth, behavior: "instant" as ScrollBehavior }));
+    await page.waitForTimeout(300);
+    await expect(dots.first()).not.toHaveClass(/is-active/);
+
+    // Tapping a featured tile still opens the lightbox correctly in this layout.
+    await page.getByTestId("featured-mosaic").getByTestId("photo-tile").first().click();
+    await expect(page.getByTestId("lightbox")).toBeVisible();
+    await expect(page.getByTestId("lightbox-image")).toBeVisible();
+
+    await context.close();
+  });
 });
