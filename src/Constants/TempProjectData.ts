@@ -12,8 +12,8 @@ export const projectData = [
     // TODO(kevin): stack isn't stated in the description above -- confirm/adjust these tags.
     techStack: ["React", "Node.js"],
     slides: [
-      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/homepage.png",
-      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/productpage.png",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/offtheframe/offtheframehome.png",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/offtheframe/offtheframeproduct.png",
     ],
     color: "#FDF5E6",
     githubLink: "https://github.com/kevin46dsa/OffTheFrame",
@@ -26,8 +26,8 @@ export const projectData = [
       "This a Project primaryly focus on solar project management system that we prepared for CS-555-Agile Development Project using React, Firebase  Team: Easy Scurm Team Members: Rongda Kang,Kevin Dsa, Yuzhi Wang(Scrum Master),Luoyi Fu, Mingze Sun.",
     techStack: ["React", "Firebase"],
     slides: [
-      "https://firebasestorage.googleapis.com/v0/b/agile-11fe1.appspot.com/o/Screenshot%202024-01-07%20at%206.51.08%E2%80%AFPM.png?alt=media&token=98482463-495a-4bae-9bcb-bc79e5c3aaf0",
-      "https://firebasestorage.googleapis.com/v0/b/agile-11fe1.appspot.com/o/Screenshot%202024-01-07%20at%206.52.10%E2%80%AFPM.png?alt=media&token=e0d69946-a2af-4968-aad1-63cf64d954ca",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/soulmate/soulmatehome.png",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/soulmate/soulmatelogin.png",
     ],
     color: "#FDF5E6",
     githubLink: "https://github.com/kevin46dsa/CS-555-project",
@@ -56,8 +56,8 @@ export const projectData = [
       "Reactive 3D T-Shirt Customizer Web Application leveraging the power of Three.JS Framer Motion and 3D TShirt Model. Inspired by youtube channel Javascript Mastery",
     techStack: ["React", "Three.js", "Framer Motion"],
     slides: [
-      "https://github.com/kevin46dsa/3D-Website-shop/assets/67777018/80b9dae2-49a1-42b8-97f9-864051e6d811",
-      "https://github.com/kevin46dsa/3D-Website-shop/assets/67777018/eab416d5-08f8-4396-aa7d-811b66c2bd55",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/3dshirt/3dhome.png",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/3dshirt/3dproduct.png",
     ],
     color: "#FDF5E6",
     githubLink: "https://github.com/kevin46dsa/3D-Website-shop",
