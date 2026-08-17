@@ -8,64 +8,67 @@
   margin-bottom: var(--space-5);
 }
 
-/* Mobile-first: a simple single-column stack. Bento tile-size variance is a
-   desktop-only flourish (see min-width: 1024px below) -- on mobile every card
-   gets the same full-width treatment, regardless of "large"/"small". */
-.project-grid {
+.project-section-title {
+  text-align: center;
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  margin: 0 0 var(--space-4);
+}
+
+.project-featured-section {
+  margin-bottom: var(--space-7);
+}
+
+/* One column, centered, at every breakpoint -- no alternating left/right
+   "bento" placement. Capped width so large hero cards don't stretch edge to
+   edge on wide desktop viewports. */
+.project-featured-list {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-5);
-  max-width: 1400px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.project-grid-item {
+.project-featured-item {
   width: 100%;
 }
 
-@media (min-width: 768px) {
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-  }
+.project-more-section {
+  margin-bottom: var(--space-6);
 }
 
-@media (min-width: 1024px) {
-  /* Bento grid, using named areas rather than implicit auto-placement: each of
-     the 3 featured projects gets its own row as a prominent 4-of-6-column hero
-     tile (alternating which side the negative space falls on for rhythm --
-     an intentional editorial touch, not a bug), and the remaining 3 share a
-     plain uniform row underneath. Auto-placement alone can't guarantee the
-     hero rows' leftover space stays empty -- it happily back-fills it with
-     whichever later item fits, which is exactly the bug this ran into. Named
-     areas give each cell an explicit, guaranteed assignment instead. */
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-areas:
-      "f1 f1 f1 f1 .  .  "
-      ".  .  f2 f2 f2 f2 "
-      "f3 f3 f3 f3 .  .  "
-      "s1 s1 s2 s2 s3 s3 ";
-    gap: var(--space-5);
-  }
+/* Horizontal scroll row for every non-featured project -- automatically picks
+   up anything added to TempProjectData.ts later, no layout changes needed.
+   Bleeds to the page edge via a negative margin matching .project-main's own
+   padding (both use --space-4, so unlike a nested-in-Bootstrap-Container case
+   there's no guessing at a third-party gutter width) so the next card peeks
+   in from the edge. No dot indicator here (cards carry title/description
+   text, not just an image), so the scrollbar stays visible as the
+   scroll-affordance instead. */
+.project-more-scroll {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-inline: var(--space-4);
+  margin-inline: calc(var(--space-4) * -1);
+  padding-block: var(--space-2) var(--space-3);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
 
-  .project-grid-item:nth-child(1) {
-    grid-area: f1;
-  }
-  .project-grid-item:nth-child(2) {
-    grid-area: f2;
-  }
-  .project-grid-item:nth-child(3) {
-    grid-area: f3;
-  }
-  .project-grid-item:nth-child(4) {
-    grid-area: s1;
-  }
-  .project-grid-item:nth-child(5) {
-    grid-area: s2;
-  }
-  .project-grid-item:nth-child(6) {
-    grid-area: s3;
-  }
+.project-more-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.project-more-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+.project-more-item {
+  flex: 0 0 clamp(260px, 78vw, 340px);
+  scroll-snap-align: start;
 }

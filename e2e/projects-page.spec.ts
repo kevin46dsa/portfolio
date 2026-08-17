@@ -25,3 +25,58 @@ test.describe("Project card links", () => {
     await expect(primaryLink).toHaveText(/Live site/);
   });
 });
+
+test.describe("/projects layout", () => {
+  test("featured projects render as a single centered column", async ({ page }) => {
+    await page.goto("/projects");
+
+    const featuredList = page.locator(".project-featured-list");
+    const featuredCards = featuredList.locator(".project-card");
+    await expect(featuredCards).toHaveCount(3);
+
+    // Every card starts at (roughly) the same x position -- one column, not
+    // alternating left/right "bento" placement.
+    const boxes = await featuredCards.evaluateAll((els) =>
+      els.map((el) => el.getBoundingClientRect().x)
+    );
+    for (const x of boxes) {
+      expect(Math.abs(x - boxes[0])).toBeLessThan(2);
+    }
+  });
+
+  test("remaining projects render in a horizontal-scroll row", async ({ page }) => {
+    await page.goto("/projects");
+
+    const moreScroll = page.locator(".project-more-scroll");
+    await expect(moreScroll).toBeVisible();
+
+    const cardCount = await moreScroll.locator(".project-card").count();
+    expect(cardCount).toBeGreaterThan(0);
+
+    // The mechanism is a plain overflow-x row -- with only 3 items it may or
+    // may not actually overflow at a given viewport (fine, expected), so this
+    // checks the CSS is right rather than asserting forced overflow. The
+    // mobile test below confirms it's genuinely scrollable where it matters.
+    const overflowX = await moreScroll.evaluate((el) => getComputedStyle(el).overflowX);
+    expect(overflowX).toBe("auto");
+  });
+
+  test("mobile viewport: the all-projects row is actually scrollable", async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 375, height: 812 } });
+    const page = await context.newPage();
+
+    await page.goto("/projects");
+    await page.waitForLoadState("networkidle");
+
+    const moreScroll = page.locator(".project-more-scroll");
+    const isScrollable = await moreScroll.evaluate((el) => el.scrollWidth > el.clientWidth + 1);
+    expect(isScrollable).toBe(true);
+
+    const hasPageOverflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > window.innerWidth + 1
+    );
+    expect(hasPageOverflow).toBe(false);
+
+    await context.close();
+  });
+});
