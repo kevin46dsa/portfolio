@@ -20,9 +20,9 @@
   gap: var(--space-1);
   font-size: var(--fs-small);
   font-weight: 600;
-  color: var(--color-accent);
-  background: var(--color-accent-soft);
-  border: 1px solid var(--color-accent-border);
+  color: #000000;
+  background: #ffffff;
+  border: 1px solid #000000;
   border-radius: var(--radius-pill);
   padding: 6px 14px;
   transition: background-color 0.2s var(--ease-out-soft), transform 0.2s var(--ease-out-soft);
@@ -30,7 +30,7 @@
 
 @media (hover: hover) {
   .skill-pill:hover {
-    background: var(--color-accent-border);
+    background: #f3f4f6;
     transform: translateY(-1px);
   }
 }
@@ -101,6 +101,24 @@
 }
 .about-experience-section {
   width: 100%;
+}
+
+/* react-chrono's VERTICAL mode renders its line+card cluster as a fixed-width
+   block (cards cap at max-width: 400px) inside a full-width wrapper -- on a
+   wide desktop viewport that leaves the whole timeline visually stuck to the
+   left edge with empty space on the right. Centering the block itself here. */
+.experience-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* react-chrono's theme API has no separate "dot color" option -- primary
+   drives the dot, the card's outline ring, active states, etc. all together.
+   Kept the theme prop itself black (Experience.tsx) and override just the
+   dot fill here instead, targeting react-chrono's own stable structural
+   class (not its hashed CSS-in-JS classes, which change between builds). */
+.timeline-vertical-circle > div {
+  background-color: #eab308 !important;
 }
 
 @media (max-width: 750px) {

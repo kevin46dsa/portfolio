@@ -23,10 +23,20 @@ test.describe("About page Experience timeline", () => {
       return { borderRadius: style.borderRadius, boxShadow: style.boxShadow };
     });
     expect(cardStyle.borderRadius).not.toBe("0px");
-    // The accent theme color (#e0263c / rgb(224, 38, 60)) should show up in the
-    // card's shadow/border -- confirms both the base stylesheet and our theme
-    // override are both actually taking effect.
-    expect(cardStyle.boxShadow).toContain("224, 38, 60");
+    // The card border/outline ring is themed black (rgb(0, 0, 0)) -- confirms
+    // both the base stylesheet and our theme override are actually taking
+    // effect, rather than falling back to some other default color.
+    expect(cardStyle.boxShadow).toContain("0, 0, 0");
+
+    // The timeline dot is the one deliberately-yellow element (#eab308 / rgb(234,
+    // 179, 8)) -- react-chrono's theme API has no separate "dot color" option,
+    // so this is set via a CSS override targeting its own stable class rather
+    // than the theme prop. Assert it actually took effect.
+    const dotColor = await page
+      .locator(".timeline-vertical-circle > div")
+      .first()
+      .evaluate((el) => getComputedStyle(el).backgroundColor);
+    expect(dotColor).toBe("rgb(234, 179, 8)");
   });
 
   test("shows all 4 work experience entries in a single column (no alternating)", async ({ page }) => {
@@ -41,6 +51,19 @@ test.describe("About page Experience timeline", () => {
       expect(Math.abs(x - boxes[0])).toBeLessThan(2);
     }
   });
+
+  test("desktop: the whole timeline block is centered, not stuck to the left edge", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 1000 });
+    await page.goto("/about");
+
+    const box = await page.locator(".experience-container").evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      const parentR = el.parentElement!.getBoundingClientRect();
+      return { left: r.x - parentR.x, right: parentR.right - r.right };
+    });
+    // Roughly equal empty space on each side -- not flush against the left edge.
+    expect(Math.abs(box.left - box.right)).toBeLessThan(2);
+  });
 });
 
 test.describe("About page Skills section", () => {
@@ -54,5 +77,14 @@ test.describe("About page Skills section", () => {
     expect(await pills.count()).toBeGreaterThan(0);
     const firstPillText = await pills.first().textContent();
     expect(firstPillText?.trim().length).toBeGreaterThan(0);
+
+    // Black text/border, white fill, per Kevin's direction (not the accent color).
+    const pillStyle = await pills.first().evaluate((el) => {
+      const cs = getComputedStyle(el);
+      return { color: cs.color, background: cs.backgroundColor, border: cs.borderColor };
+    });
+    expect(pillStyle.color).toBe("rgb(0, 0, 0)");
+    expect(pillStyle.background).toBe("rgb(255, 255, 255)");
+    expect(pillStyle.border).toBe("rgb(0, 0, 0)");
   });
 });

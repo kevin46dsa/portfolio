@@ -73,14 +73,20 @@ test.describe("Hero section", () => {
 });
 
 test.describe("landing Work Experience preview", () => {
-  test("shows a role highlight, not just dates/title/company", async ({ page }) => {
+  test("shows every point for each role, not just dates/title/company", async ({ page }) => {
     await page.goto("/");
-    const highlights = page.locator(".experience-preview-highlight");
-    await expect(highlights).toHaveCount(2);
-    for (const highlight of await highlights.all()) {
-      const text = (await highlight.textContent())?.trim() ?? "";
-      expect(text.length).toBeGreaterThan(10);
-      expect(text.startsWith("-")).toBe(false);
+    const lists = page.locator(".experience-preview-points");
+    await expect(lists).toHaveCount(2);
+
+    for (const list of await lists.all()) {
+      const points = list.locator("li");
+      const count = await points.count();
+      expect(count).toBeGreaterThan(1);
+      for (const point of await points.all()) {
+        const text = (await point.textContent())?.trim() ?? "";
+        expect(text.length).toBeGreaterThan(10);
+        expect(text.startsWith("-")).toBe(false);
+      }
     }
   });
 });

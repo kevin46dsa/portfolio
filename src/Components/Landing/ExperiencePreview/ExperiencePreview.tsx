@@ -6,10 +6,7 @@ import "./ExperiencePreview.css";
 
 const recentRoles = experienceData.slice(0, 2);
 
-// A one-line taste of impact per role, without turning this condensed preview
-// into a full resume dump -- the complete bullet list stays exclusive to the
-// react-chrono timeline on /about.
-const firstHighlight = (bullets: string[]) => bullets[0]?.replace(/^-\s*/, "");
+const stripBullet = (bullet: string) => bullet.replace(/^-\s*/, "");
 
 export const ExperiencePreview = () => (
   <section className="experience-preview-section">
@@ -22,7 +19,11 @@ export const ExperiencePreview = () => (
             <span className="experience-preview-dates">{role.title}</span>
             <h3>{role.cardSubtitle}</h3>
             <p className="experience-preview-company">{role.cardTitle}</p>
-            <p className="experience-preview-highlight">{firstHighlight(role.cardDetailedText)}</p>
+            <ul className="experience-preview-points">
+              {role.cardDetailedText.map((bullet) => (
+                <li key={bullet}>{stripBullet(bullet)}</li>
+              ))}
+            </ul>
           </RevealItem>
         ))}
       </RevealGroup>

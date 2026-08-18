@@ -61,9 +61,10 @@ export function Experience() {
         mode="VERTICAL"
         disableToolbar
         theme={{
-          // Brand accents — kept in sync by convention with tokens.css's --color-accent (#e0263c);
-          // react-chrono's theme prop takes literal color strings, not CSS custom properties.
-          primary: "#e0263c",
+          // Kept black/neutral per Kevin's request -- only the timeline dot
+          // (styled separately in MyCard.css, since react-chrono's theme API
+          // has no distinct "dot color" key of its own) is the accent color.
+          primary: "#000000",
 
           // Card styling
           cardBgColor: "#ffffff",
@@ -73,10 +74,10 @@ export function Experience() {
 
           // Timeline titles (the text on the line)
           titleColor: "#111111",
-          titleColorActive: "#e0263c",
+          titleColorActive: "#000000",
 
           // Icons & controls
-          iconColor: "#e0263c",
+          iconColor: "#000000",
           iconBackgroundColor: "#ffffff",
           toolbarBgColor: "#ffffff",
           toolbarBtnBgColor: "#ffffff",
@@ -85,13 +86,13 @@ export function Experience() {
           // Interactions
           buttonBorderColor: "#e5e7eb",
           buttonHoverBgColor: "#f3f4f6",
-          buttonHoverBorderColor: "#e0263c",
-          buttonActiveBgColor: "#e0263c",
+          buttonHoverBorderColor: "#000000",
+          buttonActiveBgColor: "#000000",
           buttonActiveIconColor: "#ffffff",
 
           // Effects
           shadowColor: "rgba(0, 0, 0, 0.08)",
-          glowColor: "rgba(224, 38, 60, 0.25)",
+          glowColor: "rgba(0, 0, 0, 0.15)",
 
           // Layout
           timelineBgColor: "#ffffff",
