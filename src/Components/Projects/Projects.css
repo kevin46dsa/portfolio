@@ -39,36 +39,6 @@
   margin-bottom: var(--space-6);
 }
 
-/* Wrapper purely so the edge-fade hint below can be positioned relative to
-   the visible row without being clipped by the scroll container's own
-   overflow-x: auto (an absolutely-positioned child of *that* element would
-   get cut off as soon as it scrolled). */
-.project-more-scroll-wrap {
-  position: relative;
-}
-
-/* Persistent hint that there's more to scroll to -- necessary because
-   the custom scrollbar styling below doesn't render at all on iOS Safari
-   (no scrollbar-width support, WebKit hides scrollbars by default there),
-   which was leaving zero built-in affordance on the browser most visitors
-   actually use. Hidden once nothing more fits to scroll to. */
-.project-more-scroll-wrap::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  width: 48px;
-  background: linear-gradient(to right, transparent, var(--color-bg));
-  opacity: 1;
-  transition: opacity 0.25s var(--ease-out-soft);
-  pointer-events: none;
-}
-
-.project-more-scroll-wrap.is-at-end::after {
-  opacity: 0;
-}
-
 /* Horizontal scroll row for every non-featured project -- automatically picks
    up anything added to TempProjectData.ts later, no layout changes needed.
    Bleeds to the page edge via a negative margin matching .project-main's own

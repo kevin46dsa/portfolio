@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import "./Projects.css";
 import { projectData, FEATURED_PROJECT_IDS } from "../../Constants/TempProjectData";
 import { Reveal } from "../Reveal";
@@ -14,7 +14,6 @@ const otherProjects = projectData.filter(
 
 const Projects = () => {
   const moreScrollRef = useRef(null);
-  const [isAtEnd, setIsAtEnd] = useState(false);
 
   const handleWheel = (e) => {
     const el = moreScrollRef.current;
@@ -26,18 +25,6 @@ const Projects = () => {
       el.scrollLeft += e.deltaY;
     }
   };
-
-  const updateIsAtEnd = () => {
-    const el = moreScrollRef.current;
-    if (!el) return;
-    setIsAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
-  };
-
-  useEffect(() => {
-    updateIsAtEnd();
-    window.addEventListener("resize", updateIsAtEnd);
-    return () => window.removeEventListener("resize", updateIsAtEnd);
-  }, []);
 
   return (
     <div className="project-main">
@@ -59,19 +46,12 @@ const Projects = () => {
       {otherProjects.length > 0 && (
         <section className="project-more-section">
           <h2 className="project-section-title">All Projects</h2>
-          <div className={`project-more-scroll-wrap ${isAtEnd ? "is-at-end" : ""}`}>
-            <div
-              className="project-more-scroll"
-              ref={moreScrollRef}
-              onWheel={handleWheel}
-              onScroll={updateIsAtEnd}
-            >
-              {otherProjects.map((project) => (
-                <Reveal key={project.id} className="project-more-item">
-                  <ProjectCard project={project} size="small" />
-                </Reveal>
-              ))}
-            </div>
+          <div className="project-more-scroll" ref={moreScrollRef} onWheel={handleWheel}>
+            {otherProjects.map((project) => (
+              <Reveal key={project.id} className="project-more-item">
+                <ProjectCard project={project} size="small" />
+              </Reveal>
+            ))}
           </div>
         </section>
       )}
