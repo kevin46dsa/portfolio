@@ -77,10 +77,40 @@ Plan reference: Vite migration + scrollytelling landing redesign.
 - [x] `npm run build` succeeds (clean install verified)
 - [x] `npm ci --legacy-peer-deps` succeeds (the exact command the deploy workflow runs)
 
-## What's NOT done / left for Kevin
-- **Not merged to master** — everything above lives on the `vite-migration` branch, 4 commits ahead of `master`. Review and merge when ready.
-- **SoulMate project images broken** (pre-existing, Firebase Storage returning 402 Payment Required — a billing/quota issue on Kevin's Firebase project, not a code bug). Re-host those 2 images (e.g. the same S3 bucket the other projects already use) to fix.
-- **Confirm CloudFront SPA fallback** — verify the existing S3+CloudFront setup has a custom error response (403/404 → `/index.html`, 200 status) so direct navigation/refresh on routes like `/about` or `/projects` doesn't break at the infra layer. Can't verify this without AWS console access.
-- **Bundle size**: the production JS bundle is ~1MB (335KB gzipped), and Vite warns about it. Not addressed — route-based code-splitting (`React.lazy`) would be the natural next step if this matters, but wasn't in scope for this pass.
-- **UI library**: Kevin expressed interest in eventually moving off Bootstrap to something more modern (Mantine, or Tailwind+Radix) — explicitly deferred as a separate future project, not started here.
-- **TypeScript strictness**: `tsconfig.app.json` has `strict: false`/`checkJs: false` deliberately, to avoid a wall of errors across the pre-existing loosely-typed files. Worth tightening incrementally later.
+## Status as of this checkpoint
+- **Merged to master** — the `vite-migration` work above landed via PR #6-#9.
+- **SoulMate project images**: fixed — see the 2026-08-17 checkpoint below (was Firebase Storage 402, now re-hosted to S3).
+- **Confirm CloudFront SPA fallback** — still unconfirmed, can't verify without AWS console access. Still Kevin's to check.
+- **Bundle size**: still ~830KB minified / ~272KB gzipped, Vite still warns. Not addressed in the checkpoint below either — still open, not currently tracked as a GitHub issue.
+- **UI library**: moving off Bootstrap is still explicitly deferred, no timeline.
+- **TypeScript strictness**: `tsconfig.app.json` still has `strict: false`/`checkJs: false` deliberately. Still open.
+
+## Where planned/future work is tracked
+As of this checkpoint, **GitHub Issues is the backlog** (`gh issue list`), not this file. This file stays a historical record of what's shipped, updated at checkpoints — see `CLAUDE.md` for the full convention. Anything above still marked open (CloudFront fallback, bundle size, UI library migration, TS strictness) hasn't been turned into a tracked issue yet; file one before starting on it rather than reviving it from this note.
+
+---
+
+# Checkpoint — 2026-08-17
+
+Everything below happened in a single continuous session after the Vite migration above had already merged to `master`. Four PRs shipped, in order:
+
+## PR #17 — Fix photography lightbox crash + mosaic redesign
+- **Bug**: clicking a photo on `/photography` to view it full-screen showed a blank white page, and Escape did nothing. Root-caused live (not guessed from CSS) by reproducing it with a throwaway Playwright script against the dev server: `react-photo-collage`'s lightbox is built on a transitive dependency, `react-images@1.1.7` (peer deps cap at React 16, last published 2018), which calls `ReactDOM.findDOMNode()` — an API removed outright in React 19. The crash happened inside the same subtree that would own the Escape handler, which is why Escape did nothing either.
+- **Fix**: replaced `react-photo-collage` + `react-images` entirely with native `MosaicGrid`/`Lightbox` components (`src/Components/Photography/`) — portal-rendered, focus trap, Escape/backdrop/arrow-key navigation, framer-motion entrance respecting `prefers-reduced-motion`, tokenized to match the rest of the site. Also dropped `styled-components`, which PROGRESS.md itself had noted was only kept around for `react-photo-collage`'s undeclared internal dependency on it.
+- Added a "Featured" mosaic section to the page (`FeaturedPhotos` in `PhotographyData.ts`).
+- New `e2e/photography-page.spec.ts`, written and run against the broken code first to confirm real repro (7/8 failed), then against the fix (8/8 passed) — the specific regression check is asserting zero `pageerror` events through the full open/navigate/close flow.
+
+## PR #18 — Featured section: swipeable filmstrip on mobile
+- Kevin's feedback after #17 shipped: the Featured section looked boring on phone (desktop's mosaic grid just squeezed into 2 columns). Replaced with a horizontally-scrolling filmstrip on mobile only (CSS scroll-snap, no JS needed for the swipe gesture, dot indicators via a small `IntersectionObserver`) — scoped entirely to `size="featured"` in `MosaicGrid`, desktop and per-album grids are pixel-identical to before.
+
+## PR #19 — Update OffTheFrame, 3D T-Shirt, and SoulMate project screenshots
+- Kevin uploaded new images to S3 (`projects/offtheframe/`, `projects/3dshirt/`, `projects/soulmate/`); `TempProjectData.ts` updated to point at them.
+- Side effect: fixed SoulMate's images, which had been pointed at Firebase Storage URLs returning HTTP 402 (Payment Required) — exactly the issue this file flagged as open above, now resolved.
+- Noticed in passing, not fixed: RentPipe's own screenshots are separately broken (different pre-existing hosting issue) — now tracked as its own GitHub issue rather than left as a stray note.
+
+## PR #20 — Redesign /projects: centered featured column + horizontal scroll
+- Kevin didn't like the desktop "bento" layout (3 featured projects alternating left/right via `grid-template-areas`). Replaced with a single centered column for the 3 featured projects, and a horizontal-scroll "All Projects" row for everything else — automatically picks up any project added to `TempProjectData.ts` later, no hardcoded count. Applied at every breakpoint per Kevin's direction, since mobile previously had no Featured/All distinction at all.
+- Reused the scroll-snap/peeking-card CSS pattern from #18's filmstrip, and the mouse-wheel-to-horizontal technique already proven in `HorizontalScroller.tsx`.
+
+## Verification, all 4 PRs
+Each PR: full `npm run test:e2e` suite green before merge (43/43 as of #20), `npx tsc -b` clean, `npm run build` succeeds, Playwright screenshots at 1280px and 375px/390px reviewed before calling it done. Each on its own feature branch, PR opened via `gh pr create`, reviewed and merged by Kevin — never pushed directly to `master` (it auto-deploys to production on push, no staging step).
