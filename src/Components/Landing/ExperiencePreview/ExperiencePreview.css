@@ -39,15 +39,16 @@
   color: var(--color-text-muted);
 }
 
-.experience-preview-highlight {
+.experience-preview-points {
   margin: 0;
+  padding-left: 1.1em;
+  list-style: disc; /* Bootstrap's reset zeroes list-style on all <ul>s by default */
   color: var(--color-text);
   font-size: var(--fs-small);
   line-height: var(--lh-body);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
 }
 
 @media (min-width: 768px) {
