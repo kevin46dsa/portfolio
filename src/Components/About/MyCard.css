@@ -1,22 +1,38 @@
-.my-card {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5); /* Add a box shadow */
-  padding-top: 6px;
-  padding-bottom: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.my-card:hover {
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
+.about-heading {
+  text-align: center;
+  width: 100%;
+  color: var(--color-accent);
+  font-size: var(--fs-h3);
+  font-weight: 700;
 }
 
-.my-card-text {
-  font-size: 1rem;
-  color: var(--color-text-muted);
-  text-align: center;
-  padding: 10px;
+.skill-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  padding-bottom: var(--space-6);
+}
+
+.skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--radius-pill);
+  padding: 6px 14px;
+  transition: background-color 0.2s var(--ease-out-soft), transform 0.2s var(--ease-out-soft);
+}
+
+@media (hover: hover) {
+  .skill-pill:hover {
+    background: var(--color-accent-border);
+    transform: translateY(-1px);
+  }
 }
 
 .about-quote-section {
@@ -86,15 +102,8 @@
 .about-experience-section {
   width: 100%;
 }
-.about-experience-heading {
-  text-align: center;
-  width: 100%;
-}
 
 @media (max-width: 750px) {
-  .my-card-text {
-    font-size: 0.8rem; /* Adjust font size for smaller screens */
-  }
   .about-first-section {
     flex-direction: column;
     padding: 0px;

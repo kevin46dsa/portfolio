@@ -12,9 +12,7 @@ const tools = [
 export function Backend() {
   return (
     <div className="about-techstack-section">
-      <h3 className="project-heading">
-        <strong className="purple">Backend </strong>
-      </h3>
+      <h3 className="about-heading">Backend</h3>
       <SkillIconElements elements={tools} />
     </div>
   );

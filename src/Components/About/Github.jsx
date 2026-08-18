@@ -5,8 +5,8 @@ import { Row } from 'react-bootstrap';
 function Github() {
 	return (
 		<Row style={{ justifyContent: 'center', paddingBottom: '10px' }}>
-			<h1 className="project-heading" style={{ paddingBottom: '20px' }}>
-				I <strong className="purple">Code</strong>
+			<h1 className="about-heading" style={{ paddingBottom: '20px' }}>
+				I Code
 			</h1>
 			<GitHubCalendar
 				username="kevin46dsa"

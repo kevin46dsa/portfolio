@@ -48,9 +48,7 @@ function About() {
         <Experience />
       </div>
       <div className="about-techstack-section">
-        <h2 className="project-heading">
-          <strong>Skills</strong>
-        </h2>
+        <h2 className="about-heading">Skills</h2>
         <AWSServices />
         <DatabaseAndCloud />
         <Backend />
