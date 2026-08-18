@@ -58,5 +58,28 @@
 
   .experience-preview-card {
     flex: 1;
+    min-height: 490px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Showing every point (not just one) can make this list quite long --
+     caps it to roughly 5 visible at a time with the rest reachable by
+     scroll, instead of letting the card grow indefinitely. */
+  .experience-preview-points {
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: var(--space-2);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+
+  .experience-preview-points::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .experience-preview-points::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-pill);
   }
 }

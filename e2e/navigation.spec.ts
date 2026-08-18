@@ -62,6 +62,18 @@ test.describe("header navigation", () => {
   });
 });
 
+test.describe("scroll restoration", () => {
+  test("navigating to a new page scrolls to the top, not the previous scroll position", async ({ page }) => {
+    await page.goto("/");
+    await page.evaluate(() => window.scrollTo(0, 1800));
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(1000);
+
+    await page.getByRole("heading", { name: "Work Experience" }).getByRole("link").click();
+    await expect(page).toHaveURL(/\/about$/);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBe(0);
+  });
+});
+
 test.describe("footer navigation", () => {
   test("quick links navigate to the right pages", async ({ page }) => {
     await page.goto("/");

@@ -72,9 +72,12 @@ export function Experience() {
           cardSubtitleColor: "#6b7280", // subtle gray
           cardDetailsColor: "#1f2937",
 
-          // Timeline titles (the text on the line)
-          titleColor: "#111111",
-          titleColorActive: "#000000",
+          // Timeline titles (the date badge on the line) -- its background
+          // comes from `primary` (black), so the text needs to be white to
+          // stay legible. Was #111111/#000000, effectively invisible on the
+          // black pill.
+          titleColor: "#ffffff",
+          titleColorActive: "#ffffff",
 
           // Icons & controls
           iconColor: "#000000",

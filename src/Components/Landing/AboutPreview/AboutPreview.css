@@ -17,9 +17,17 @@
   text-align: center;
 }
 
+/* flex-shrink: 0 on both -- without it, the flex row shrinks this item's
+   width (but not height, since height isn't the flex main-axis dimension in
+   a row) when the row is tight on space, turning the circle into an oval. */
+.about-preview-photo-wrap {
+  flex-shrink: 0;
+}
+
 .about-preview-photo {
   width: 160px;
   height: 160px;
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: var(--shadow-md);

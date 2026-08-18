@@ -12,6 +12,10 @@ type Hobby = {
   title: string;
   teaser: string;
   image?: string;
+  /** object-position override -- the source image's focal point isn't
+   * always centered (e.g. NoisyNosBanner is a wide strip with its logo
+   * well left of center), so `cover`'s default centered crop can hide it. */
+  imagePosition?: string;
   to?: string;
 };
 
@@ -28,6 +32,7 @@ const hobbies: Hobby[] = [
     title: "Music — Noisy Nos",
     teaser: "Curating house sets and DJ mixes under Noisy Nos.",
     image: NoisyNosBanner,
+    imagePosition: "22% center",
     to: "/music",
   },
   {
@@ -55,7 +60,13 @@ export const HobbiesPreview = () => (
           const content = (
             <>
               {hobby.image && (
-                <img src={hobby.image} alt="" className="hobbies-preview-image" aria-hidden="true" />
+                <img
+                  src={hobby.image}
+                  alt=""
+                  className="hobbies-preview-image"
+                  aria-hidden="true"
+                  style={hobby.imagePosition ? { objectPosition: hobby.imagePosition } : undefined}
+                />
               )}
               <div className="hobbies-preview-overlay" aria-hidden="true" />
               <div className="hobbies-preview-body">

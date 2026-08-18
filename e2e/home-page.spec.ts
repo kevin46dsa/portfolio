@@ -89,9 +89,62 @@ test.describe("landing Work Experience preview", () => {
       }
     }
   });
+
+  test("desktop: cards have significant height and the points list scrolls internally instead of growing forever", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto("/");
+
+    const card = page.locator(".experience-preview-card").first();
+    const cardHeight = await card.evaluate((el) => el.getBoundingClientRect().height);
+    expect(cardHeight).toBeGreaterThan(400);
+
+    const points = page.locator(".experience-preview-points").first();
+    const overflowInfo = await points.evaluate((el) => ({
+      overflowY: getComputedStyle(el).overflowY,
+      scrollHeight: el.scrollHeight,
+      clientHeight: el.clientHeight,
+    }));
+    expect(overflowInfo.overflowY).toBe("auto");
+    // The first role has 8 bullets -- more content than fits, so it should
+    // actually be scrollable, not just capable of scrolling in theory.
+    expect(overflowInfo.scrollHeight).toBeGreaterThan(overflowInfo.clientHeight);
+  });
+});
+
+test.describe("landing section order", () => {
+  test("Projects, then Work Experience, then Hobbies, then About Me", async ({ page }) => {
+    await page.goto("/");
+    const sections = [".projects-preview-section", ".experience-preview-section", ".hobbies-preview-section", ".about-preview-section"];
+    const tops = await Promise.all(
+      sections.map((sel) => page.locator(sel).evaluate((el) => el.getBoundingClientRect().top + window.scrollY))
+    );
+    for (let i = 1; i < tops.length; i++) {
+      expect(tops[i]).toBeGreaterThan(tops[i - 1]);
+    }
+  });
+});
+
+test.describe("landing About Me preview", () => {
+  test("desktop: profile photo is a circle, not squeezed into an oval", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto("/");
+    const photo = page.locator(".about-preview-photo");
+    const box = await photo.evaluate((el) => {
+      const r = el.getBoundingClientRect();
+      return { width: r.width, height: r.height };
+    });
+    expect(Math.abs(box.width - box.height)).toBeLessThan(1);
+  });
 });
 
 test.describe("landing Hobbies preview", () => {
+  test("Music tile's image is positioned to show the Noisy Nos logo, not the default center crop", async ({ page }) => {
+    await page.goto("/");
+    const musicImage = page.locator(".hobbies-preview-tile", { hasText: "Music" }).locator(".hobbies-preview-image");
+    const objectPosition = await musicImage.evaluate((el) => getComputedStyle(el).objectPosition);
+    expect(objectPosition).not.toBe("50% 50%");
+  });
+
   test("shows all 4 tiles with the right titles", async ({ page }) => {
     await page.goto("/");
     const tiles = page.locator(".hobbies-preview-tile");

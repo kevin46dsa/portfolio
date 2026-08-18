@@ -15,12 +15,14 @@ import Music from "./Components/Music/Music.jsx";
 import About from "./Components/About/About.jsx";
 import Projects from "./Components/Projects/ProjectHome.jsx";
 import { Blog } from "./Components/Blog/Blog.tsx";
+import { ScrollToTop } from "./Components/ScrollToTop.tsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <div>
+        <ScrollToTop />
         <header>
           <Header />
         </header>

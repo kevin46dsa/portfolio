@@ -39,6 +39,28 @@ test.describe("About page Experience timeline", () => {
     expect(dotColor).toBe("rgb(234, 179, 8)");
   });
 
+  test("date badge text is legible against its background, not black-on-black", async ({ page }) => {
+    await page.goto("/about");
+    const badge = page.locator(".timeline-item-title").first();
+    await expect(badge).toBeVisible();
+
+    const style = await badge.evaluate((el) => ({
+      color: getComputedStyle(el).color,
+      parentBg: getComputedStyle(el.parentElement!).backgroundColor,
+    }));
+    expect(style.color).toBe("rgb(255, 255, 255)");
+    expect(style.parentBg).toBe("rgb(0, 0, 0)");
+  });
+
+  test("the timeline section has a framed background panel", async ({ page }) => {
+    await page.goto("/about");
+    const section = page.locator(".about-experience-section");
+    const bg = await section.evaluate((el) => getComputedStyle(el).backgroundColor);
+    // color-bg-subtle (#f8f5f4), not plain white -- confirms the frame is applied.
+    expect(bg).not.toBe("rgb(255, 255, 255)");
+    expect(bg).not.toBe("rgba(0, 0, 0, 0)");
+  });
+
   test("shows all 4 work experience entries in a single column (no alternating)", async ({ page }) => {
     await page.goto("/about");
     const rows = page.locator(".vertical-item-row");
