@@ -5,7 +5,7 @@ export const Home = () => (
     <Hero />
     <ProjectsPreview />
     <ExperiencePreview />
-    <AboutPreview />
     <HobbiesPreview />
+    <AboutPreview />
   </div>
 );

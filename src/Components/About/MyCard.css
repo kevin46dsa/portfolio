@@ -99,8 +99,14 @@
   text-align: center;
   width: 100%;
 }
+/* Frames the timeline in a defined panel instead of floating loose on plain
+   white -- same treatment as the landing page's AboutPreview section
+   (background: var(--color-bg-subtle)), just applied here too. */
 .about-experience-section {
   width: 100%;
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-6) var(--space-4);
 }
 
 /* react-chrono's VERTICAL mode renders its line+card cluster as a fixed-width
