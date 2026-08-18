@@ -69,7 +69,11 @@ export const Header = () => {
                   Blog
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link onClick={() => navigate("/contact-me")}>
+              <Nav.Link
+                href="https://www.linkedin.com/in/kevindsa2017"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Get in touch
               </Nav.Link>
             </Nav>

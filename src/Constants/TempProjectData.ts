@@ -34,22 +34,6 @@ export const projectData = [
     websitePage: "https://soulmatecs555.netlify.app/",
   },
   {
-    id: "rentpipe",
-    projectName: "RentPipe",
-    projectDescription:
-      "Modern UI/UX website using React.js & ReactBoostrap Final Project for Course CS 545 Human Computer Interaction at Stevens Institute of technology",
-    techStack: ["React", "React Bootstrap"],
-    thumbnail:
-      "https://i.ibb.co/wLv47Wm/Rent-Pipe-logos-white-adobe-express.png",
-    slides: [
-      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/Screenshot%202023-07-09%20at%206.25.54%20PM.png",
-      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/Screenshot%202023-07-09%20at%206.26.35%20PM.png",
-    ],
-    color: "#F0F8FF",
-    githubLink: "https://github.com/kevin46dsa/RentPipe",
-    websitePage: "https://rentpipe.netlify.app/",
-  },
-  {
     id: "3d-tshirt-customizer",
     projectName: "3D T-Shirt Website using React + Three.JS",
     projectDescription:
