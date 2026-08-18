@@ -1,4 +1,4 @@
-import { Hero, ProjectsPreview, ExperiencePreview, AboutPreview } from "../Landing";
+import { Hero, ProjectsPreview, ExperiencePreview, AboutPreview, HobbiesPreview } from "../Landing";
 
 export const Home = () => (
   <div className="landing-page">
@@ -6,5 +6,6 @@ export const Home = () => (
     <ProjectsPreview />
     <ExperiencePreview />
     <AboutPreview />
+    <HobbiesPreview />
   </div>
 );

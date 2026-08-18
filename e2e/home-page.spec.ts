@@ -90,3 +90,42 @@ test.describe("landing Work Experience preview", () => {
     }
   });
 });
+
+test.describe("landing Hobbies preview", () => {
+  test("shows all 4 tiles with the right titles", async ({ page }) => {
+    await page.goto("/");
+    const tiles = page.locator(".hobbies-preview-tile");
+    await expect(tiles).toHaveCount(4);
+
+    for (const title of ["Photography", "Music", "Blog", "Travel Journal"]) {
+      await expect(page.getByText(title, { exact: false }).first()).toBeVisible();
+    }
+  });
+
+  test("Photography, Music, and Blog tiles link to their real pages", async ({ page }) => {
+    await page.goto("/");
+
+    await page.locator(".hobbies-preview-tile", { hasText: "Photography" }).click();
+    await expect(page).toHaveURL(/\/photography$/);
+
+    await page.goto("/");
+    await page.locator(".hobbies-preview-tile", { hasText: "Music" }).click();
+    await expect(page).toHaveURL(/\/music$/);
+
+    await page.goto("/");
+    await page.locator(".hobbies-preview-tile", { hasText: "Blog" }).click();
+    await expect(page).toHaveURL(/\/blog$/);
+  });
+
+  test("Travel tile shows a Coming Soon badge and is not a link", async ({ page }) => {
+    await page.goto("/");
+
+    const travelTile = page.locator(".hobbies-preview-tile", { hasText: "Travel Journal" });
+    await expect(travelTile).toBeVisible();
+    await expect(travelTile).toHaveText(/Coming Soon/);
+    expect(await travelTile.evaluate((el) => el.tagName)).not.toBe("A");
+
+    await travelTile.click();
+    await expect(page).toHaveURL(/\/$/);
+  });
+});
