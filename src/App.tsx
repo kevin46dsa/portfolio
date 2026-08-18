@@ -11,7 +11,9 @@ import {
   Resume,
 } from "./Components";
 import Bookshelf from "./Components/Bookshelf/Bookshelf.jsx";
-import Music from "./Components/Music/Music.jsx";
+import { MusicHub } from "./Components/Music/MusicHub.tsx";
+import MusicSets from "./Components/Music/MusicSets.jsx";
+import Spotify from "./Components/Music/Spotify.tsx";
 import About from "./Components/About/About.jsx";
 import Projects from "./Components/Projects/ProjectHome.jsx";
 import { Blog } from "./Components/Blog/Blog.tsx";
@@ -31,7 +33,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/bookshelf" element={<Bookshelf />} />
-            <Route path="/music" element={<Music />} />
+            <Route path="/music" element={<MusicHub />} />
+            <Route path="/music/noisynos" element={<MusicSets />} />
+            <Route path="/music/playlists" element={<Spotify />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<Projects />} />

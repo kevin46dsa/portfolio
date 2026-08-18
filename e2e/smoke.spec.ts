@@ -6,6 +6,8 @@ const routes = [
   "/projects",
   "/photography",
   "/music",
+  "/music/noisynos",
+  "/music/playlists",
   "/bookshelf",
   "/resume",
   "/blog",
@@ -19,8 +21,9 @@ const routes = [
 // /photography used to be here too (react-photo-collage's React-19-legacy internals),
 // but that dependency was replaced with native MosaicGrid/Lightbox components -- see
 // e2e/photography-page.spec.ts, which now asserts zero pageerrors through the full
-// open/close/navigate flow.
-const ROUTES_WITH_KNOWN_THIRD_PARTY_NOISE = new Set(["/bookshelf", "/resume", "/music"]);
+// open/close/navigate flow. /music itself is now just a hub of internal links (no
+// embeds), so the noise lives on its two sub-pages instead.
+const ROUTES_WITH_KNOWN_THIRD_PARTY_NOISE = new Set(["/bookshelf", "/resume", "/music/noisynos", "/music/playlists"]);
 
 function collectErrors(page: Page) {
   const consoleErrors: string[] = [];

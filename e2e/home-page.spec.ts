@@ -140,14 +140,14 @@ test.describe("landing About Me preview", () => {
 test.describe("landing Hobbies preview", () => {
   test("Music tile's image is positioned to show the Noisy Nos logo, not the default center crop", async ({ page }) => {
     await page.goto("/");
-    const musicImage = page.locator(".hobbies-preview-tile", { hasText: "Music" }).locator(".hobbies-preview-image");
+    const musicImage = page.locator(".hobbies-preview-grid .content-tile", { hasText: "Music" }).locator(".content-tile-image");
     const objectPosition = await musicImage.evaluate((el) => getComputedStyle(el).objectPosition);
     expect(objectPosition).not.toBe("50% 50%");
   });
 
   test("shows all 4 tiles with the right titles", async ({ page }) => {
     await page.goto("/");
-    const tiles = page.locator(".hobbies-preview-tile");
+    const tiles = page.locator(".hobbies-preview-grid .content-tile");
     await expect(tiles).toHaveCount(4);
 
     for (const title of ["Photography", "Music", "Blog", "Travel Journal"]) {
@@ -158,22 +158,22 @@ test.describe("landing Hobbies preview", () => {
   test("Photography, Music, and Blog tiles link to their real pages", async ({ page }) => {
     await page.goto("/");
 
-    await page.locator(".hobbies-preview-tile", { hasText: "Photography" }).click();
+    await page.locator(".hobbies-preview-grid .content-tile", { hasText: "Photography" }).click();
     await expect(page).toHaveURL(/\/photography$/);
 
     await page.goto("/");
-    await page.locator(".hobbies-preview-tile", { hasText: "Music" }).click();
+    await page.locator(".hobbies-preview-grid .content-tile", { hasText: "Music" }).click();
     await expect(page).toHaveURL(/\/music$/);
 
     await page.goto("/");
-    await page.locator(".hobbies-preview-tile", { hasText: "Blog" }).click();
+    await page.locator(".hobbies-preview-grid .content-tile", { hasText: "Blog" }).click();
     await expect(page).toHaveURL(/\/blog$/);
   });
 
   test("Travel tile shows a Coming Soon badge and is not a link", async ({ page }) => {
     await page.goto("/");
 
-    const travelTile = page.locator(".hobbies-preview-tile", { hasText: "Travel Journal" });
+    const travelTile = page.locator(".hobbies-preview-grid .content-tile", { hasText: "Travel Journal" });
     await expect(travelTile).toBeVisible();
     await expect(travelTile).toHaveText(/Coming Soon/);
     expect(await travelTile.evaluate((el) => el.tagName)).not.toBe("A");

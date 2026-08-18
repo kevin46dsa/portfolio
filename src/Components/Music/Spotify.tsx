@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
+import "./MusicBackLink.css";
 
 export default function Spotify() {
   const redirectToSpotify = () => {
@@ -9,6 +11,12 @@ export default function Spotify() {
 
   return (
     <div className="Music-page">
+      <br />
+      <Container>
+        <Link to="/music" className="music-back-link">
+          ← Music
+        </Link>
+      </Container>
       <br />
       <Container>
         {/* Main playlist: always full width */}
