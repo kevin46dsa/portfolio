@@ -79,4 +79,38 @@ test.describe("/projects layout", () => {
 
     await context.close();
   });
+
+  test("mobile viewport: the next card visibly peeks in, so the row reads as scrollable", async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const page = await context.newPage();
+
+    await page.goto("/projects");
+    await page.waitForLoadState("networkidle");
+
+    const containerWidth = await page.locator(".project-more-scroll").evaluate((el) => el.clientWidth);
+    const itemWidth = await page.locator(".project-more-item").first().evaluate((el) => el.getBoundingClientRect().width);
+    // The card must leave a real, noticeable peek of the next one -- not just
+    // a few px sliver that's easy to miss (the original bug: vw-based sizing
+    // computed against the full viewport instead of this row's own,
+    // already-narrower width).
+    expect(containerWidth - itemWidth).toBeGreaterThan(60);
+
+    await context.close();
+  });
+
+  test("edge-fade hint is visible while scrollable and disappears at the end", async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const page = await context.newPage();
+
+    await page.goto("/projects");
+    await page.waitForLoadState("networkidle");
+
+    const wrap = page.locator(".project-more-scroll-wrap");
+    await expect(wrap).not.toHaveClass(/is-at-end/);
+
+    await page.locator(".project-more-scroll").evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: "instant" as ScrollBehavior }));
+    await expect(wrap).toHaveClass(/is-at-end/);
+
+    await context.close();
+  });
 });

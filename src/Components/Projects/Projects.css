@@ -39,14 +39,42 @@
   margin-bottom: var(--space-6);
 }
 
+/* Wrapper purely so the edge-fade hint below can be positioned relative to
+   the visible row without being clipped by the scroll container's own
+   overflow-x: auto (an absolutely-positioned child of *that* element would
+   get cut off as soon as it scrolled). */
+.project-more-scroll-wrap {
+  position: relative;
+}
+
+/* Persistent hint that there's more to scroll to -- necessary because
+   the custom scrollbar styling below doesn't render at all on iOS Safari
+   (no scrollbar-width support, WebKit hides scrollbars by default there),
+   which was leaving zero built-in affordance on the browser most visitors
+   actually use. Hidden once nothing more fits to scroll to. */
+.project-more-scroll-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 48px;
+  background: linear-gradient(to right, transparent, var(--color-bg));
+  opacity: 1;
+  transition: opacity 0.25s var(--ease-out-soft);
+  pointer-events: none;
+}
+
+.project-more-scroll-wrap.is-at-end::after {
+  opacity: 0;
+}
+
 /* Horizontal scroll row for every non-featured project -- automatically picks
    up anything added to TempProjectData.ts later, no layout changes needed.
    Bleeds to the page edge via a negative margin matching .project-main's own
    padding (both use --space-4, so unlike a nested-in-Bootstrap-Container case
    there's no guessing at a third-party gutter width) so the next card peeks
-   in from the edge. No dot indicator here (cards carry title/description
-   text, not just an image), so the scrollbar stays visible as the
-   scroll-affordance instead. */
+   in from the edge. */
 .project-more-scroll {
   display: flex;
   gap: var(--space-4);
@@ -68,7 +96,12 @@
   border-radius: var(--radius-pill);
 }
 
+/* Percentage flex-basis (not vw) -- resolves against this row's own visible
+   width, which is already narrowed by page + row padding. vw was relative to
+   the full viewport instead, so on a phone the "peek" of the next card was
+   only a few px and easy to miss entirely -- not "directly apparent" as a
+   scrollable row at all. */
 .project-more-item {
-  flex: 0 0 clamp(260px, 78vw, 340px);
+  flex: 0 0 clamp(240px, 80%, 340px);
   scroll-snap-align: start;
 }
