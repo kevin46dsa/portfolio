@@ -55,17 +55,15 @@ export const experienceData = [
 export function Experience() {
   return (
     <div className="experience-container">
-      <h3 className="about-experience-heading">
-        <strong className="purple">Experience</strong>
-      </h3>
+      <h3 className="about-heading">Experience</h3>
       <Chrono
         items={experienceData}
-        mode="VERTICAL_ALTERNATING"
+        mode="VERTICAL"
         disableToolbar
         theme={{
-          // Brand accents — kept in sync by convention with tokens.css's --color-accent (#6366f1);
+          // Brand accents — kept in sync by convention with tokens.css's --color-accent (#e0263c);
           // react-chrono's theme prop takes literal color strings, not CSS custom properties.
-          primary: "#6366f1",
+          primary: "#e0263c",
 
           // Card styling
           cardBgColor: "#ffffff",
@@ -75,10 +73,10 @@ export function Experience() {
 
           // Timeline titles (the text on the line)
           titleColor: "#111111",
-          titleColorActive: "#6366f1",
+          titleColorActive: "#e0263c",
 
           // Icons & controls
-          iconColor: "#6366f1",
+          iconColor: "#e0263c",
           iconBackgroundColor: "#ffffff",
           toolbarBgColor: "#ffffff",
           toolbarBtnBgColor: "#ffffff",
@@ -87,13 +85,13 @@ export function Experience() {
           // Interactions
           buttonBorderColor: "#e5e7eb",
           buttonHoverBgColor: "#f3f4f6",
-          buttonHoverBorderColor: "#6366f1",
-          buttonActiveBgColor: "#6366f1",
+          buttonHoverBorderColor: "#e0263c",
+          buttonActiveBgColor: "#e0263c",
           buttonActiveIconColor: "#ffffff",
 
           // Effects
           shadowColor: "rgba(0, 0, 0, 0.08)",
-          glowColor: "rgba(99, 102, 241, 0.25)",
+          glowColor: "rgba(224, 38, 60, 0.25)",
 
           // Layout
           timelineBgColor: "#ffffff",

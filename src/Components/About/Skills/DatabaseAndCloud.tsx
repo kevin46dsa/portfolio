@@ -14,9 +14,7 @@ const tools = [
 export function DatabaseAndCloud() {
   return (
     <div className="about-techstack-section">
-      <h3 className="project-heading">
-        <strong className="purple">Database & Cloud </strong>
-      </h3>
+      <h3 className="about-heading">Database & Cloud</h3>
       <SkillIconElements elements={tools} />
     </div>
   );

@@ -22,9 +22,7 @@ const tools = [
 export function AWSServices() {
   return (
     <div className="about-techstack-section">
-      <h3 className="project-heading">
-        <strong className="purple">AWS </strong>Services
-      </h3>
+      <h3 className="about-heading">AWS Services</h3>
       <SkillIconElements elements={tools} />
     </div>
   );

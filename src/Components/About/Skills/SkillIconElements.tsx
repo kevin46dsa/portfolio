@@ -1,8 +1,5 @@
-import React from "react";
-import { Col, Row, Card } from "react-bootstrap";
+import { cloneElement, isValidElement } from "react";
 import "../MyCard.css";
-import Tooltip from "react-bootstrap/Tooltip";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 interface SkillIconElementsProps {
   elements: { name: string; icon: React.ReactNode }[];
@@ -11,20 +8,15 @@ interface SkillIconElementsProps {
 export default function SkillIconElements(props: SkillIconElementsProps) {
   const { elements } = props;
   return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      {elements.map((tech, index) => (
-        <Col xs={4} md={2} key={index}>
-          <OverlayTrigger
-            placement="top"
-            overlay={<Tooltip id={`tooltip-${index}`}>{tech.name}</Tooltip>}
-          >
-            <Card className="my-card">
-              <div>{tech.icon}</div>
-              <div className="my-card-text">{tech.name}</div>
-            </Card>
-          </OverlayTrigger>
-        </Col>
+    <div className="skill-pill-row">
+      {elements.map((tech) => (
+        <span className="skill-pill" key={tech.name}>
+          {isValidElement<{ size?: number }>(tech.icon)
+            ? cloneElement(tech.icon, { size: 18 })
+            : tech.icon}
+          {tech.name}
+        </span>
       ))}
-    </Row>
+    </div>
   );
 }

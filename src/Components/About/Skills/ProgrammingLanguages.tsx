@@ -12,9 +12,7 @@ const tools = [
 export function ProgrammingLanguages() {
   return (
     <div className="about-techstack-section">
-      <h3 className="project-heading">
-        <strong className="purple">Programming </strong>Languages
-      </h3>
+      <h3 className="about-heading">Programming Languages</h3>
       <SkillIconElements elements={tools} />
     </div>
   );

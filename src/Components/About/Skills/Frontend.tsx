@@ -20,9 +20,7 @@ const tools = [
 export function Frontend() {
   return (
     <div className="about-techstack-section">
-      <h3 className="project-heading">
-        <strong className="purple">Frontend </strong>
-      </h3>
+      <h3 className="about-heading">Frontend</h3>
       <SkillIconElements elements={tools} />
     </div>
   );
