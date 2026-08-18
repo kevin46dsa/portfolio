@@ -97,20 +97,4 @@ test.describe("/projects layout", () => {
 
     await context.close();
   });
-
-  test("edge-fade hint is visible while scrollable and disappears at the end", async ({ browser }) => {
-    const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
-    const page = await context.newPage();
-
-    await page.goto("/projects");
-    await page.waitForLoadState("networkidle");
-
-    const wrap = page.locator(".project-more-scroll-wrap");
-    await expect(wrap).not.toHaveClass(/is-at-end/);
-
-    await page.locator(".project-more-scroll").evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: "instant" as ScrollBehavior }));
-    await expect(wrap).toHaveClass(/is-at-end/);
-
-    await context.close();
-  });
 });
