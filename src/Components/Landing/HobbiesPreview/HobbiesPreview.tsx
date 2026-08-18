@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
 import { FeaturedPhotos } from "../../../Constants/PhotographyData";
 import { NoisyNosBanner } from "../../../Constants/NoisyNosData";
 import defaultBlogImage from "../../../Assets/defaultblogimg.jpeg";
 import { SectionHeading } from "../../SectionHeading";
 import { SectionDivider } from "../../SectionDivider";
 import { RevealGroup, RevealItem } from "../../Reveal";
+import { ContentTile } from "../../ContentTile";
 import "./HobbiesPreview.css";
 
 type Hobby = {
@@ -12,9 +12,6 @@ type Hobby = {
   title: string;
   teaser: string;
   image?: string;
-  /** object-position override -- the source image's focal point isn't
-   * always centered (e.g. NoisyNosBanner is a wide strip with its logo
-   * well left of center), so `cover`'s default centered crop can hide it. */
   imagePosition?: string;
   to?: string;
 };
@@ -55,53 +52,17 @@ export const HobbiesPreview = () => (
       <SectionDivider />
       <SectionHeading eyebrow="Beyond the Code" title="Hobbies" />
       <RevealGroup className="hobbies-preview-grid">
-        {hobbies.map((hobby) => {
-          const isComingSoon = !hobby.to;
-          const content = (
-            <>
-              {hobby.image && (
-                <img
-                  src={hobby.image}
-                  alt=""
-                  className="hobbies-preview-image"
-                  aria-hidden="true"
-                  style={hobby.imagePosition ? { objectPosition: hobby.imagePosition } : undefined}
-                />
-              )}
-              <div className="hobbies-preview-overlay" aria-hidden="true" />
-              <div className="hobbies-preview-body">
-                {isComingSoon && <span className="hobbies-preview-badge">Coming Soon</span>}
-                <h3 className="hobbies-preview-title">{hobby.title}</h3>
-                <p className="hobbies-preview-teaser">{hobby.teaser}</p>
-                {!isComingSoon && (
-                  <span className="hobbies-preview-link">
-                    Explore
-                    <span className="hobbies-preview-arrow" aria-hidden="true">
-                      →
-                    </span>
-                  </span>
-                )}
-              </div>
-            </>
-          );
-
-          return (
-            <RevealItem key={hobby.key} direction="up">
-              {isComingSoon ? (
-                <div
-                  className="hobbies-preview-tile hobbies-preview-tile-soon"
-                  aria-disabled="true"
-                >
-                  {content}
-                </div>
-              ) : (
-                <Link to={hobby.to!} className="hobbies-preview-tile">
-                  {content}
-                </Link>
-              )}
-            </RevealItem>
-          );
-        })}
+        {hobbies.map((hobby) => (
+          <RevealItem key={hobby.key} direction="up">
+            <ContentTile
+              title={hobby.title}
+              teaser={hobby.teaser}
+              image={hobby.image}
+              imagePosition={hobby.imagePosition}
+              to={hobby.to}
+            />
+          </RevealItem>
+        ))}
       </RevealGroup>
     </div>
   </section>

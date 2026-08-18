@@ -1,0 +1,15 @@
+.music-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color 0.2s var(--ease-out-soft);
+}
+
+.music-back-link:hover,
+.music-back-link:focus-visible {
+  color: var(--color-accent);
+}

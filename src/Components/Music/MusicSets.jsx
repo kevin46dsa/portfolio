@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -11,10 +11,17 @@ import {
   NoisyNosVideoHighlight1,
   NoisyNosVideoHighlight2,
 } from "../../Constants/NoisyNosData";
+import "./MusicBackLink.css";
 
 export default function MusicSets() {
   return (
     <div className="Music-page">
+      <br />
+      <Container>
+        <Link to="/music" className="music-back-link">
+          ← Music
+        </Link>
+      </Container>
       <br />
       <Container>
         <Row xs={1} sm={1} md={1} lg={1} xl={1} xxl={1}>
