@@ -54,11 +54,12 @@ test.describe("header navigation", () => {
     await expect(page).toHaveURL(/\/$/);
   });
 
-  test("Get in touch is an intentional dead link that falls back to the 404 page", async ({ page }) => {
+  test("Get in touch opens Kevin's LinkedIn profile in a new tab", async ({ page }) => {
     await page.goto("/");
-    await page.locator("header").getByRole("button", { name: "Get in touch" }).click();
-    await expect(page).toHaveURL(/\/contact-me$/);
-    await expect(page.locator("body")).not.toBeEmpty();
+    const link = page.locator("header").getByRole("link", { name: "Get in touch" });
+    await expect(link).toHaveAttribute("href", "https://www.linkedin.com/in/kevindsa2017");
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", /noopener/);
   });
 });
 
@@ -84,11 +85,24 @@ test.describe("footer navigation", () => {
     await expect(footer.getByRole("link", { name: "Projects" })).toHaveAttribute("href", "/projects");
     await expect(footer.getByRole("link", { name: "Blog" })).toHaveAttribute("href", "/blog");
     await expect(footer.getByRole("link", { name: "Sitemap" })).toHaveAttribute("href", "/sitemap");
+
+    const contactLink = footer.getByRole("link", { name: "Contact" });
+    await expect(contactLink).toHaveAttribute("href", "https://www.linkedin.com/in/kevindsa2017");
+    await expect(contactLink).toHaveAttribute("target", "_blank");
   });
 
   test("sitemap link navigates correctly", async ({ page }) => {
     await page.goto("/");
     await page.locator("footer").getByRole("link", { name: "Sitemap" }).click();
     await expect(page).toHaveURL(/\/sitemap$/);
+  });
+});
+
+test.describe("sitemap page", () => {
+  test("no longer lists an internal Contact route", async ({ page }) => {
+    await page.goto("/sitemap");
+    // Scoped to the sitemap's own list -- the page-wide Header/Footer both
+    // have their own unrelated "Contact"/"Get in touch" links to LinkedIn.
+    await expect(page.locator(".list-group").getByRole("link", { name: "Contact" })).toHaveCount(0);
   });
 });

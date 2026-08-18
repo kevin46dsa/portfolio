@@ -35,7 +35,13 @@ export const Footer = () => {
               <Nav.Link href="/resume">Resume</Nav.Link>
               <Nav.Link href="/projects">Projects</Nav.Link>
               <Nav.Link href="/blog">Blog</Nav.Link>
-              <Nav.Link href="/contact-me">Contact</Nav.Link>
+              <Nav.Link
+                href="https://www.linkedin.com/in/kevindsa2017"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Contact
+              </Nav.Link>
             </Nav>
           </Col>
         </Row>

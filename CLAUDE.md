@@ -30,6 +30,6 @@ For any non-trivial change: `npx tsc -b`, `npm run test:e2e` (full suite must st
 
 ## A few things not to re-litigate
 
-- `/contact-me` is a dead route (Header/Footer/Sitemap link to it, it 404s) — this is tracked and has a concrete plan in issue #10, don't "fix" it ad hoc.
+- "Get in touch"/"Contact" (Header, Footer) link straight to Kevin's LinkedIn profile (`https://www.linkedin.com/in/kevindsa2017`), not an in-app contact form — deliberate, not a placeholder. There's no public LinkedIn URL scheme that opens a message-compose box for arbitrary visitors, so a profile link is the correct, final answer here, not a stopgap. A proper Recommendations page (visitor submits name/email/text → stored in DynamoDB → Kevin approves → shows on About page) is tracked as future work in issue #10 — a separate, larger project, not a contact form.
 - The Header logo's continuous bounce animation is intentional, not a bug — Kevin wants to keep it (and add more decorative motion later, deliberately deferred).
 - `src/Constants/TempProjectData.ts` is the real, permanent source of truth for project content on both `/projects` and the landing page preview, despite the "Temp" name.

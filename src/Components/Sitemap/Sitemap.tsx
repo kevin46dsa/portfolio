@@ -37,9 +37,6 @@ export const Sitemap = () => {
             <ListGroup.Item>
               <Link to="/photography">Photography</Link>
             </ListGroup.Item>
-            <ListGroup.Item>
-              <Link to="/contact-me">Contact</Link>
-            </ListGroup.Item>
           </ListGroup>
         </Col>
       </Row>
