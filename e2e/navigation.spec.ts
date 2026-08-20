@@ -30,7 +30,6 @@ test.describe("header navigation", () => {
 
     await hobby("Music", /\/music$/);
     await hobby("Photography", /\/photography$/);
-    await hobby("Bookshelf", /\/bookshelf$/);
     await hobby("Blog", /\/blog$/);
   });
 

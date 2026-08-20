@@ -62,9 +62,6 @@ export const Header = () => {
                 <NavDropdown.Item onClick={() => navigate("/photography")}>
                   Photography
                 </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => navigate("/bookshelf")}>
-                  Bookshelf
-                </NavDropdown.Item>
                 <NavDropdown.Item onClick={() => navigate("/blog")}>
                   Blog
                 </NavDropdown.Item>
