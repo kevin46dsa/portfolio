@@ -91,6 +91,6 @@ export const projectData = [
     ],
     color: "#FDF5E6",
     githubLink: "https://github.com/kevin46dsa/cardgamev1.0",
-    websitePage: "",
+    websitePage: "https://gamenight.nosenterprise.org/",
   },
 ];
