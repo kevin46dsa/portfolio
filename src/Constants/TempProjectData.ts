@@ -78,4 +78,19 @@ export const projectData = [
     githubLink: "https://github.com/kevin46dsa/NBA-Career-Longevity-Pridiction",
     websitePage: "",
   },
+  {
+    id: "game-night",
+    projectName: "Game Night",
+    projectDescription:
+      "Game Night is a party-game app built for playing with friends at the bar or pub — Sudoku challenges, Truth or Dare, and more, all in one place to keep the night going.",
+    techStack: ["React", "JavaScript", "AWS S3", "DynamoDB", "Firestore"],
+    slides: [
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/gamenight/cover.png",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/gamenight/sudoku.png",
+      "https://protfolio-kevin-assets.s3.us-east-2.amazonaws.com/projects/gamenight/truthordare.png",
+    ],
+    color: "#FDF5E6",
+    githubLink: "https://github.com/kevin46dsa/cardgamev1.0",
+    websitePage: "",
+  },
 ];
