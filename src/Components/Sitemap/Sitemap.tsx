@@ -20,9 +20,6 @@ export const Sitemap = () => {
               <Link to="/about">About</Link>
             </ListGroup.Item>
             <ListGroup.Item>
-              <Link to="/bookshelf">Bookshelf</Link>
-            </ListGroup.Item>
-            <ListGroup.Item>
               <Link to="/music">Music</Link>
             </ListGroup.Item>
             <ListGroup.Item>

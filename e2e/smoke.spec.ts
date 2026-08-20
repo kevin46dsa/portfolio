@@ -8,22 +8,21 @@ const routes = [
   "/music",
   "/music/noisynos",
   "/music/playlists",
-  "/bookshelf",
   "/resume",
   "/blog",
   "/sitemap",
 ];
 
-// These routes embed flaky/legacy third-party services (Goodreads via a public
-// CORS proxy, a Google Drive PDF iframe, Spotify/YouTube iframes) that log console
-// noise independent of our own code. We still fail on pageerror (an actual uncaught
-// exception/crash), just not on console noise from services we don't control.
+// These routes embed flaky/legacy third-party services (a Google Drive PDF
+// iframe, Spotify/YouTube iframes) that log console noise independent of our
+// own code. We still fail on pageerror (an actual uncaught exception/crash),
+// just not on console noise from services we don't control.
 // /photography used to be here too (react-photo-collage's React-19-legacy internals),
 // but that dependency was replaced with native MosaicGrid/Lightbox components -- see
 // e2e/photography-page.spec.ts, which now asserts zero pageerrors through the full
 // open/close/navigate flow. /music itself is now just a hub of internal links (no
 // embeds), so the noise lives on its two sub-pages instead.
-const ROUTES_WITH_KNOWN_THIRD_PARTY_NOISE = new Set(["/bookshelf", "/resume", "/music/noisynos", "/music/playlists"]);
+const ROUTES_WITH_KNOWN_THIRD_PARTY_NOISE = new Set(["/resume", "/music/noisynos", "/music/playlists"]);
 
 function collectErrors(page: Page) {
   const consoleErrors: string[] = [];

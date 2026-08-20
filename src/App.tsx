@@ -10,7 +10,6 @@ import {
   Photography,
   Resume,
 } from "./Components";
-import Bookshelf from "./Components/Bookshelf/Bookshelf.jsx";
 import { MusicHub } from "./Components/Music/MusicHub.tsx";
 import MusicSets from "./Components/Music/MusicSets.jsx";
 import Spotify from "./Components/Music/Spotify.tsx";
@@ -32,7 +31,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/bookshelf" element={<Bookshelf />} />
             <Route path="/music" element={<MusicHub />} />
             <Route path="/music/noisynos" element={<MusicSets />} />
             <Route path="/music/playlists" element={<Spotify />} />
