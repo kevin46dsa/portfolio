@@ -9,3 +9,7 @@
 .site-footer .nav-link:focus {
   color: var(--color-accent);
 }
+
+.site-footer .container {
+  padding-inline: var(--space-4);
+}

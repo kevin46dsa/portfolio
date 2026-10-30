@@ -55,7 +55,7 @@ export const Blog = () => {
     <div>
       <br />
       <br />
-      <Container fluid>
+      <Container fluid className="px-4 px-md-5">
         <Row className="g-4 justify-content-center">
           {posts.map((post: any, index: number) => (
             <Col

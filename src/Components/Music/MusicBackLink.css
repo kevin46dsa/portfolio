@@ -13,3 +13,8 @@
 .music-back-link:focus-visible {
   color: var(--color-accent);
 }
+
+/* Sub-pages under /music: more breathing room from the screen edge. */
+.Music-page .container {
+  padding-inline: var(--space-4);
+}

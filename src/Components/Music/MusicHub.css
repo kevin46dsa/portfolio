@@ -1,10 +1,20 @@
 .music-hub-page {
-  padding-block: 16px 48px;
+  padding-bottom: var(--space-8);
 }
 
 .music-hub-hero {
-  text-align: center;
-  margin-bottom: var(--space-6);
+  background: var(--color-ink);
+  color: #ffffff;
+  padding-block: var(--space-7);
+}
+
+.music-hub-eyebrow {
+  margin: 0 0 var(--space-3);
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .music-hub-title {
@@ -14,8 +24,8 @@
 }
 
 .music-hub-tagline {
-  margin: var(--space-2) 0 0;
-  color: var(--color-text-muted);
+  margin: var(--space-3) 0 0;
+  color: rgba(255, 255, 255, 0.7);
   font-size: var(--fs-body);
 }
 
@@ -25,14 +35,55 @@
   padding-inline: var(--space-4);
 }
 
-.music-hub-grid {
+.music-hub-section {
+  margin-top: var(--space-7);
+}
+
+.music-hub-grid,
+.music-hub-latest {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
 }
 
+.music-hub-latest-title {
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  margin: 0 0 var(--space-4);
+}
+
+.music-hub-set {
+  display: block;
+  color: var(--color-text);
+  text-decoration: none;
+  font-weight: 600;
+  line-height: var(--lh-tight);
+}
+
+.music-hub-set img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-3);
+  background: var(--color-ink);
+}
+
+.music-hub-set:hover span {
+  color: var(--color-accent);
+}
+
 @media (min-width: 768px) {
+  .music-hub-inner {
+    padding-inline: var(--space-6);
+  }
+
   .music-hub-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .music-hub-latest {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
