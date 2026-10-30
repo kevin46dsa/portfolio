@@ -13,13 +13,13 @@ test.describe("Music hub", () => {
     const tiles = page.locator(".music-hub-grid .content-tile");
     await expect(tiles).toHaveCount(2);
 
-    await expect(page.getByText("NoisyNos", { exact: false }).first()).toBeVisible();
+    await expect(page.getByText("Noisy Nos", { exact: false }).first()).toBeVisible();
     await expect(page.getByText("Playlists", { exact: false }).first()).toBeVisible();
   });
 
-  test("NoisyNos tile links to /music/noisynos", async ({ page }) => {
+  test("Noisy Nos tile links to /music/noisynos", async ({ page }) => {
     await page.goto("/music");
-    await page.locator(".content-tile", { hasText: "NoisyNos" }).click();
+    await page.locator(".content-tile", { hasText: "Noisy Nos" }).click();
     await expect(page).toHaveURL(/\/music\/noisynos$/);
     await expect(page.getByRole("heading", { name: "Check Out My Socials" })).toBeVisible();
   });

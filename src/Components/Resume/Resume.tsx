@@ -6,7 +6,7 @@
  */
 export const Resume = () => {
   return (
-    <div>
+    <div style={{ padding: "var(--space-4)" }}>
       <iframe
         title="Resume"
         src="https://drive.google.com/file/d/1Lc2i86ZlS9n5hFavDF3qmXHNJg8BCrZs/preview"
